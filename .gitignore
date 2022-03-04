@@ -1,0 +1,49 @@
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+### VS Code ###
+.vscode/
+gms_logic/src/main/java/com/.DS_Store
+gms_logic/src/main/.DS_Store
+inno-dcache/src/main/java/com/innochem/platform/mapper/.DS_Store
+logs/my-blog-site.2021-08-10.0.log
+logs/my-blog-site.2021-08-11.0.log
+src/.DS_Store
+inno-dcache/src/main/.DS_Store
+inno-dcache/src/main/java/com/innochem/platform/logic/common/search/.DS_Store
+inno-dcache/src/main/java/com/innochem/platform/logic/.DS_Store
+inno-dcache/src/main/java/com/innochem/platform/logic/.DS_Store
+innochem-admin-platform/src/main/java/com/innochem/platform/.DS_Store
+inno-dcache/src/main/java/com/innochem/platform/logic/.DS_Store
+inno-dcache/src/main/java/com/innochem/platform/.DS_Store
+inno-dcache/src/main/java/com/innochem/platform/.DS_Store
+inno-dcache/src/main/java/com/innochem/platform/logic/.DS_Store
+inno-dcache/src/main/resources/.DS_Store
+innochem-admin-platform/src/main/java/com/innochem/platform/.DS_Store
+*.log
