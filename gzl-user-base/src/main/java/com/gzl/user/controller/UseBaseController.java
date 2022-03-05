@@ -4,6 +4,8 @@ package com.gzl.user.controller;
 //import com.gzl.base.common.model.user.UseBaseRequest;
 
 import com.gzl.base.common.model.user.UseBaseRequest;
+import com.gzl.base.common.model.user.UseBaseResponse;
+import com.gzl.base.common.result.ViewResult;
 import com.gzl.user.service.UseBaseService;
 //import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.Api;
@@ -31,8 +33,9 @@ public class UseBaseController {
     @ApiOperation(value = "查询用户信息")
     @RequestMapping(value = "/selectUseInfo", method = RequestMethod.POST)
     @ResponseBody
-    public void selectUseInfo(@RequestBody UseBaseRequest useBaseRequest) {
-        useBaseService.selectUseInfo(useBaseRequest);
+    public ViewResult selectUseInfo(@RequestBody UseBaseRequest useBaseRequest) {
+        UseBaseResponse useBaseResponse=useBaseService.selectUseInfo(useBaseRequest);
+        return ViewResult.success(useBaseResponse);
     }
 
 }

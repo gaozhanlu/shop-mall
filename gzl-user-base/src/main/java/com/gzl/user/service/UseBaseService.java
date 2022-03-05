@@ -2,10 +2,9 @@ package com.gzl.user.service;
 
 
 import com.gzl.base.common.model.user.UseBaseRequest;
+import com.gzl.base.common.model.user.UseBaseResponse;
 import com.gzl.user.entity.UseBase;
 import com.baomidou.mybatisplus.extension.service.IService;
-import org.apache.ibatis.annotations.Select;
-import org.springframework.stereotype.Service;
 
 /**
  * <p>
@@ -18,5 +17,5 @@ import org.springframework.stereotype.Service;
 
 public interface UseBaseService extends IService<UseBase> {
 
-    void selectUseInfo(UseBaseRequest useBaseRequest);
+    UseBaseResponse selectUseInfo(UseBaseRequest useBaseRequest);
 }

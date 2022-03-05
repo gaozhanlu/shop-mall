@@ -1,5 +1,4 @@
-package com.gzl.base.common.config;
-
+package com.gzl.user.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
@@ -20,11 +19,13 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.time.Duration;
 
-
+/**
+ * Redis相关配置
+ * Created by macro on 2020/3/2.
+ */
 @EnableCaching
 @Configuration
 public class RedisConfig extends CachingConfigurerSupport {
-
 
     @Bean
     public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
@@ -50,7 +51,6 @@ public class RedisConfig extends CachingConfigurerSupport {
         return serializer;
     }
 
-
     @Bean
     public RedisCacheManager redisCacheManager(RedisConnectionFactory redisConnectionFactory) {
         RedisCacheWriter redisCacheWriter = RedisCacheWriter.nonLockingRedisCacheWriter(redisConnectionFactory);
@@ -59,4 +59,5 @@ public class RedisConfig extends CachingConfigurerSupport {
                 .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(redisSerializer())).entryTtl(Duration.ofDays(1));
         return new RedisCacheManager(redisCacheWriter, redisCacheConfiguration);
     }
+
 }

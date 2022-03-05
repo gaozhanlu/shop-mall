@@ -40,6 +40,7 @@
         <guava.version>31.0-jre</guava.version>
         <hutool.version>5.7.18</hutool.version>
         <swagger2.version>2.9.2</swagger2.version>
+        <oauth2.version>2.6.1</oauth2.version>
     </properties>
 
 
@@ -68,6 +69,14 @@
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
             </dependency>
+
+            <!--安全认证-->
+            <dependency>
+                <groupId>org.springframework.security.oauth.boot</groupId>
+                <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+                <version>${oauth2.version}</version>
+            </dependency>
+
             <!--mysql-plu启动包-->
             <dependency>
                 <groupId>com.baomidou</groupId>
