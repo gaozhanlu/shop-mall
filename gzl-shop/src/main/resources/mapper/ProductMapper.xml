@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gzl.shop.mapper.ProductMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.gzl.shop.entity.Product">
+        <result column="id" property="id" />
+        <result column="pid" property="pid" />
+        <result column="sid" property="sid" />
+        <result column="cn_name" property="cnName" />
+        <result column="en_name" property="enName" />
+        <result column="cas" property="cas" />
+        <result column="goods_no" property="goodsNo" />
+        <result column="spec" property="spec" />
+        <result column="supervision_cond" property="supervisionCond" />
+        <result column="list_price" property="listPrice" />
+        <result column="off_price" property="offPrice" />
+        <result column="promotion_price" property="promotionPrice" />
+        <result column="promotion_start_time" property="promotionStartTime" />
+        <result column="promotion_end_time" property="promotionEndTime" />
+        <result column="stock_detail" property="stockDetail" />
+        <result column="transport_cond" property="transportCond" />
+        <result column="storage_temprature" property="storageTemprature" />
+        <result column="delivery" property="delivery" />
+        <result column="stock_num" property="stockNum" />
+        <result column="dmg_level" property="dmgLevel" />
+        <result column="mdl" property="mdl" />
+        <result column="data_source" property="dataSource" />
+        <result column="third_code" property="thirdCode" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="update_use" property="updateUse" />
+        <result column="stats" property="stats" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, pid, sid, cn_name, en_name, cas, goods_no, spec, supervision_cond, list_price, off_price, promotion_price, promotion_start_time, promotion_end_time, stock_detail, transport _cond, storage_temprature, delivery, stock_num, dmg_level, mdl, data_source, third_code, create_time, update_time, update_use, stats
+    </sql>
+
+</mapper>

@@ -65,13 +65,21 @@
     </appender>
 
 
+    <!--配置异步日志-->
+    <appender name="FILE_ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <!--不丢失日志，默认的，如果队列的80%已满 则会丢弃TRACT，DEBUG，INFO级别的日志-->
+        <discardingThreshold>0</discardingThreshold>
+        <!--更改默认的队列的深度，改值会影响性能，默认值是256-->
+        <queueSize>512</queueSize>
+        <!--添加附加的appender,最多只能添加一个-->
+        <appender-ref ref="FILE"/>
+    </appender>
+
     <!-- 日志输出级别
         如果使用springProfile, 就需要在application配置文件中通过 spring.profiles.active=dev 来指定环境,
         也可以直接去掉 <springProfile> 这个标签或者把它整个注释掉
      -->
-
-
-    <springProfile name="prod">
+    <springProfile name="gzl">
         <root level="INFO">
             <appender-ref ref="CONSOLE"/>
             <appender-ref ref="FILE"/>
@@ -82,12 +90,11 @@
             <appender-ref ref="FILE"/>
         </logger>
 
+        <!--不打印某个类下的日志-->
+        <logger name="com.innochem.platform.mapper.ProductInfoMapper" level="OFF"/>
     </springProfile>
 
-    <root level="INFO">
-        <appender-ref ref="CONSOLE"/>
-        <appender-ref ref="FILE"/>
-    </root>
+
 
 
 </configuration>
