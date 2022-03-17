@@ -3,8 +3,14 @@ package com.gzl.user.component;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.core.util.URLUtil;
 import cn.hutool.json.JSONUtil;
+import com.gzl.base.common.model.web.WebLog;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.Signature;
+import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -21,6 +27,7 @@ import java.util.Map;
 @Slf4j
 public class WebLogAspect {
 
+    /*execution中的public是对public方法监听，其他方法监听不到*/
     @Pointcut("execution(public * com.gzl.user.controller.*.*(..))")
     public void webLog() {
     }
@@ -65,8 +72,7 @@ public class WebLogAspect {
         logMap.put("parameter",webLog.getParameter());
         logMap.put("spendTime",webLog.getSpendTime());
         logMap.put("description",webLog.getDescription());
-//        LOGGER.info("{}", JSONUtil.parse(webLog));
-        LOGGER.info(Markers.appendEntries(logMap), JSONUtil.parse(webLog).toString());
+//        log.info(Markers.appendEntries(logMap), JSONUtil.parse(webLog).toString());
         return result;
     }
 }

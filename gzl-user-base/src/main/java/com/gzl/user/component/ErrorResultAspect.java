@@ -1,10 +1,17 @@
 package com.gzl.user.component;
 
+import com.gzl.base.common.result.ViewResult;
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+
+
 
 @Aspect
 @Component
@@ -24,9 +31,9 @@ public class ErrorResultAspect {
                 if (result.hasErrors()) {
                     FieldError fieldError = result.getFieldError();
                     if(fieldError!=null){
-                        return CommonResult.validateFailed(fieldError.getDefaultMessage());
+                        return ViewResult.validateFailed(fieldError.getDefaultMessage());
                     }else{
-                        return CommonResult.validateFailed();
+                        return ViewResult.validateFailed();
                     }
                 }
             }
