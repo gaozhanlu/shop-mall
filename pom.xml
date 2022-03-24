@@ -15,6 +15,7 @@
         <module>gzl-gateway</module>
         <module>gzl-shop</module>
         <module>gzl-work-flow</module>
+        <module>gzl-authorization</module>
     </modules>
     <name>parent_project</name>
     <description>基础项目架构管理</description>
@@ -40,7 +41,7 @@
         <guava.version>31.0-jre</guava.version>
         <hutool.version>5.7.18</hutool.version>
         <swagger2.version>2.9.2</swagger2.version>
-        <oauth2.version>2.6.1</oauth2.version>
+        <oauth2.version>2.2.5</oauth2.version>
     </properties>
 
 
