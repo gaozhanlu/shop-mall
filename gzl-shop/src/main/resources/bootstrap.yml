@@ -1,0 +1,19 @@
+spring:
+  profiles:
+    # dev 默认为开发环境 , prod 线上环境
+    active: gzl
+  application:
+    name: gzl-shop
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.42.118:8848
+        namespace: ${spring.profiles.active}
+        group: DEFAULT_GROUP
+      config:
+        server-addr: 192.168.42.118:8848
+        prefix: ${spring.application.name}
+        file-extension: yaml
+        namespace: ${spring.profiles.active}
+        group: DEFAULT_GROUP
+
