@@ -10,12 +10,12 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>gzl-common</module>
-        <module>gzl-user-base</module>
         <module>gzl-automatic</module>
         <module>gzl-gateway</module>
         <module>gzl-shop</module>
         <module>gzl-work-flow</module>
         <module>gzl-authorization</module>
+
     </modules>
     <name>parent_project</name>
     <description>基础项目架构管理</description>
@@ -130,17 +130,17 @@
         </dependencies>
     </dependencyManagement>
     <!--打包配置-->
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <executable>true</executable>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+<!--    <build>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--                <configuration>-->
+<!--                    <executable>true</executable>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--    </build>-->
 
 
 </project>
