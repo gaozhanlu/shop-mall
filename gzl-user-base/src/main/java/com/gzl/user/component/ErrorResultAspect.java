@@ -15,7 +15,7 @@ import org.springframework.validation.FieldError;
 
 @Aspect
 @Component
-@Order(2)
+@Order(1)
 @Slf4j
 public class ErrorResultAspect {
     @Pointcut("execution(public * com.gzl.user.controller.*.*(..))")
