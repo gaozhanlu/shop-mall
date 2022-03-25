@@ -15,6 +15,7 @@
         <module>gzl-shop</module>
         <module>gzl-work-flow</module>
         <module>gzl-authorization</module>
+        <module>gzl-user-base</module>
 
     </modules>
     <name>parent_project</name>
@@ -130,17 +131,17 @@
         </dependencies>
     </dependencyManagement>
     <!--打包配置-->
-<!--    <build>-->
-<!--        <plugins>-->
-<!--            <plugin>-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--                <configuration>-->
-<!--                    <executable>true</executable>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-<!--        </plugins>-->
-<!--    </build>-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <executable>true</executable>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 
 </project>
