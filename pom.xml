@@ -11,12 +11,10 @@
     <modules>
         <module>gzl-common</module>
         <module>gzl-automatic</module>
-        <module>gzl-gateway</module>
         <module>gzl-shop</module>
         <module>gzl-work-flow</module>
         <module>gzl-authorization</module>
         <module>gzl-user-base</module>
-
     </modules>
     <name>parent_project</name>
     <description>基础项目架构管理</description>
