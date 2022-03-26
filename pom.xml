@@ -15,6 +15,7 @@
         <module>gzl-work-flow</module>
         <module>gzl-authorization</module>
         <module>gzl-user-base</module>
+        <module>gzl-gateway</module>
     </modules>
     <name>parent_project</name>
     <description>基础项目架构管理</description>
