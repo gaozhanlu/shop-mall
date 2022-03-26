@@ -1,28 +1,13 @@
-package com.gzl.shop.entity;
+package com.gzl.base.common.model.product;
+
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.io.Serializable;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-/**
- * <p>
- * 
- * </p>
- *
- * @author gzl
- * @since 2022-03-09
- */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@ApiModel(value="Product对象", description="")
-public class Product implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+public class ProductRequest {
     @ApiModelProperty(value = "自增id")
     private Integer id;
 
@@ -103,6 +88,4 @@ public class Product implements Serializable {
 
     @ApiModelProperty(value = "状态 上下架 等等")
     private Integer stats;
-
-
 }

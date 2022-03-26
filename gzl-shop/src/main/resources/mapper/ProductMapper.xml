@@ -20,7 +20,7 @@
         <result column="promotion_end_time" property="promotionEndTime" />
         <result column="stock_detail" property="stockDetail" />
         <result column="transport_cond" property="transportCond" />
-        <result column="storage_temprature" property="storageTemprature" />
+        <result column="storage_temperature" property="storageTemperature" />
         <result column="delivery" property="delivery" />
         <result column="stock_num" property="stockNum" />
         <result column="dmg_level" property="dmgLevel" />
@@ -35,7 +35,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, pid, sid, cn_name, en_name, cas, goods_no, spec, supervision_cond, list_price, off_price, promotion_price, promotion_start_time, promotion_end_time, stock_detail, transport _cond, storage_temprature, delivery, stock_num, dmg_level, mdl, data_source, third_code, create_time, update_time, update_use, stats
+        id, pid, sid, cn_name, en_name, cas, goods_no, spec, supervision_cond, list_price, off_price, promotion_price, promotion_start_time, promotion_end_time, stock_detail, transport _cond, storage_temperature, delivery, stock_num, dmg_level, mdl, data_source, third_code, create_time, update_time, update_use, stats
     </sql>
 
 </mapper>
