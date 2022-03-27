@@ -2,11 +2,17 @@ package com.gzl.authorization.config;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
+import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
+import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
+import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
+
+import java.util.Arrays;
 
 
 @Configuration
@@ -39,5 +45,20 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     }
 
+    //令牌管理服务
+    @Bean
+    public AuthorizationServerTokenServices tokenService() {
+        DefaultTokenServices service=new DefaultTokenServices();
+        //service.setClientDetailsService(clientDetailsService);//客户端详情服务
+        service.setSupportRefreshToken(true);//支持刷新令牌
+        //service.setTokenStore(tokenStore);//令牌存储策略
+        //令牌增强
+        TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
+        //tokenEnhancerChain.setTokenEnhancers(Arrays.asList(accessTokenConverter));
+        service.setTokenEnhancer(tokenEnhancerChain);
 
+        service.setAccessTokenValiditySeconds(7200); // 令牌默认有效期2小时
+        service.setRefreshTokenValiditySeconds(259200); // 刷新令牌默认有效期3天
+        return service;
+    }
 }

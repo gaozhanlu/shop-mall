@@ -37,6 +37,14 @@ public class UseBaseController {
         UseBaseResponse useBaseResponse=useBaseService.selectUseInfo(useBaseRequest);
         return ViewResult.success(useBaseResponse);
     }
+    @ApiOperation(value = "用户登录")
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @ResponseBody
+    public ViewResult login(@RequestBody UseBaseRequest useBaseRequest){
+
+
+        return null;
+    }
 
 }
 
