@@ -2,7 +2,7 @@ package com.gzl.base.common.util;
 
 
 
-import com.gzl.base.common.model.user.UserDetails;
+import com.gzl.base.common.model.oauth.UserDetails;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

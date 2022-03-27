@@ -1,4 +1,4 @@
-package com.gzl.base.common.model.user;
+package com.gzl.base.common.model.oauth;
 
 import lombok.Data;
 
