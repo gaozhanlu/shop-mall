@@ -32,16 +32,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()    //开启使用HttpServletRequest请求的访问限制
                 .antMatchers("/r/r1").hasAnyAuthority("p1")  //必须有p1权限才能访问 /r/r1路径
                 .antMatchers("/use-base*").permitAll()
-
-
-
-
-
-
+                .anyRequest().permitAll(); //除了/r/**，其它的请求可以访问 ;
 
 
 //                .anyRequest().authenticated()  //所有请求都要通过认证
-                .anyRequest().permitAll(); //除了/r/**，其它的请求可以访问 ;
 //                .and()
 //                .formLogin()   //开启表单的身份验证，如果未指定formLogin.loginPage(String)，则将生成默认登录页面
 //                .addFilter()   //添加自定义的filter

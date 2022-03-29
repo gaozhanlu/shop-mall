@@ -15,16 +15,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-
-@Component
 public class JwtTokenUtil implements Serializable {
-    @Value("${jwt.secret}")
+    @Value("${jwt.secret:}")
     private String secret;
 
-    @Value("${jwt.header}")
+    @Value("${jwt.header:}")
     private String header;
 
-    @Value("${jwt.expiration}")
+    @Value("${jwt.expiration:}")
     private long expiration;
 
 

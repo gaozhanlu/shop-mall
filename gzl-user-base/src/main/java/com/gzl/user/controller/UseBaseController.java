@@ -3,15 +3,20 @@ package com.gzl.user.controller;
 
 //import com.gzl.base.common.model.user.UseBaseRequest;
 
+import com.gzl.base.common.model.oauth.UserDetails;
 import com.gzl.base.common.model.user.UseBaseRequest;
 import com.gzl.base.common.model.user.UseBaseResponse;
 import com.gzl.base.common.result.ViewResult;
+import com.gzl.base.common.util.EntityCopyUtil;
+import com.gzl.base.common.util.JwtTokenUtil;
 import com.gzl.user.service.UseBaseService;
 //import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 /**
  * <p>
@@ -27,7 +32,7 @@ import org.springframework.web.bind.annotation.*;
 public class UseBaseController {
 
 
-    @Autowired
+    @Resource
     private UseBaseService useBaseService;
 
     @ApiOperation(value = "查询用户信息")
@@ -41,9 +46,8 @@ public class UseBaseController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     public ViewResult login(@RequestBody UseBaseRequest useBaseRequest){
-
-
-        return null;
+        UserDetails userDetails= EntityCopyUtil.toObject(useBaseRequest,UserDetails.class);
+        return ViewResult.success("");
     }
 
 }
