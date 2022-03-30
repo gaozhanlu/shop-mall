@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gzl.authorization.mapper.UseBaseMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.gzl.authorization.entity.UseBase">
+        <id column="id" property="id"/>
+        <result column="account_id" property="accountId"/>
+        <result column="account_name" property="accountName"/>
+        <result column="pass_word" property="passWord"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, account_id, account_name, pass_word
+    </sql>
+
+
+    <select id="selectUseInfo" parameterType="com.gzl.base.common.model.user.UseBaseRequest" resultType="com.gzl.base.common.model.user.UseBaseResponse">
+        select * from use_base
+        <where>
+            <if test="accountName!=null and accountName!=''">and account_name=#{accountName}</if>
+            <if test="passWord!=null and passWord!=''">and pass_word=#{passWord}</if>
+        </where>
+    </select>
+</mapper>
