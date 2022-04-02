@@ -37,7 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/csrf").permitAll()
                 .antMatchers("/").permitAll()
                 .antMatchers("/use-base/login").permitAll()
-                .anyRequest().authenticated();
+                .anyRequest().permitAll();
 //                .anyRequest().permitAll(); //除了/r/**，其它的请求可以访问 ;
 //                .and()
 //                .formLogin()   //开启表单的身份验证，如果未指定formLogin.loginPage(String)，则将生成默认登录页面

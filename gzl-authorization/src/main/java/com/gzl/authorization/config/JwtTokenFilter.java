@@ -1,6 +1,6 @@
 package com.gzl.authorization.config;
 
-import org.springframework.stereotype.Component;
+
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.FilterChain;

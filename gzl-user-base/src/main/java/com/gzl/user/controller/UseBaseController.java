@@ -1,21 +1,14 @@
 package com.gzl.user.controller;
 
-
-//import com.gzl.base.common.model.user.UseBaseRequest;
-
 import com.gzl.base.common.model.oauth.UserDetails;
 import com.gzl.base.common.model.user.UseBaseRequest;
 import com.gzl.base.common.model.user.UseBaseResponse;
 import com.gzl.base.common.result.ViewResult;
 import com.gzl.base.common.util.EntityCopyUtil;
-import com.gzl.base.common.util.JwtTokenUtil;
 import com.gzl.user.service.UseBaseService;
-//import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import javax.annotation.Resource;
 
 /**

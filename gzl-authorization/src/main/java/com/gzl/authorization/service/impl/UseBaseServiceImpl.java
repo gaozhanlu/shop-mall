@@ -44,13 +44,9 @@ public class UseBaseServiceImpl extends ServiceImpl<UseBaseMapper, UseBase> impl
         //根据用户的id查询用户的权限
         UseBaseRequest useBaseRequest= EntityCopyUtil.toObject(userDetails,UseBaseRequest.class);
         UseBaseResponse useBaseResponse=useBaseMapper.selectUseInfo(useBaseRequest);
-        //将permissions转成数组
-//        String[] permissionArray = new String[permissions.size()];
-//        permissions.toArray(permissionArray);
-        //将userDto转成json
+
         String principal = JSON.toJSONString(useBaseResponse);
-        //UserDetails userDetails = User.withUsername(principal).password(useBaseResponse.getPassWord()).authorities().build();
-        //return userDetails;
+
     }
 
 }

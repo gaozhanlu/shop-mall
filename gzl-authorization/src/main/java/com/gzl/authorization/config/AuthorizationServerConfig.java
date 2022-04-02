@@ -3,11 +3,12 @@ package com.gzl.authorization.config;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.bootstrap.encrypt.KeyProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -15,109 +16,116 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
-import org.springframework.security.oauth2.provider.code.AuthorizationCodeServices;
-import org.springframework.security.oauth2.provider.code.JdbcAuthorizationCodeServices;
-import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
-import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
-import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
+import org.springframework.security.oauth2.provider.token.DefaultAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
+import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 
+import javax.annotation.Resource;
 import javax.sql.DataSource;
-import java.util.Arrays;
+import java.security.KeyPair;
 
 
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
-
+    //数据源，用于从数据库获取数据进行认证操作，测试可以从内存中获取
     @Autowired
-    private TokenStore tokenStore;
-
+    private DataSource dataSource;
+    //jwt令牌转换器
     @Autowired
-    private ClientDetailsService clientDetailsService;
-
+    private JwtAccessTokenConverter jwtAccessTokenConverter;
+    //SpringSecurity 用户自定义授权认证类
     @Autowired
-    private AuthorizationCodeServices authorizationCodeServices;
-
+    UserDetailsService userDetailsService;
+    //授权认证管理器
     @Autowired
-    private AuthenticationManager authenticationManager;
-
+    AuthenticationManager authenticationManager;
+    //令牌持久化存储接口
     @Autowired
-    private JwtAccessTokenConverter accessTokenConverter;
-
+    TokenStore tokenStore;
     @Autowired
-    PasswordEncoder passwordEncoder;
+    private CustomUserAuthenticationConverter customUserAuthenticationConverter;
 
-    //将客户端信息存储到数据库
-    @Bean
-    public ClientDetailsService clientDetailsService(DataSource dataSource) {
-        ClientDetailsService clientDetailsService = new JdbcClientDetailsService(dataSource);
-        ((JdbcClientDetailsService) clientDetailsService).setPasswordEncoder(passwordEncoder);
-        return clientDetailsService;
-    }
-
-    //客户端详情服务
+    /***
+     * 客户端信息配置
+     * @param clients
+     * @throws Exception
+     */
     @Override
-    public void configure(ClientDetailsServiceConfigurer clients)
-            throws Exception {
-        clients.withClientDetails(clientDetailsService);
-       /* clients.inMemory()// 使用in-memory存储
-                .withClient("c1")// client_id
-                .secret(new BCryptPasswordEncoder().encode("secret"))//客户端密钥
-                .resourceIds("res1")//资源列表
-                .authorizedGrantTypes("authorization_code", "password","client_credentials","implicit","refresh_token")// 该client允许的授权类型authorization_code,password,refresh_token,implicit,client_credentials
-                .scopes("all")// 允许的授权范围
-                .autoApprove(false)//false跳转到授权页面
-                //加上验证回调地址
-                .redirectUris("http://www.baidu.com")*/
-        ;
+    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+        clients.jdbc(dataSource).clients(clientDetails());
     }
 
-
-    //令牌管理服务
-    @Bean
-    public AuthorizationServerTokenServices tokenService() {
-        DefaultTokenServices service = new DefaultTokenServices();
-        service.setClientDetailsService(clientDetailsService);//客户端详情服务
-        service.setSupportRefreshToken(true);//支持刷新令牌
-        service.setTokenStore(tokenStore);//令牌存储策略
-        //令牌增强
-        TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
-        tokenEnhancerChain.setTokenEnhancers(Arrays.asList(accessTokenConverter));
-        service.setTokenEnhancer(tokenEnhancerChain);
-
-        service.setAccessTokenValiditySeconds(7200); // 令牌默认有效期2小时
-        service.setRefreshTokenValiditySeconds(259200); // 刷新令牌默认有效期3天
-        return service;
-    }
-
-    //设置授权码模式的授权码如何存取，暂时采用内存方式
-/*    @Bean
-    public AuthorizationCodeServices authorizationCodeServices() {
-        return new InMemoryAuthorizationCodeServices();
-    }*/
-
-    @Bean
-    public AuthorizationCodeServices authorizationCodeServices(DataSource dataSource) {
-        return new JdbcAuthorizationCodeServices(dataSource);//设置授权码模式的授权码如何存取
-    }
-
+    /***
+     * 授权服务器端点配置
+     * @param endpoints
+     * @throws Exception
+     */
     @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
-        endpoints
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+        endpoints.accessTokenConverter(jwtAccessTokenConverter)
                 .authenticationManager(authenticationManager)//认证管理器
-                .authorizationCodeServices(authorizationCodeServices)//授权码服务
-                .tokenServices(tokenService())//令牌管理服务
-                .allowedTokenEndpointRequestMethods(HttpMethod.POST);
+                .tokenStore(tokenStore)                       //令牌存储
+                .userDetailsService(userDetailsService);     //用户信息service
     }
 
+    /***
+     * 授权服务器的安全配置
+     * @param oauthServer
+     * @throws Exception
+     */
     @Override
-    public void configure(AuthorizationServerSecurityConfigurer security) {
-        security
-                .tokenKeyAccess("permitAll()")                    //oauth/token_key是公开
-                .checkTokenAccess("permitAll()")                  //oauth/check_token公开
-                .allowFormAuthenticationForClients()                //表单认证（申请令牌）
-        ;
+    public void configure(AuthorizationServerSecurityConfigurer oauthServer) throws Exception {
+        oauthServer.allowFormAuthenticationForClients()
+                .passwordEncoder(new BCryptPasswordEncoder())
+                .tokenKeyAccess("permitAll()")
+                .checkTokenAccess("isAuthenticated()");
     }
+
+
+    //读取密钥的配置
+    @Bean("keyProp")
+    public KeyProperties keyProperties(){
+        return new KeyProperties();
+    }
+
+    @Resource(name = "keyProp")
+    private KeyProperties keyProperties;
+
+    //客户端配置
+    @Bean
+    public ClientDetailsService clientDetails() {
+        return new JdbcClientDetailsService(dataSource);
+    }
+
+    @Bean
+    @Autowired
+    public TokenStore tokenStore(JwtAccessTokenConverter jwtAccessTokenConverter) {
+        return new JwtTokenStore(jwtAccessTokenConverter);
+    }
+
+    /****
+     * JWT令牌转换器
+     * @param customUserAuthenticationConverter
+     * @return
+     */
+    @Bean
+    public JwtAccessTokenConverter jwtAccessTokenConverter(CustomUserAuthenticationConverter customUserAuthenticationConverter) {
+        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
+        KeyPair keyPair = new KeyStoreKeyFactory(
+                keyProperties.getKeyStore().getLocation(),                          //证书路径 changgou.jks
+                keyProperties.getKeyStore().getSecret().toCharArray())              //证书秘钥 changgouapp
+                .getKeyPair(
+                        keyProperties.getKeyStore().getAlias(),                     //证书别名 changgou
+                        keyProperties.getKeyStore().getPassword().toCharArray());   //证书密码 changgou
+        converter.setKeyPair(keyPair);
+        //配置自定义的CustomUserAuthenticationConverter
+        DefaultAccessTokenConverter accessTokenConverter = (DefaultAccessTokenConverter) converter.getAccessTokenConverter();
+        accessTokenConverter.setUserTokenConverter(customUserAuthenticationConverter);
+        return converter;
+    }
+
+
 }
