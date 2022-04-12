@@ -12,7 +12,7 @@ import com.gzl.base.common.model.user.UseBaseRequest;
 import com.gzl.base.common.model.user.UseBaseResponse;
 import com.gzl.base.common.util.EntityCopyUtil;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.security.core.userdetails.User;
+
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
