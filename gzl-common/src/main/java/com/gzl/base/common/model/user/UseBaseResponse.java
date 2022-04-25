@@ -12,4 +12,8 @@ public class UseBaseResponse {
     private String accountName;
 
     private String passWord;
+
+    private Integer roleId;
+
+    private String roleName;
 }

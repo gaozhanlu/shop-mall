@@ -1,6 +1,8 @@
 server:
-  port: 6630
+  port: 6620
 spring:
+  main:
+    allow-bean-definition-overriding: true
   datasource:
     url: jdbc:mysql://192.168.42.118:3306/shop_mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
     username: root
@@ -12,19 +14,13 @@ spring:
       min-idle: 10
       #最大连接数
       max-active: 200
-security:
-  oauth2:
-    client:
-      access-token-uri: http://localhost:6630/oauth/token
-      user-authorization-uri: http://localhost:6630/oauth/authorize
-      client-id: client
-      client-secret: secret
+
 
 
 #Redis配置
 
   redis:
-    database: 6  #Redis索引0~15，默认为0
+    database: 0  #Redis索引0~15，默认为0
     host: 192.168.42.118
     port: 6379
     password:  #密码（默认为空）

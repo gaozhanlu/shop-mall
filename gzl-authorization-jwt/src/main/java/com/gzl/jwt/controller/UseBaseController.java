@@ -70,13 +70,13 @@ public class UseBaseController {
         return ViewResult.success("");
     }
 
-    @Value("${security.oauth2.access-token-uri:}")
+    @Value("${security.oauth2.client.access-token-uri}")
     private String accessTokenUri;
 
-    @Value("${security.oauth2.client-id:}")
+    @Value("${security.oauth2.client.client-id}")
     private String clientId;
 
-    @Value("${security.oauth2.client-secret}")
+    @Value("${security.oauth2.client.client-secret}")
     private String clientSecret;
 
 

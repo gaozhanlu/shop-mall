@@ -92,6 +92,10 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/use-base/insertUseInfo").permitAll()
                 .antMatchers("/use-base/login").permitAll()
-                .anyRequest().authenticated();
+                .antMatchers("/insertUseInfo").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin().permitAll();
+
     }
 }
