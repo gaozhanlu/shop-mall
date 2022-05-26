@@ -11,6 +11,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -28,7 +29,7 @@ public class UseBaseServiceImpl extends ServiceImpl<UseBaseMapper, UseBase> impl
     private UseBaseMapper useBaseMapper;
     @Override
     @Cacheable(value = {"CtrlMenuDetail"},key = "#root.method.name+'_'+#useBaseRequest")
-    public UseBaseResponse selectUseInfo(UseBaseRequest useBaseRequest) {
+    public List<UseBaseResponse> selectUseInfo(UseBaseRequest useBaseRequest) {
 
         return useBaseMapper.selectUseInfo(useBaseRequest);
     }

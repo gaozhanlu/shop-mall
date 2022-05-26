@@ -1,5 +1,7 @@
 package com.gzl.uaa.config;
 
+import cn.hutool.crypto.digest.BCrypt;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +17,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.ClientDetailsService;
 import org.springframework.security.oauth2.provider.client.JdbcClientDetailsService;
 import org.springframework.security.oauth2.provider.code.AuthorizationCodeServices;
+import org.springframework.security.oauth2.provider.code.InMemoryAuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.code.JdbcAuthorizationCodeServices;
 import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
 import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
@@ -32,6 +35,7 @@ import java.util.Arrays;
  **/
 @Configuration
 @EnableAuthorizationServer
+@Slf4j
 public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
 
     @Autowired
@@ -64,25 +68,29 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(ClientDetailsServiceConfigurer clients)
             throws Exception {
-//        clients.withClientDetails(clientDetailsService);
 
-        clients.inMemory().withClient("c1").secret("secret")
-                .authorizedGrantTypes("password")
-                .scopes("all");
+        String str=passwordEncoder.encode("secret");
+        log.error("打印配置"+str.toString());
 
 
-       /* clients.inMemory()// 使用in-memory存储
-                .withClient("c1")// client_id
-                .secret(new BCryptPasswordEncoder().encode("secret"))//客户端密钥
-                .resourceIds("res1")//资源列表
-                //.authorizedGrantTypes("authorization_code", "password","client_credentials","implicit","refresh_token")// 该client允许的授权类型authorization_code,password,refresh_token,implicit,client_credentials
-                .authorizedGrantTypes("password")
-                .scopes("all")// 允许的授权范围
-                .autoApprove(false)//false跳转到授权页面
-                //加上验证回调地址
-                .redirectUris("http://www.baidu.com")
-                ;*/
+        String str2= BCrypt.hashpw("secret",BCrypt.gensalt());
+        log.error(str2.toString());
+        clients.withClientDetails(clientDetailsService);
 
+//        clients.inMemory().withClient("c1").secret("secret")
+//                .authorizedGrantTypes("password")
+//                .scopes("all");
+//
+//
+//        clients.inMemory()// 使用in-memory存储
+//                .withClient("c1")// client_id
+//                .secret(new BCryptPasswordEncoder().encode("secret"))//客户端密钥
+//                .resourceIds("res1")//资源列表
+//                .authorizedGrantTypes("authorization_code", "password","client_credentials","implicit","refresh_token")// 该client允许的授权类型authorization_code,password,refresh_token,implicit,client_credentials
+//                .scopes("all")// 允许的授权范围
+//                .autoApprove(false)//false跳转到授权页面
+//                //加上验证回调地址
+//                .redirectUris("http://www.baidu.com");
 
     }
 
@@ -105,14 +113,15 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
     }
 
     //设置授权码模式的授权码如何存取，暂时采用内存方式
-/*    @Bean
+  /*  @Bean
     public AuthorizationCodeServices authorizationCodeServices() {
         return new InMemoryAuthorizationCodeServices();
     }*/
 
+    //设置授权码模式的授权码如何存取
     @Bean
     public AuthorizationCodeServices authorizationCodeServices(DataSource dataSource) {
-        return new JdbcAuthorizationCodeServices(dataSource);//设置授权码模式的授权码如何存取
+        return new JdbcAuthorizationCodeServices(dataSource);
     }
 
     @Override
@@ -129,8 +138,8 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
         security
                 .tokenKeyAccess("permitAll()")                    //oauth/token_key是公开
                 .checkTokenAccess("permitAll()")                  //oauth/check_token公开
-                .allowFormAuthenticationForClients()				//表单认证（申请令牌）
-        ;
+                .allowFormAuthenticationForClients();				//表单认证（申请令牌）
+
     }
 
 }

@@ -10,6 +10,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -32,7 +33,7 @@ public class UseBaseController {
     @RequestMapping(value = "/selectUseInfo", method = RequestMethod.POST)
     @ResponseBody
     public ViewResult selectUseInfo(@RequestBody UseBaseRequest useBaseRequest) {
-        UseBaseResponse useBaseResponse=useBaseService.selectUseInfo(useBaseRequest);
+        List<UseBaseResponse> useBaseResponse=useBaseService.selectUseInfo(useBaseRequest);
         return ViewResult.success(useBaseResponse);
     }
     @ApiOperation(value = "用户登录")

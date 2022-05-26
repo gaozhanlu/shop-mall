@@ -6,6 +6,8 @@ import com.gzl.base.common.model.user.UseBaseResponse;
 import com.gzl.user.entity.UseBase;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  * 服务类
@@ -17,5 +19,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 
 public interface UseBaseService extends IService<UseBase> {
 
-    UseBaseResponse selectUseInfo(UseBaseRequest useBaseRequest);
+    List<UseBaseResponse> selectUseInfo(UseBaseRequest useBaseRequest);
 }

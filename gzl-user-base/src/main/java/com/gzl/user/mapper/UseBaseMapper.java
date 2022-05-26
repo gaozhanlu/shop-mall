@@ -6,6 +6,8 @@ import com.gzl.user.entity.UseBase;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 
 /**
  * <p>
@@ -18,5 +20,5 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface UseBaseMapper extends BaseMapper<UseBase> {
 
-    UseBaseResponse selectUseInfo(UseBaseRequest useBaseRequest);
+    List<UseBaseResponse> selectUseInfo(UseBaseRequest useBaseRequest);
 }
