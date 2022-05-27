@@ -69,12 +69,6 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
     public void configure(ClientDetailsServiceConfigurer clients)
             throws Exception {
 
-        String str=passwordEncoder.encode("secret");
-        log.error("打印配置"+str.toString());
-
-
-        String str2= BCrypt.hashpw("secret",BCrypt.gensalt());
-        log.error(str2.toString());
         clients.withClientDetails(clientDetailsService);
 
 //        clients.inMemory().withClient("c1").secret("secret")
@@ -141,5 +135,9 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
                 .allowFormAuthenticationForClients();				//表单认证（申请令牌）
 
     }
+
+
+
+
 
 }

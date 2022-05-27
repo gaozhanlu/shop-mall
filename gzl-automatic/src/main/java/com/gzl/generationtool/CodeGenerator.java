@@ -53,7 +53,7 @@ public class CodeGenerator {
         // 2、数据源配置
         DataSourceConfig dataSourceConfig = new DataSourceConfig();// 创建数据源配置
         dataSourceConfig
-                .setUrl("jdbc:mysql://192.168.42.118:3306/shop_mall?userSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC")
+                .setUrl("jdbc:mysql://192.168.42.119:3306/shop_mall?userSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC")
                 .setDriverName("com.mysql.cj.jdbc.Driver")
                 .setUsername("root")
                 .setPassword("root")

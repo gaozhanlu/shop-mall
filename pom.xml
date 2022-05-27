@@ -19,6 +19,7 @@
         <module>gzl-authorization-jwt</module>
         <module>gzl-authorization-uaa</module>
         <module>gzl-order</module>
+        <module>gzl-security-uaa</module>
     </modules>
     <name>parent_project</name>
     <description>基础项目架构管理</description>
