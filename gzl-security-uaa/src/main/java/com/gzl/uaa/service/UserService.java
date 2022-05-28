@@ -16,4 +16,6 @@ import com.gzl.uaa.entity.User;
 public interface UserService extends IService<User> {
 
     ViewResult login(User user);
+
+    ViewResult logout();
 }
