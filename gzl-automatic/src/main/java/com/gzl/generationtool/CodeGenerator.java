@@ -66,12 +66,14 @@ public class CodeGenerator {
                 .setEntity("entity")
                 .setController("controller")
                 .setService("service")
+                .setXml(null)
                 .setMapper("mapper");
 
 
         // 4、策略配置
         StrategyConfig strategyConfig = new StrategyConfig();
         strategyConfig
+                .setTablePrefix(packageConfig.getModuleName()+'_') //生成实体时去掉表前缀,eg:表_one就会变成one
                 .setCapitalMode(true)// 开启全局大写命名ssss
                 .setInclude(scanner("表名，多个英文逗号分割").split(","))// 设置要映射的表
                 .setNaming(NamingStrategy.underline_to_camel)// 下划线到驼峰的命名方式
@@ -103,9 +105,14 @@ public class CodeGenerator {
         });
         cfg.setFileOutConfigList(focList);
 
+        TemplateConfig templateConfig = new TemplateConfig();
+        templateConfig.setXml(null);
+
+
         // 6、整合配置
         AutoGenerator autoGenerator = new AutoGenerator();// 构建代码生自动成器对象
         autoGenerator
+                .setTemplate(templateConfig)
                 .setGlobalConfig(globalConfig)// 将全局配置放到代码生成器对象中
                 .setDataSource(dataSourceConfig)// 将数据源配置放到代码生成器对象中
                 .setPackageInfo(packageConfig)// 将包配置放到代码生成器对象中
@@ -113,4 +120,7 @@ public class CodeGenerator {
                 .setCfg(cfg)// 将自定义配置放到代码生成器对象中
                 .execute();// 执行！
     }
+
+
+
 }
