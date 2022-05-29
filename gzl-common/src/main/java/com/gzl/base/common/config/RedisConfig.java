@@ -1,6 +1,7 @@
-package com.gzl.uaa.config;
+package com.gzl.base.common.config;
 
-import com.gzl.uaa.utils.FastJsonRedisSerializer;
+
+import com.gzl.base.common.util.redis.FastJsonRedisSerializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;

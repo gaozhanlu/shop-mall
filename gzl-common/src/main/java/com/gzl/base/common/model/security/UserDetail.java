@@ -1,24 +1,12 @@
-package com.gzl.base.common.model.base.user;
+package com.gzl.base.common.model.security;
 
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
-/**
- * <p>
- * 用户表
- * </p>
- *
- * @author gzl
- * @since 2022-05-29
- */
 @Data
-public class User  {
-
+public class UserDetail {
     @ApiModelProperty(value = "主键")
     private Integer id;
 
@@ -60,6 +48,4 @@ public class User  {
 
     @ApiModelProperty(value = "更新时间")
     private LocalDateTime updateTime;
-
-
 }

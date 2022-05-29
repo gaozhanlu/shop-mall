@@ -26,10 +26,54 @@
     </sql>
 
     <select id="selectUser" resultType="com.gzl.base.common.model.base.user.UserResponse" >
-        select * from system_user
+        select * from sys_user
         <where>
             <if test="userName!=null and userName=''">user_name=#{userName}</if>
         </where>
     </select>
+    <!-- 通用查询映射结果 -->
+    <resultMap id="UserRoleAuthority" type="com.gzl.base.common.model.base.user.UserRoleAuthorityResponse">
+        <id column="id" property="id" />
+        <result column="user_name" property="userName" />
+        <result column="nick_name" property="nickName" />
+        <result column="password" property="password" />
+        <result column="phone_number" property="phoneNumber" />
+        <result column="email" property="email" />
+        <result column="avatar" property="avatar" />
+        <result column="sex" property="sex" />
+        <result column="status" property="status" />
+        <result column="del_flag" property="delFlag" />
+        <collection property="UserResponse" column="id" select="selectUserRole"/>
+    </resultMap>
+
+    <select id="selectUserRoleAuthority" parameterType="com.gzl.base.common.model.base.user.UserRequest" resultMap="UserRoleAuthority">
+        select id, user_name, nick_name, password, phone_number, email, avatar, sex, status, del_flag from sys_user
+        <where>
+            <if test="userName!=null and userName=''">and user_name=#{userName}</if>
+        </where>
+    </select>
+
+    <select id="selectUserRole" resultType="com.gzl.base.common.model.base.user.UserResponse">
+        select b.id, b.role_name, b.dis_name, b.status, b.del_flag from sys_user_role a
+        left join sys_role b
+        on a.role_id=b.id
+        <where>
+            <if test="userId!=null and userId!=''">and a.user_id=#{userId}</if>
+        </where>
+    </select>
+
+
+    <select id="selectRoleAuthority" resultType="com.gzl.base.common.model.base.user.RoleAuthorityResponse">
+        select  b.id, b.authority_name, b.show_name, b.visible, b.status, b.del_flag, b.remark from sys_role_authority a
+        left join sys_authority b
+        on a.role_id =b.id
+        <where>
+            <if test="roleId!=null and roleId=''">a.role_id=#{roleId}</if>
+        </where>
+    </select>
+
+
+
+
 
 </mapper>

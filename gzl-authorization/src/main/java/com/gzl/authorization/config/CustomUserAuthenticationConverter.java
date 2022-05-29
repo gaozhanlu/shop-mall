@@ -1,6 +1,5 @@
 package com.gzl.authorization.config;
 
-import com.gzl.base.common.model.oauth.UserJwt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;

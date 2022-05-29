@@ -1,7 +1,7 @@
 package com.gzl.base.common.util.notes;
 
 
-import com.gzl.base.common.logic.LoginUser;
+import com.gzl.base.common.domain.LoginUser;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;

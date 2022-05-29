@@ -1,10 +1,10 @@
 package com.gzl.base.mapper;
-
+import org.apache.ibatis.annotations.Mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.gzl.base.common.model.base.authority.AuthorityRequest;
 import com.gzl.base.common.model.base.authority.AuthorityResponse;
 import com.gzl.base.entity.Authority;
-import org.apache.ibatis.annotations.Mapper;
+
 
 import java.util.List;
 

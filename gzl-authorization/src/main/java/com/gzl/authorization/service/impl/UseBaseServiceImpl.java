@@ -7,7 +7,6 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gzl.authorization.entity.UseBase;
 import com.gzl.authorization.mapper.UseBaseMapper;
 import com.gzl.authorization.service.UseBaseService;
-import com.gzl.base.common.model.oauth.UserDetails;
 import com.gzl.base.common.model.user.UseBaseRequest;
 import com.gzl.base.common.model.user.UseBaseResponse;
 import com.gzl.base.common.util.EntityCopyUtil;
@@ -16,7 +15,6 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * <p>

@@ -2,13 +2,13 @@ package com.gzl.uaa.service.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.gzl.base.common.model.oauth.UserDetails;
 import com.gzl.base.common.model.user.UseBaseRequest;
 import com.gzl.base.common.model.user.UseBaseResponse;
 import com.gzl.base.common.util.EntityCopyUtil;
 import com.gzl.uaa.entity.UseBase;
 import com.gzl.uaa.mapper.UseBaseMapper;
 import com.gzl.uaa.service.UseBaseService;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +30,7 @@ public class UseBaseServiceImpl extends ServiceImpl<UseBaseMapper, UseBase> impl
     @Resource
     private UseBaseMapper useBaseMapper;
     @Override
-//    @Cacheable(value = {"CtrlMenuDetail"},key = "#root.method.name+'_'+#useBaseRequest")
+   @Cacheable(value = {"CtrlMenuDetail"},key = "#root.method.name+'_'+#useBaseRequest")
     public List<UseBaseResponse>  selectUseInfo(UseBaseRequest useBaseRequest) {
 
         return useBaseMapper.selectUseInfo(useBaseRequest);

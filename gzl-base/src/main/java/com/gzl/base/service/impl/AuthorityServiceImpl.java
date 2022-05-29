@@ -8,7 +8,6 @@ import com.gzl.base.entity.Authority;
 import com.gzl.base.mapper.AuthorityMapper;
 import com.gzl.base.service.AuthorityService;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
 import java.util.List;
 

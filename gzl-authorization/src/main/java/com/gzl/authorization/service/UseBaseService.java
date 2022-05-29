@@ -3,7 +3,6 @@ package com.gzl.authorization.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.gzl.authorization.entity.UseBase;
-import com.gzl.base.common.model.oauth.UserDetails;
 import com.gzl.base.common.model.user.UseBaseRequest;
 import com.gzl.base.common.model.user.UseBaseResponse;
 

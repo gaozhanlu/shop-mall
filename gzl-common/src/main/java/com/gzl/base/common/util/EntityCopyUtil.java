@@ -1,13 +1,14 @@
 package com.gzl.base.common.util;
 
 import org.springframework.cglib.beans.BeanCopier;
+import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 
-
+@Component
 public class EntityCopyUtil {
 
     public static<S,T> T toObject(S source, Class<T> targetClass) {

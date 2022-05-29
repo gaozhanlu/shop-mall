@@ -1,6 +1,5 @@
 package com.gzl.uaa.controller;
 
-import com.gzl.base.common.model.oauth.UserDetails;
 import com.gzl.base.common.model.user.UseBaseRequest;
 import com.gzl.base.common.model.user.UseBaseResponse;
 import com.gzl.base.common.result.ViewResult;

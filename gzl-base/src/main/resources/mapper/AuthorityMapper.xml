@@ -22,7 +22,7 @@
         id, authority_name, show_name, visible, status, del_flag, remark, create_by, create_time, update_by, update_time
     </sql>
 
-    <select id="selectAuthority" resultType="">
+    <select id="selectAuthority" resultType="com.gzl.base.common.model.base.authority.AuthorityResponse">
         select * from sys_authority
         <where>
             <if test="status!=null and status!=''">and status=#{status}</if>

@@ -1,7 +1,8 @@
-package com.gzl.base.common.logic;
+package com.gzl.base.common.domain;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.gzl.base.common.model.base.user.User;
+
+import com.gzl.base.common.model.security.UserDetail;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,16 +19,16 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class LoginUser implements UserDetails {
 
-    private User user;
+    private UserDetail userDetail;
 
     private List<String> permissions;
 
-    public LoginUser(User user) {
-        this.user=user;
+    public LoginUser(UserDetail userDetail) {
+        this.userDetail=userDetail;
     }
 
-    public LoginUser(User user, List<String> permissions) {
-        this.user = user;
+    public LoginUser(UserDetail userDetail, List<String> permissions) {
+        this.userDetail=userDetail;
         this.permissions = permissions;
     }
 
@@ -53,12 +54,12 @@ public class LoginUser implements UserDetails {
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return userDetail.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return user.getUserName();
+        return userDetail.getUserName();
     }
 
     @Override

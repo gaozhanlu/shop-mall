@@ -1,8 +1,7 @@
 package com.gzl.base.common.util;
 
-
-import com.sun.org.slf4j.internal.Logger;
-import com.sun.org.slf4j.internal.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
@@ -10,9 +9,10 @@ import java.net.URLEncoder;
 import java.util.Base64;
 
 
-
+@Slf4j
+@Component
 public class EncryptUtil {
-    private static final Logger logger = LoggerFactory.getLogger(EncryptUtil.class);
+   
 
     public static String encodeBase64(byte[] bytes){
         String encoded = Base64.getEncoder().encodeToString(bytes);
@@ -30,7 +30,7 @@ public class EncryptUtil {
         try {
             encoded = Base64.getEncoder().encodeToString(str.getBytes("utf-8"));
         } catch (UnsupportedEncodingException e) {
-            logger.warn("不支持的编码格式",e);
+            log.warn("不支持的编码格式",e);
         }
         return encoded;
 
@@ -42,7 +42,7 @@ public class EncryptUtil {
         try {
             decoded = new String(bytes,"utf-8");
         }catch(UnsupportedEncodingException e){
-            logger.warn("不支持的编码格式",e);
+            log.warn("不支持的编码格式",e);
         }
         return decoded;
     }
@@ -52,7 +52,7 @@ public class EncryptUtil {
 		try {
 			encoded =  URLEncoder.encode(url, "utf-8");
 		} catch (UnsupportedEncodingException e) {
-			logger.warn("URLEncode失败", e);
+			log.warn("URLEncode失败", e);
 		}
 		return encoded;
 	}
@@ -63,27 +63,27 @@ public class EncryptUtil {
 		try {
 			decoded = URLDecoder.decode(url, "utf-8");
 		} catch (UnsupportedEncodingException e) {
-			logger.warn("URLDecode失败", e);
+			log.warn("URLDecode失败", e);
 		}
 		return decoded;
 	}
 
-    public static void main(String [] args){
-        String str = "abcd{'a':'b'}";
-        String encoded = EncryptUtil.encodeUTF8StringBase64(str);
-        String decoded = EncryptUtil.decodeUTF8StringBase64(encoded);
-        System.out.println(str);
-        System.out.println(encoded);
-        System.out.println(decoded);
-
-        String url = "== wo";
-        String urlEncoded = EncryptUtil.encodeURL(url);
-        String urlDecoded = EncryptUtil.decodeURL(urlEncoded);
-        
-        System.out.println(url);
-        System.out.println(urlEncoded);
-        System.out.println(urlDecoded);
-    }
+//    public static void main(String [] args){
+//        String str = "abcd{'a':'b'}";
+//        String encoded = EncryptUtil.encodeUTF8StringBase64(str);
+//        String decoded = EncryptUtil.decodeUTF8StringBase64(encoded);
+//        System.out.println(str);
+//        System.out.println(encoded);
+//        System.out.println(decoded);
+//
+//        String url = "== wo";
+//        String urlEncoded = EncryptUtil.encodeURL(url);
+//        String urlDecoded = EncryptUtil.decodeURL(urlEncoded);
+//
+//        System.out.println(url);
+//        System.out.println(urlEncoded);
+//        System.out.println(urlDecoded);
+//    }
 
 
 }
