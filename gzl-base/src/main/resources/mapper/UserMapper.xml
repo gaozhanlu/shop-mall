@@ -25,12 +25,13 @@
         id, user_name, nick_name, password, phone_number, email, avatar, sex, status, del_flag, create_by, create_time, update_by, update_time
     </sql>
 
-    <select id="selectUser" resultType="com.gzl.base.common.model.base.user.UserResponse" >
+    <select id="selectUser" parameterType="com.gzl.base.common.model.base.user.UserRequest" resultType="com.gzl.base.common.model.base.user.UserResponse" >
         select * from sys_user
         <where>
-            <if test="userName!=null and userName=''">user_name=#{userName}</if>
+            <if test="userName!=null and userName=''">and user_name= #{userName}</if>
         </where>
     </select>
+
     <!-- 通用查询映射结果 -->
     <resultMap id="UserRoleAuthority" type="com.gzl.base.common.model.base.user.UserRoleAuthorityResponse">
         <id column="id" property="id" />
@@ -43,7 +44,7 @@
         <result column="sex" property="sex" />
         <result column="status" property="status" />
         <result column="del_flag" property="delFlag" />
-        <collection property="UserResponse" column="id" select="selectUserRole"/>
+<!--        <collection property="UserResponse" column="id" select="selectUserRole"/>-->
     </resultMap>
 
     <select id="selectUserRoleAuthority" parameterType="com.gzl.base.common.model.base.user.UserRequest" resultMap="UserRoleAuthority">
@@ -68,7 +69,7 @@
         left join sys_authority b
         on a.role_id =b.id
         <where>
-            <if test="roleId!=null and roleId=''">a.role_id=#{roleId}</if>
+            <if test="roleId!=null and roleId=''">and a.role_id=#{roleId}</if>
         </where>
     </select>
 
