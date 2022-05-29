@@ -86,7 +86,7 @@
             <appender-ref ref="FILE"/>
         </root>
         <!--项目包的路径-->
-        <logger name="com.gzl.user.mapper" level="DEBUG" additivity="false">
+        <logger name="com.gzl.base.mapper" level="DEBUG" additivity="false">
             <appender-ref ref="CONSOLE"/>
             <appender-ref ref="FILE"/>
         </logger>

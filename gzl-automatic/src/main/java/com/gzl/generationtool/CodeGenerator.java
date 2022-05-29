@@ -62,7 +62,7 @@ public class CodeGenerator {
         // 3、包配置
         PackageConfig packageConfig = new PackageConfig();
         packageConfig
-                .setParent("com.gzl.user")
+                .setParent("com.gzl.base")
                 .setEntity("entity")
                 .setController("controller")
                 .setService("service")
@@ -73,7 +73,7 @@ public class CodeGenerator {
         // 4、策略配置
         StrategyConfig strategyConfig = new StrategyConfig();
         strategyConfig
-                .setTablePrefix(packageConfig.getModuleName()+'_') //生成实体时去掉表前缀,eg:表_one就会变成one
+                .setTablePrefix("sys_") //生成实体时去掉表前缀,eg:表_one就会变成one
                 .setCapitalMode(true)// 开启全局大写命名ssss
                 .setInclude(scanner("表名，多个英文逗号分割").split(","))// 设置要映射的表
                 .setNaming(NamingStrategy.underline_to_camel)// 下划线到驼峰的命名方式

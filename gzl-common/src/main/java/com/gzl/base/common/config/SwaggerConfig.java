@@ -1,6 +1,7 @@
 package com.gzl.base.common.config;
 
 
+import com.google.common.base.Predicates;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -32,7 +33,11 @@ public class SwaggerConfig {
                 // 是否开启注解
                 .enable(swaggerEnabled).select()
                 // 扫描的路径包 controller包所在的位置
-                .apis(RequestHandlerSelectors.basePackage("com.gzl.uaa.controller"))
+                //.apis(RequestHandlerSelectors.basePackage("com.gzl.base.controller"))
+                .apis(Predicates.or(
+                        RequestHandlerSelectors.basePackage("com.gzl.uaa.controller"),
+                        RequestHandlerSelectors.basePackage("com.gzl.base.controller")
+                        ))
                 // 指定路径处理PathSelectors.any()代表所有的路径
                 .paths(PathSelectors.any()).build().pathMapping("/");
     }
