@@ -31,14 +31,14 @@ public class RoleController {
     private RoleService roleService;
 
 
-    @ApiOperation(value = "添加菜单信息")
+    @ApiOperation(value = "添加角色信息")
     @RequestMapping(value = "/saveRole", method = RequestMethod.POST)
     public ViewResult saveRole(@RequestBody Role Role){
         RoleResponse RoleResponse=roleService.saveRole(Role);
         return ViewResult.success(RoleResponse);
     }
 
-    @ApiOperation(value = "添加菜单信息")
+    @ApiOperation(value = "添加角色信息")
     @RequestMapping(value = "/selectRole", method = RequestMethod.POST)
     public ViewResult<List<RoleResponse>> selectRole(@RequestBody RoleRequest RoleRequest){
         List<RoleResponse> RoleResponses=roleService.selectRole(RoleRequest);

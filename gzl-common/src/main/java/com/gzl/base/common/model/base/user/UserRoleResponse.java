@@ -3,6 +3,8 @@ package com.gzl.base.common.model.base.user;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class UserRoleResponse {
 

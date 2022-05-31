@@ -28,8 +28,9 @@
     <select id="selectUser" parameterType="com.gzl.base.common.model.base.user.UserRequest" resultType="com.gzl.base.common.model.base.user.UserResponse" >
         select * from sys_user
         <where>
-            <if test="userName!=null and userName=''">and user_name= #{userName}</if>
+            <if test="userName !=null and userName !=''">and user_name=#{userName}</if>
         </where>
+
     </select>
 
     <!-- 通用查询映射结果 -->
@@ -44,35 +45,66 @@
         <result column="sex" property="sex" />
         <result column="status" property="status" />
         <result column="del_flag" property="delFlag" />
-<!--        <collection property="UserResponse" column="id" select="selectUserRole"/>-->
+        <collection property="userRoleResponseList" column="id" select="selectUserRole">
+        </collection>
     </resultMap>
 
-    <select id="selectUserRoleAuthority" parameterType="com.gzl.base.common.model.base.user.UserRequest" resultMap="UserRoleAuthority">
-        select id, user_name, nick_name, password, phone_number, email, avatar, sex, status, del_flag from sys_user
+    <select id="selectUserRoleAuthority" parameterType="com.gzl.base.common.model.base.user.UserRoleAuthorityRequest" resultMap="UserRoleAuthority">
+        select a.id, a.user_name, a.nick_name, a.`password`, a.phone_number, a.email, a.avatar, a.sex, a.`status`, a.del_flag
+        from sys_user a
         <where>
-            <if test="userName!=null and userName=''">and user_name=#{userName}</if>
+            <if test="userName !=null and userName !=''">and user_name=#{userName}</if>
+            <if test="userId !=null">and a.id=#{userId}</if>
+            and a.id in (
+                 select g.user_id as id from sys_role f,sys_user_role g
+                 <where>
+                     and f.id=g.role_id
+                     <if test="roleId!=null"> and f.id =#{roleId}</if>
+                     and f.id in (
+                           select j.role_id from sys_authority h,sys_role_authority j
+                           <where>
+                              and h.id=j.authority_id
+                              <if test="authorityId!=null">and h.id= #{authorityId}</if>
+                           </where>
+                     )
+                 </where>
+            )
         </where>
     </select>
 
-    <select id="selectUserRole" resultType="com.gzl.base.common.model.base.user.UserResponse">
-        select b.id, b.role_name, b.dis_name, b.status, b.del_flag from sys_user_role a
-        left join sys_role b
-        on a.role_id=b.id
+
+    <select id="selectUserRoleAuthorityPage" parameterType="com.gzl.base.common.model.base.user.UserRoleAuthorityRequest" resultMap="UserRoleAuthority">
+        select a.id, a.user_name, a.nick_name, a.`password`, a.phone_number, a.email, a.avatar, a.sex, a.`status`, a.del_flag
+        from sys_user a
         <where>
-            <if test="userId!=null and userId!=''">and a.user_id=#{userId}</if>
+            <if test="param.userName !=null and param.userName !=''">and user_name=#{param.userName}</if>
+            <if test="param.userId !=null">and a.id=#{param.userId}</if>
+            and a.id in (
+            select g.user_id as id from sys_role f,sys_user_role g
+            <where>
+                and f.id=g.role_id
+                <if test="param.roleId!=null"> and f.id =#{param.roleId}</if>
+                and f.id in (
+                select j.role_id from sys_authority h,sys_role_authority j
+                <where>
+                    and h.id=j.authority_id
+                    <if test="param.authorityId!=null">and h.id= #{param.authorityId}</if>
+                </where>
+                )
+            </where>
+            )
         </where>
     </select>
 
-
-    <select id="selectRoleAuthority" resultType="com.gzl.base.common.model.base.user.RoleAuthorityResponse">
-        select  b.id, b.authority_name, b.show_name, b.visible, b.status, b.del_flag, b.remark from sys_role_authority a
-        left join sys_authority b
-        on a.role_id =b.id
+    <select id="selectUserRole" resultType="com.gzl.base.common.model.base.user.UserRoleResponse">
+        select b.id, b.role_name, b.dis_name, b.status, b.del_flag
+        from sys_role b
+        left join sys_user_role a
+        on b.id=a.role_id
         <where>
-            <if test="roleId!=null and roleId=''">and a.role_id=#{roleId}</if>
+            <if test="userId !=null and userId !=''">and a.user_id=#{userId}</if>
         </where>
     </select>
-
 
 
 

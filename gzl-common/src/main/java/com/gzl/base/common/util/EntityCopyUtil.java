@@ -20,6 +20,7 @@ public class EntityCopyUtil {
         beanCopier.copy(source, target, null);
         return target;
     }
+
     public static<S,T> List<T> toList(List<S> sources, Class<T> targetClass) {
         if (CollectionUtils.isEmpty(sources) || targetClass == null) {
             return Collections.emptyList();

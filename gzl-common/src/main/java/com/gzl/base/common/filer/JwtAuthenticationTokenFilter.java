@@ -18,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Objects;
 
 @Component
@@ -28,7 +29,8 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-
+        String url = request.getRequestURI();
+        logger.error(url.toString());
         // 获取token
         String token = request.getHeader("token");
         if (!StringUtils.hasText(token)) {

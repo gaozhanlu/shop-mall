@@ -4,6 +4,7 @@ package com.gzl.base.controller;
 import com.gzl.base.common.model.base.authority.AuthorityRequest;
 import com.gzl.base.common.model.base.authority.AuthorityResponse;
 import com.gzl.base.common.result.ViewResult;
+
 import com.gzl.base.entity.Authority;
 import com.gzl.base.service.AuthorityService;
 import io.swagger.annotations.ApiOperation;
@@ -30,18 +31,18 @@ public class AuthorityController {
     private AuthorityService authorityService;
 
 
-    @ApiOperation(value = "添加用户信息")
+    @ApiOperation(value = "添加权限信息")
     @RequestMapping(value = "/saveAuthority", method = RequestMethod.POST)
-    public ViewResult saveAuthority(@RequestBody Authority Authority){
-        AuthorityResponse AuthorityResponse=authorityService.saveAuthority(Authority);
+    public ViewResult saveAuthority(@RequestBody Authority authority){
+        AuthorityResponse AuthorityResponse=authorityService.saveAuthority(authority);
         return ViewResult.success(AuthorityResponse);
     }
 
-    @ApiOperation(value = "添加用户信息")
+    @ApiOperation(value = "添加权限信息")
     @RequestMapping(value = "/selectAuthority", method = RequestMethod.POST)
-    public ViewResult<List<AuthorityResponse>> selectAuthority(@RequestBody AuthorityRequest AuthorityRequest){
-        List<AuthorityResponse> AuthorityResponses=authorityService.selectAuthority(AuthorityRequest);
-        return ViewResult.success(AuthorityResponses);
+    public ViewResult<List<AuthorityResponse>> selectAuthority(@RequestBody AuthorityRequest authorityRequest){
+        List<AuthorityResponse> authorityResponses=authorityService.selectAuthority(authorityRequest);
+        return ViewResult.success(authorityResponses);
     }
 
 }

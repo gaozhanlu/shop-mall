@@ -1,13 +1,19 @@
 package com.gzl.base.service.impl;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gzl.base.common.domain.LoginUser;
 import com.gzl.base.common.model.base.user.UserRequest;
 import com.gzl.base.common.model.base.user.UserResponse;
+import com.gzl.base.common.model.base.user.UserRoleAuthorityRequest;
 import com.gzl.base.common.model.base.user.UserRoleAuthorityResponse;
+import com.gzl.base.common.packagemodel.PageRequest;
+import com.gzl.base.common.packagemodel.PageResult;
 import com.gzl.base.common.result.ViewResult;
 import com.gzl.base.common.util.EntityCopyUtil;
 import com.gzl.base.common.util.JwtUtil;
+import com.gzl.base.common.util.PageChangeUtil;
 import com.gzl.base.common.util.redis.RedisCache;
 import com.gzl.base.entity.User;
 import com.gzl.base.mapper.UserMapper;
@@ -16,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -91,9 +98,20 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
-    public List<UserRoleAuthorityResponse> selectUserRoleAuthority(UserRequest userRequest) {
-        return userMapper.selectUserRoleAuthority(userRequest);
+    public List<UserRoleAuthorityResponse> selectUserRoleAuthority(UserRoleAuthorityRequest userRoleAuthorityRequest) {
+        return userMapper.selectUserRoleAuthority(userRoleAuthorityRequest);
     }
+
+    @Override
+    public PageResult selectUserRoleAuthorityPage(PageRequest<UserRoleAuthorityRequest> pageRequest) {
+
+        Page<UserRoleAuthorityResponse> page=new Page(pageRequest.getPage(), pageRequest.getSize());
+        UserRoleAuthorityRequest userRoleAuthorityRequest=pageRequest.getData();
+        IPage<UserRoleAuthorityResponse> iPageResult=userMapper.selectUserRoleAuthorityPage(page,userRoleAuthorityRequest);
+        return PageChangeUtil.resultChange(iPageResult);
+    }
+
+
 
 
 }

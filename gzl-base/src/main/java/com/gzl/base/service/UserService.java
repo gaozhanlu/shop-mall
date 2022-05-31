@@ -3,7 +3,10 @@ package com.gzl.base.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.gzl.base.common.model.base.user.UserRequest;
 import com.gzl.base.common.model.base.user.UserResponse;
+import com.gzl.base.common.model.base.user.UserRoleAuthorityRequest;
 import com.gzl.base.common.model.base.user.UserRoleAuthorityResponse;
+import com.gzl.base.common.packagemodel.PageRequest;
+import com.gzl.base.common.packagemodel.PageResult;
 import com.gzl.base.common.result.ViewResult;
 import com.gzl.base.entity.User;
 
@@ -25,5 +28,7 @@ public interface UserService extends IService<User> {
 
     ViewResult login(User user);
 
-    List<UserRoleAuthorityResponse> selectUserRoleAuthority(UserRequest userRequest);
+    List<UserRoleAuthorityResponse> selectUserRoleAuthority(UserRoleAuthorityRequest userRoleAuthorityRequest);
+
+    PageResult selectUserRoleAuthorityPage(PageRequest<UserRoleAuthorityRequest> pageRequest);
 }
