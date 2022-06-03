@@ -16,6 +16,7 @@
     <!--    <springProperty scope="context" name="LOG_PATH" source="logback.logDir" />-->
     <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
     <property name="LOG_PATH" value="./logs"/>
+
     <springProperty scope="context" name="LOG_NAME" source="spring.application.name"/>
 
     <!--  控制台彩色日志格式  -->
@@ -90,6 +91,13 @@
             <appender-ref ref="CONSOLE"/>
             <appender-ref ref="FILE"/>
         </logger>
+        <!--包-->
+        <!--<logger name="com.gzl.base.mapper" level="OFF"></logger>-->
+        <!--类-->
+        <!--<logger name="com.gzl.base.mapper.UserMapper." level="OFF"></logger>-->
+        <!--方法-->
+        <!--<logger name="com.gzl.base.controller.UserController.selectUserRoleAuthority" level="OFF"></logger>-->
+
 
         <!--不打印某个类下的日志-->
 <!--        <logger name="com.innochem.platform.mapper.ProductInfoMapper" level="OFF"/>-->

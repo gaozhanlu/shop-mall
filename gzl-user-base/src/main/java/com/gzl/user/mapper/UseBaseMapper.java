@@ -1,5 +1,6 @@
 package com.gzl.user.mapper;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.gzl.base.common.model.user.UseBaseRequest;
 import com.gzl.base.common.model.user.UseBaseResponse;
 import com.gzl.user.entity.UseBase;
@@ -18,6 +19,7 @@ import java.util.List;
  * @since 2022-03-02
  */
 @Mapper
+@DS("slave")
 public interface UseBaseMapper extends BaseMapper<UseBase> {
 
     List<UseBaseResponse> selectUseInfo(UseBaseRequest useBaseRequest);

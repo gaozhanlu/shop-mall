@@ -19,5 +19,5 @@ public interface UseBaseService extends IService<UseBase> {
 
     UseBaseResponse selectUseInfo(UseBaseRequest useBaseRequest);
 
-    void login(UserDetails userDetails);
+//    void login(UserDetails userDetails);
 }

@@ -39,7 +39,7 @@ public class UseBaseController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     public ViewResult login(@RequestBody UseBaseRequest useBaseRequest){
-        UserDetails userDetails= EntityCopyUtil.toObject(useBaseRequest,UserDetails.class);
+//        UserDetails userDetails= EntityCopyUtil.toObject(useBaseRequest,UserDetails.class);
         return ViewResult.success("");
     }
 

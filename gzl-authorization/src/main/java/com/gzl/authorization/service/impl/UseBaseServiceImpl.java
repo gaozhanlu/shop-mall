@@ -37,14 +37,14 @@ public class UseBaseServiceImpl extends ServiceImpl<UseBaseMapper, UseBase> impl
         return useBaseMapper.selectUseInfo(useBaseRequest);
     }
 
-    @Override
-    public void login(UserDetails userDetails) {
-        //根据用户的id查询用户的权限
-        UseBaseRequest useBaseRequest= EntityCopyUtil.toObject(userDetails,UseBaseRequest.class);
-        UseBaseResponse useBaseResponse=useBaseMapper.selectUseInfo(useBaseRequest);
-
-        String principal = JSON.toJSONString(useBaseResponse);
-
-    }
+//    @Override
+//    public void login(UserDetails userDetails) {
+//        //根据用户的id查询用户的权限
+//        UseBaseRequest useBaseRequest= EntityCopyUtil.toObject(userDetails,UseBaseRequest.class);
+//        UseBaseResponse useBaseResponse=useBaseMapper.selectUseInfo(useBaseRequest);
+//
+//        String principal = JSON.toJSONString(useBaseResponse);
+//
+//    }
 
 }
