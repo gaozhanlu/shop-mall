@@ -1,5 +1,6 @@
 package com.gzl.base.common.model.base.user;
 
+import com.gzl.base.common.model.base.role.RoleAuthorityResponse;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -36,7 +37,8 @@ public class UserRoleAuthorityResponse {
     @ApiModelProperty(value = "删除标志（0代表未删除，1代表已删除）")
     private String delFlag;
 
-    private List<UserRoleResponse> userRoleResponseList;
+    private List<RoleAuthorityResponse> roleAuthorityResponseList;
+    //private List<UserRoleResponse> userRoleResponseList;
 
 
 }

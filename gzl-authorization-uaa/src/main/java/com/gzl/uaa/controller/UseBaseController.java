@@ -37,14 +37,7 @@ public class UseBaseController {
         List<UseBaseResponse> useBaseResponse=useBaseService.selectUseInfo(useBaseRequest);
         return ViewResult.success(useBaseResponse);
     }
-    @ApiOperation(value = "用户登录")
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    @ResponseBody
-    public ViewResult login(@RequestBody UseBaseRequest useBaseRequest){
-        UserDetails userDetails= EntityCopyUtil.toObject(useBaseRequest,UserDetails.class);
-        useBaseService.login(userDetails);
-        return ViewResult.success("");
-    }
+
 
 }
 

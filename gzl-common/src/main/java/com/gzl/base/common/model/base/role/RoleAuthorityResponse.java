@@ -1,16 +1,14 @@
-package com.gzl.base.common.model.base.user;
+package com.gzl.base.common.model.base.role;
 
 import com.gzl.base.common.model.base.authority.AuthorityResponse;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
-public class UserRoleResponse {
-
-//    private Integer userId;
-//    private Integer roleId;
+public class RoleAuthorityResponse {
     private Integer id;
 
     @ApiModelProperty(value = "系统中角色名")
@@ -28,5 +26,14 @@ public class UserRoleResponse {
     @ApiModelProperty(value = "备注")
     private String remark;
 
+    private Integer createBy;
+
+    private LocalDateTime createTime;
+
+    private Integer updateBy;
+
+    private LocalDateTime updateTime;
+
     private List<AuthorityResponse> authorityResponseList;
+
 }

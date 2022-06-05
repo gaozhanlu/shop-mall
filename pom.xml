@@ -12,7 +12,6 @@
         <module>gzl-common</module>
         <module>gzl-automatic</module>
         <module>gzl-shop</module>
-        <module>gzl-authorization</module>
         <module>gzl-user-base</module>
         <module>gzl-gateway</module>
         <module>gzl-authorization-uaa</module>
@@ -172,17 +171,17 @@
         </dependencies>
     </dependencyManagement>
     <!--打包配置-->
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <executable>true</executable>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+<!--    <build>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--                <configuration>-->
+<!--                    <executable>true</executable>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--    </build>-->
 
 
 </project>

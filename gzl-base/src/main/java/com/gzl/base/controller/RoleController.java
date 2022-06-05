@@ -1,8 +1,10 @@
 package com.gzl.base.controller;
 
 
+import com.gzl.base.common.model.base.role.RoleAuthorityResponse;
 import com.gzl.base.common.model.base.role.RoleRequest;
 import com.gzl.base.common.model.base.role.RoleResponse;
+import com.gzl.base.common.model.base.user.UserRoleAuthorityRequest;
 import com.gzl.base.common.result.ViewResult;
 import com.gzl.base.entity.Role;
 import com.gzl.base.service.RoleService;
@@ -38,11 +40,19 @@ public class RoleController {
         return ViewResult.success(RoleResponse);
     }
 
-    @ApiOperation(value = "添加角色信息")
+    @ApiOperation(value = "查找角色信息")
     @RequestMapping(value = "/selectRole", method = RequestMethod.POST)
     public ViewResult<List<RoleResponse>> selectRole(@RequestBody RoleRequest RoleRequest){
         List<RoleResponse> RoleResponses=roleService.selectRole(RoleRequest);
         return ViewResult.success(RoleResponses);
+    }
+
+
+    @ApiOperation(value = "查找角色权限信息")
+    @RequestMapping(value = "/selectRoleAuthorityMap", method = RequestMethod.POST)
+    public ViewResult<List<RoleAuthorityResponse>> selectRoleAuthorityMap(@RequestBody UserRoleAuthorityRequest userRoleAuthorityRequest){
+        List<RoleAuthorityResponse>  roleAuthorityResponses=roleService.selectRoleAuthorityMap(userRoleAuthorityRequest);
+        return ViewResult.success(roleAuthorityResponses);
     }
 
 }

@@ -38,7 +38,7 @@ public class AuthorityController {
         return ViewResult.success(AuthorityResponse);
     }
 
-    @ApiOperation(value = "添加权限信息")
+    @ApiOperation(value = "搜索权限信息")
     @RequestMapping(value = "/selectAuthority", method = RequestMethod.POST)
     public ViewResult<List<AuthorityResponse>> selectAuthority(@RequestBody AuthorityRequest authorityRequest){
         List<AuthorityResponse> authorityResponses=authorityService.selectAuthority(authorityRequest);

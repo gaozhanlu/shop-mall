@@ -38,7 +38,7 @@ public class MenuController {
         return ViewResult.success(MenuResponse);
     }
 
-    @ApiOperation(value = "添加菜单信息")
+    @ApiOperation(value = "搜索菜单信息")
     @RequestMapping(value = "/selectMenu", method = RequestMethod.POST)
     public ViewResult<List<MenuResponse>> selectMenu(@RequestBody MenuRequest MenuRequest){
         List<MenuResponse> MenuResponses=menuService.selectMenu(MenuRequest);

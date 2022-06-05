@@ -1,8 +1,10 @@
 package com.gzl.base.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.gzl.base.common.model.base.role.RoleAuthorityResponse;
 import com.gzl.base.common.model.base.role.RoleRequest;
 import com.gzl.base.common.model.base.role.RoleResponse;
+import com.gzl.base.common.model.base.user.UserRoleAuthorityRequest;
 import com.gzl.base.common.util.EntityCopyUtil;
 import com.gzl.base.entity.Role;
 import com.gzl.base.mapper.RoleMapper;
@@ -34,5 +36,12 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements Ro
     @Override
     public List<RoleResponse> selectRole(RoleRequest roleRequest) {
         return roleMapper.selectRole(roleRequest);
+    }
+
+
+    @Override
+    public List<RoleAuthorityResponse> selectRoleAuthorityMap(UserRoleAuthorityRequest userRoleAuthorityRequest) {
+        return roleMapper.selectRoleAuthorityMap(userRoleAuthorityRequest);
+
     }
 }

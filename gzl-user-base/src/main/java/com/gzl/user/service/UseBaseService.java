@@ -1,6 +1,7 @@
 package com.gzl.user.service;
 
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.gzl.base.common.model.user.UseBaseRequest;
 import com.gzl.base.common.model.user.UseBaseResponse;
 import com.gzl.user.entity.UseBase;
@@ -20,4 +21,7 @@ import java.util.List;
 public interface UseBaseService extends IService<UseBase> {
 
     List<UseBaseResponse> selectUseInfo(UseBaseRequest useBaseRequest);
+
+
+    void insertUseInfo(UseBaseRequest useBaseRequest);
 }

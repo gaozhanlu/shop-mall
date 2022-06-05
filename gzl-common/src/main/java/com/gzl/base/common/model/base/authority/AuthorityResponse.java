@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 
 @Data
 public class AuthorityResponse {
+
     private Integer id;
 
     @ApiModelProperty(value = "权限名")
@@ -34,4 +35,6 @@ public class AuthorityResponse {
     private Integer updateBy;
 
     private LocalDateTime updateTime;
+
+
 }

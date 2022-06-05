@@ -6,6 +6,7 @@ import com.gzl.base.common.model.user.UseBaseRequest;
 import com.gzl.base.common.model.user.UseBaseResponse;
 import com.gzl.uaa.entity.UseBase;
 
+
 import java.util.List;
 
 /**
@@ -21,7 +22,7 @@ public interface UseBaseService extends IService<UseBase> {
 
     List<UseBaseResponse> selectUseInfo(UseBaseRequest useBaseRequest);
 
-    void login(UserDetails userDetails);
+
 
     void insertUseInfo(UseBaseRequest useBaseRequest);
 }

@@ -19,7 +19,6 @@ import java.util.List;
  * @since 2022-03-02
  */
 @Mapper
-@DS("slave")
 public interface UseBaseMapper extends BaseMapper<UseBase> {
 
     List<UseBaseResponse> selectUseInfo(UseBaseRequest useBaseRequest);

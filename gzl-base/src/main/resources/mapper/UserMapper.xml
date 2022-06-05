@@ -45,7 +45,8 @@
         <result column="sex" property="sex" />
         <result column="status" property="status" />
         <result column="del_flag" property="delFlag" />
-        <collection property="userRoleResponseList" column="id" select="selectUserRole">
+        <!--<collection property="userRoleResponseList" column="id" select="selectUserRole">-->
+        <collection property="roleAuthorityResponseList" column="id" select="com.gzl.base.mapper.RoleMapper.selectRoleAuthorityMap">
         </collection>
     </resultMap>
 
@@ -96,7 +97,7 @@
         </where>
     </select>
 
-    <select id="selectUserRole" resultType="com.gzl.base.common.model.base.user.UserRoleResponse">
+    <select id="selectUserRole" parameterType="com.gzl.base.common.model.base.user.UserRoleAuthorityRequest" resultType="com.gzl.base.common.model.base.user.UserRoleResponse">
         select b.id, b.role_name, b.dis_name, b.status, b.del_flag
         from sys_role b
         left join sys_user_role a
@@ -105,6 +106,7 @@
             <if test="userId !=null and userId !=''">and a.user_id=#{userId}</if>
         </where>
     </select>
+
 
 
 

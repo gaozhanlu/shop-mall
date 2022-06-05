@@ -1,8 +1,10 @@
 package com.gzl.base.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.gzl.base.common.model.base.role.RoleAuthorityResponse;
 import com.gzl.base.common.model.base.role.RoleRequest;
 import com.gzl.base.common.model.base.role.RoleResponse;
+import com.gzl.base.common.model.base.user.UserRoleAuthorityRequest;
 import com.gzl.base.entity.Role;
 
 import java.util.List;
@@ -20,4 +22,6 @@ public interface RoleService extends IService<Role> {
     RoleResponse saveRole(Role role);
 
     List<RoleResponse> selectRole(RoleRequest roleRequest);
+
+    List<RoleAuthorityResponse>  selectRoleAuthorityMap(UserRoleAuthorityRequest userRoleAuthorityRequest);
 }

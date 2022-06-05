@@ -15,6 +15,7 @@ import com.gzl.base.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -41,6 +42,7 @@ public class UserController {
         return userService.login(user);
     }
 
+
     @ApiOperation(value = "添加用户信息")
     @RequestMapping(value = "/saveUser", method = RequestMethod.POST)
     public ViewResult saveUser(@RequestBody User user){
@@ -50,10 +52,12 @@ public class UserController {
 
     @ApiOperation(value = "搜索用户信息")
     @RequestMapping(value = "/selectUser", method = RequestMethod.POST)
+    @PreAuthorize("@AuthInterface.InterfaceAnyAuth('test,admin')")
     public ViewResult<List<UserResponse>> selectUser(@RequestBody UserRequest userRequest){
         List<UserResponse> userResponses=userService.selectUser(userRequest);
         return ViewResult.success(userResponses);
     }
+
     @ApiOperation(value = "搜索用户信息")
     @RequestMapping(value = "/selectUserRoleAuthority", method = RequestMethod.POST)
     public ViewResult<List<UserRoleAuthorityResponse>> selectUserRoleAuthority(@RequestBody UserRoleAuthorityRequest userRoleAuthorityRequest){
@@ -64,9 +68,7 @@ public class UserController {
     @ApiOperation(value = "分页查询用户信息")
     @RequestMapping(value = "/selectUserRoleAuthorityPage", method = RequestMethod.POST)
     public ViewResult selectUserRoleAuthorityPage(@RequestBody PageRequest<UserRoleAuthorityRequest> pageRequest){
-
         PageResult pageResult= userService.selectUserRoleAuthorityPage(pageRequest);
-
         return ViewResult.success(pageResult);
     }
 }

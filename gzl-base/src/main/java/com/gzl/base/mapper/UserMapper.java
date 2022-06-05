@@ -1,5 +1,6 @@
 package com.gzl.base.mapper;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -19,6 +20,7 @@ import java.util.List;
  * @since 2022-05-29
  */
 @Mapper
+@DS("slave")
 public interface UserMapper extends BaseMapper<User> {
 
     List<UserResponse> selectUser(UserRequest userRequest);
