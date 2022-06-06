@@ -20,4 +20,8 @@ public interface ProductService extends IService<Product> {
     ProductResponse saveProduct(Product product);
 
     List<ProductResponse> selectProduct(ProductRequest productRequest);
+
+    void  insertOrUpdateProduct(ProductRequest productRequest);
+
+    void  batchInsertOrUpdateProduct(List<ProductRequest> productRequestList);
 }

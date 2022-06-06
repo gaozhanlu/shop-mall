@@ -37,4 +37,14 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
     public List<ProductResponse> selectProduct(ProductRequest productRequest) {
         return productMapper.selectProduct(productRequest);
     }
+
+    @Override
+    public void insertOrUpdateProduct(ProductRequest productRequest) {
+        productMapper.insertOrUpdateProduct(productRequest);
+    }
+
+    @Override
+    public void batchInsertOrUpdateProduct(List<ProductRequest> productRequestList) {
+        productMapper.batchInsertOrUpdateProduct( productRequestList);
+    }
 }

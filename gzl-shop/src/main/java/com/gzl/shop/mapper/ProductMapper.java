@@ -18,4 +18,8 @@ import java.util.List;
 public interface ProductMapper extends BaseMapper<Product> {
 
     List<ProductResponse> selectProduct(ProductRequest productRequest);
+
+    void  insertOrUpdateProduct(ProductRequest productRequest);
+
+    void  batchInsertOrUpdateProduct(List<ProductRequest> productRequestList);
 }

@@ -50,6 +50,85 @@
         </where>
     </select>
 
+    <insert id="insertOrUpdateProduct">
+        INSERT INTO shop_product(pid,sid,cn_name,en_name,cas,goods_no,spec,supervision_cond,list_price,
+                                 off_price,promotion_price,promotion_start_time,promotion_end_time,stock_detail,transport_cond,
+                                 storage_temperature,delivery,stock_num,dmg_level,mdl,data_source,third_code,create_time,
+                                 update_time,update_use,stats)
+        values(#{id},#{pid},#{sid},#{cnName},#{enName},#{cas},#{goodsNo},#{spec},
+               #{supervisionCond},#{listPrice},#{offPrice},#{promotionPrice},#{promotionStartTime},
+               #{promotionEndTime},#{stockDetail},#{transportCond},#{storageTemperature},#{delivery},
+               #{stockNum},#{dmgLevel},#{mdl},#{dataSource},#{thirdCode},#{createTime},#{updateTime},
+               #{updateUse},#{stats})
+            ON DUPLICATE KEY UPDATE(
+                 id=VALUES(id),
+                 pid=VALUES(pid),
+                 sid=VALUES(sid),
+                 cn_name=VALUES(cn_name),
+                 en_name=VALUES(en_name),
+                 cas=VALUES(cas),
+                 goods_no=VALUES(goods_no),
+                 spec=VALUES(spec),
+                 supervision_cond=VALUES(supervision_cond),
+                 list_price=VALUES(list_price),
+                 off_price=VALUES(off_price),
+                 promotion_price=VALUES(promotion_price),
+                 promotion_start_time=VALUES(promotion_start_time),
+                 promotion_end_time=VALUES(promotion_end_time),
+                 stock_detail=VALUES(stock_detail),
+                 transport_cond=VALUES(transport_cond),
+                 storage_temperature=VALUES(storage_temperature),
+                 delivery=VALUES(delivery),
+                 stock_num=VALUES(stock_num),
+                 dmg_level=VALUES(dmg_level),
+                 mdl=VALUES(mdl),
+                 data_source=VALUES(data_source),
+                 third_code=VALUES(third_code),
+                 create_time=VALUES(create_time),
+                 update_time=VALUES(update_time),
+                 update_use=VALUES(update_use),
+                 stats=VALUES(stats))
+    </insert>
+
+    <insert id="batchInsertOrUpdateProduct">
+        INSERT INTO shop_product (pid,sid,cn_name,en_name,cas,goods_no,spec,supervision_cond,list_price,off_price,promotion_price,
+        promotion_start_time,promotion_end_time,stock_detail,transport_cond,storage_temperature,delivery,stock_num,dmg_level,mdl,
+        data_source,third_code,create_time,update_time,update_use,stats)
+        values
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.pid},#{item.sid},#{item.cnName},#{item.enName},#{item.cas},#{item.goodsNo},#{item.spec},#{item.supervisionCond},
+            #{item.listPrice},#{item.offPrice},#{item.promotionPrice},#{item.promotionStartTime},#{item.promotionEndTime},
+            #{item.stockDetail},#{item.transportCond},#{item.storageTemperature},#{item.delivery},#{item.stockNum},#{item.dmgLevel},
+            #{item.mdl},#{item.dataSource},#{item.thirdCode},#{item.createTime},#{item.updateTime},#{item.updateUse},#{item.stats})
+        </foreach>
+        ON DUPLICATE KEY UPDATE(
+            pid=VALUES(pid),
+            sid=VALUES(sid),
+            cn_name=VALUES(cn_name),
+            en_name=VALUES(en_name),
+            cas=VALUES(cas),
+            goods_no=VALUES(goods_no),
+            spec=VALUES(spec),
+            supervision_cond=VALUES(supervision_cond),
+            list_price=VALUES(list_price),
+            off_price=VALUES(off_price),
+            promotion_price=VALUES(promotion_price),
+            promotion_start_time=VALUES(promotion_start_time),
+            promotion_end_time=VALUES(promotion_end_time),
+            stock_detail=VALUES(stock_detail),
+            transport_cond=VALUES(transport_cond),
+            storage_temperature=VALUES(storage_temperature),
+            delivery=VALUES(delivery),
+            stock_num=VALUES(stock_num),
+            dmg_level=VALUES(dmg_level),
+            mdl=VALUES(mdl),
+            data_source=VALUES(data_source),
+            third_code=VALUES(third_code),
+            create_time=VALUES(create_time),
+            update_time=VALUES(update_time),
+            update_use=VALUES(update_use),
+            stats=VALUES(stats))
+    </insert>
 
 
 

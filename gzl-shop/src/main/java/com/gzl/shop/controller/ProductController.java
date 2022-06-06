@@ -32,18 +32,34 @@ public class ProductController {
     private ProductService productService;
 
 
-    @ApiOperation(value = "添加菜单信息")
+    @ApiOperation(value = "添加产品信息")
     @RequestMapping(value = "/saveProduct", method = RequestMethod.POST)
     public ViewResult saveProduct(@RequestBody Product product){
         ProductResponse ProductResponse=productService.saveProduct(product);
         return ViewResult.success(ProductResponse);
     }
 
-    @ApiOperation(value = "搜索菜单信息")
+    @ApiOperation(value = "搜索产品信息")
     @RequestMapping(value = "/selectProduct", method = RequestMethod.POST)
     public ViewResult<List<ProductResponse>> selectProduct(@RequestBody ProductRequest productRequest){
         List<ProductResponse> ProductResponses=productService.selectProduct(productRequest);
         return ViewResult.success(ProductResponses);
+    }
+
+
+    @ApiOperation(value = "添加或更新产品信息")
+    @RequestMapping(value = "/insertOrUpdateProduct", method = RequestMethod.POST)
+    public ViewResult insertOrUpdateProduct(@RequestBody ProductRequest productRequest){
+        productService.insertOrUpdateProduct(productRequest);
+        return ViewResult.success(null);
+    }
+
+
+    @ApiOperation(value = "批量添加或更新产品信息")
+    @RequestMapping(value = "/batchInsertOrUpdateProduct", method = RequestMethod.POST)
+    public ViewResult batchInsertOrUpdateProduct(@RequestBody List<ProductRequest> productRequestList){
+       productService.batchInsertOrUpdateProduct(productRequestList);
+        return ViewResult.success(null);
     }
 }
 
