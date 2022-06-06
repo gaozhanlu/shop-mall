@@ -35,7 +35,19 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, pid, sid, cn_name, en_name, cas, goods_no, spec, supervision_cond, list_price, off_price, promotion_price, promotion_start_time, promotion_end_time, stock_detail, transport _cond, storage_temperature, delivery, stock_num, dmg_level, mdl, data_source, third_code, create_time, update_time, update_use, stats
+        id, pid, sid, cn_name, en_name, cas, goods_no, spec, supervision_cond, list_price, off_price, promotion_price, promotion_start_time, promotion_end_time, stock_detail, transport_cond, storage_temperature, delivery, stock_num, dmg_level, mdl, data_source, third_code, create_time, update_time, update_use, stats
     </sql>
+
+    <select id="selectProduct" parameterType="com.gzl.base.common.model.shop.product.ProductRequest" resultType="com.gzl.base.common.model.shop.product.ProductResponse">
+        select * from shop_product
+        <where>
+            <if test="pid!=null and pid!=''">and pid=#{pid}</if>
+            <if test="cnName!=null and cnName!=''">and cn_name=#{cnName}</if>
+            <if test="cas!=null and cas!=''">and cas=#{cas}</if>
+            <if test="brand!=null and brand!=''">and brand=#{brand}</if>
+            <if test="goodsNo!=null and goodsNo!=''">and goods_no=#{goodsNo}</if>
+            <if test="spec!=null and spec!=''">and spec=#{spec}</if>
+        </where>
+    </select>
 
 </mapper>

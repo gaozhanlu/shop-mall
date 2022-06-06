@@ -1,12 +1,14 @@
 package com.gzl.shop.entity;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -14,11 +16,12 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author gzl
- * @since 2022-03-09
+ * @since 2022-06-06
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@ApiModel(value="Product对象", description="")
+@TableName("shop_product")
+@ApiModel(value="Product", description="产品")
 public class Product implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -37,6 +40,9 @@ public class Product implements Serializable {
 
     @ApiModelProperty(value = "英文名")
     private String enName;
+
+    @ApiModelProperty(value = "品牌")
+    private String brand;
 
     @ApiModelProperty(value = "cas号")
     private String cas;
@@ -87,7 +93,7 @@ public class Product implements Serializable {
     private String mdl;
 
     @ApiModelProperty(value = "产品来源   接口  导入  添加方式")
-    private Integer dataSource;
+    private String dataSource;
 
     @ApiModelProperty(value = "第三方编码")
     private String thirdCode;
@@ -102,7 +108,7 @@ public class Product implements Serializable {
     private String updateUse;
 
     @ApiModelProperty(value = "状态 上下架 等等")
-    private Integer stats;
+    private String stats;
 
 
 }

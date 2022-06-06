@@ -1,4 +1,4 @@
-package com.gzl.base.common.model.product;
+package com.gzl.base.common.model.shop.product;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 
 @Data
 public class ProductRequest {
-    @ApiModelProperty(value = "自增id")
     private Integer id;
 
     @ApiModelProperty(value = "产品标识唯一")
@@ -22,6 +21,9 @@ public class ProductRequest {
 
     @ApiModelProperty(value = "英文名")
     private String enName;
+
+    @ApiModelProperty(value = "品牌")
+    private String brand;
 
     @ApiModelProperty(value = "cas号")
     private String cas;
@@ -72,7 +74,7 @@ public class ProductRequest {
     private String mdl;
 
     @ApiModelProperty(value = "产品来源   接口  导入  添加方式")
-    private Integer dataSource;
+    private String dataSource;
 
     @ApiModelProperty(value = "第三方编码")
     private String thirdCode;
@@ -87,5 +89,5 @@ public class ProductRequest {
     private String updateUse;
 
     @ApiModelProperty(value = "状态 上下架 等等")
-    private Integer stats;
+    private String stats;
 }
