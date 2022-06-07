@@ -59,7 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/v2/*").permitAll()
                 .antMatchers("/*").permitAll();
                 // 除上面外的所有请求全部需要鉴权认证
-                /*.anyRequest().authenticated();*/
+                /*.anyRequest().permitAll();*/
 
         // 在过滤器UsernamePasswordAuthenticationFilter之前，添加我们自定义的过滤器JwtAuthenticationTokenFilter
         http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);

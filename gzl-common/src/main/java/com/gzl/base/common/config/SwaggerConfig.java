@@ -35,7 +35,8 @@ public class SwaggerConfig {
                 // 扫描的路径包 controller包所在的位置
                 //.apis(RequestHandlerSelectors.basePackage("com.gzl.base.controller"))
                 .apis(Predicates.or(
-                        RequestHandlerSelectors.basePackage("com.gzl.uaa.controller"),
+
+                        RequestHandlerSelectors.basePackage("com.gzl.shop.controller"),
                         RequestHandlerSelectors.basePackage("com.gzl.base.controller")
                         ))
                 // 指定路径处理PathSelectors.any()代表所有的路径
