@@ -1,14 +1,13 @@
 package com.gzl.base.controller;
 
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.gzl.base.common.model.base.user.UserRequest;
-import com.gzl.base.common.model.base.user.UserResponse;
-import com.gzl.base.common.model.base.user.UserRoleAuthorityRequest;
-import com.gzl.base.common.model.base.user.UserRoleAuthorityResponse;
-import com.gzl.base.common.packagemodel.PageRequest;
-import com.gzl.base.common.packagemodel.PageResult;
-import com.gzl.base.common.result.ViewResult;
+import com.gzl.common.model.base.user.UserRequest;
+import com.gzl.common.model.base.user.UserResponse;
+import com.gzl.common.model.base.user.UserRoleAuthorityRequest;
+import com.gzl.common.model.base.user.UserRoleAuthorityResponse;
+import com.gzl.common.packagemodel.PageRequest;
+import com.gzl.common.packagemodel.PageResult;
+import com.gzl.common.result.ViewResult;
 
 import com.gzl.base.entity.User;
 import com.gzl.base.service.UserService;

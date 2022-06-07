@@ -21,7 +21,7 @@
         id, role_name, dis_name, status, del_flag, create_by, create_time, update_by, update_time, remark
     </sql>
 
-    <select id="selectRoleAuthority" resultType="com.gzl.base.common.model.base.authority.AuthorityResponse">
+    <select id="selectRoleAuthority" resultType="com.gzl.common.model.base.authority.AuthorityResponse">
         select  b.id, b.authority_name, b.show_name, b.visible, b.status, b.del_flag, b.remark
         from sys_role_authority a
         left join sys_authority b
@@ -33,7 +33,7 @@
 
 
 
-    <resultMap id="RoleAuthorityMap" type="com.gzl.base.common.model.base.role.RoleAuthorityResponse">
+    <resultMap id="RoleAuthorityMap" type="com.gzl.common.model.base.role.RoleAuthorityResponse">
         <id column="id" property="id" />
         <result column="role_name" property="roleName" />
         <result column="dis_name" property="disName" />
@@ -44,7 +44,7 @@
         <result column="update_by" property="updateBy" />
         <result column="update_time" property="updateTime" />
         <result column="remark" property="remark" />
-        <collection property="authorityResponseList" ofType="com.gzl.base.common.model.base.authority.AuthorityResponse" >
+        <collection property="authorityResponseList" ofType="com.gzl.common.model.base.authority.AuthorityResponse" >
             <id column="authorityId" property="id"/>
             <result column="authority_name" property="authorityName" />
             <result column="show_name" property="showName" />

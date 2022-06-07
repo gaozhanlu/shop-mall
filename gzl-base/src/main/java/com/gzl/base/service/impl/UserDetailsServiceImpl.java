@@ -1,13 +1,12 @@
 package com.gzl.base.service.impl;
 
-import com.gzl.base.common.domain.LoginUser;
-import com.gzl.base.common.model.base.authority.AuthorityResponse;
-import com.gzl.base.common.model.base.role.RoleAuthorityResponse;
-import com.gzl.base.common.model.base.user.UserRoleAuthorityRequest;
-import com.gzl.base.common.model.base.user.UserRoleAuthorityResponse;
-import com.gzl.base.common.model.base.user.UserRoleResponse;
-import com.gzl.base.common.model.security.UserDetail;
-import com.gzl.base.common.util.EntityCopyUtil;
+import com.gzl.common.domain.LoginUser;
+import com.gzl.common.model.base.authority.AuthorityResponse;
+import com.gzl.common.model.base.role.RoleAuthorityResponse;
+import com.gzl.common.model.base.user.UserRoleAuthorityRequest;
+import com.gzl.common.model.base.user.UserRoleAuthorityResponse;
+import com.gzl.common.model.security.UserDetail;
+import com.gzl.common.util.EntityCopyUtil;
 import com.gzl.base.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 @Slf4j

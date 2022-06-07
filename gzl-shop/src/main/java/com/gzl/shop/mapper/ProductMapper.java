@@ -1,8 +1,8 @@
 package com.gzl.shop.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.gzl.base.common.model.shop.product.ProductRequest;
-import com.gzl.base.common.model.shop.product.ProductResponse;
+import com.gzl.common.model.shop.product.ProductRequest;
+import com.gzl.common.model.shop.product.ProductResponse;
 import com.gzl.shop.entity.Product;
 import org.apache.ibatis.annotations.Mapper;
 

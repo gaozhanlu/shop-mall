@@ -1,13 +1,12 @@
 package com.gzl.shop.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.gzl.base.common.model.shop.product.ProductRequest;
-import com.gzl.base.common.model.shop.product.ProductResponse;
-import com.gzl.base.common.util.EntityCopyUtil;
+import com.gzl.common.model.shop.product.ProductRequest;
+import com.gzl.common.model.shop.product.ProductResponse;
+import com.gzl.common.util.EntityCopyUtil;
 import com.gzl.shop.entity.Product;
 import com.gzl.shop.mapper.ProductMapper;
 import com.gzl.shop.service.ProductService;
-import lombok.Data;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

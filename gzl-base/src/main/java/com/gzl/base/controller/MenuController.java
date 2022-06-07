@@ -1,9 +1,9 @@
 package com.gzl.base.controller;
 
 
-import com.gzl.base.common.model.base.menu.MenuRequest;
-import com.gzl.base.common.model.base.menu.MenuResponse;
-import com.gzl.base.common.result.ViewResult;
+import com.gzl.common.model.base.menu.MenuRequest;
+import com.gzl.common.model.base.menu.MenuResponse;
+import com.gzl.common.result.ViewResult;
 import com.gzl.base.entity.Menu;
 import com.gzl.base.service.MenuService;
 import io.swagger.annotations.ApiOperation;

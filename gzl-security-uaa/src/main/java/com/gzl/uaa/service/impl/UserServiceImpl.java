@@ -2,7 +2,7 @@ package com.gzl.uaa.service.impl;
 
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.gzl.base.common.result.ViewResult;
+import com.gzl.common.result.ViewResult;
 import com.gzl.uaa.domain.LoginUser;
 import com.gzl.uaa.entity.User;
 import com.gzl.uaa.mapper.UserMapper;

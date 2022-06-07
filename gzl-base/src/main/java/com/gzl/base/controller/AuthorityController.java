@@ -1,9 +1,9 @@
 package com.gzl.base.controller;
 
 
-import com.gzl.base.common.model.base.authority.AuthorityRequest;
-import com.gzl.base.common.model.base.authority.AuthorityResponse;
-import com.gzl.base.common.result.ViewResult;
+import com.gzl.common.model.base.authority.AuthorityRequest;
+import com.gzl.common.model.base.authority.AuthorityResponse;
+import com.gzl.common.result.ViewResult;
 
 import com.gzl.base.entity.Authority;
 import com.gzl.base.service.AuthorityService;

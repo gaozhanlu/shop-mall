@@ -1,8 +1,7 @@
 package com.gzl.user.mapper;
 
-import com.baomidou.dynamic.datasource.annotation.DS;
-import com.gzl.base.common.model.user.UseBaseRequest;
-import com.gzl.base.common.model.user.UseBaseResponse;
+import com.gzl.common.model.user.UseBaseRequest;
+import com.gzl.common.model.user.UseBaseResponse;
 import com.gzl.user.entity.UseBase;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;

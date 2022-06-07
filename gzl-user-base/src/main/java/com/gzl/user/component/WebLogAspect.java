@@ -2,8 +2,7 @@ package com.gzl.user.component;
 
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.core.util.URLUtil;
-import cn.hutool.json.JSONUtil;
-import com.gzl.base.common.model.web.WebLog;
+import com.gzl.common.model.web.WebLog;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;

@@ -25,7 +25,7 @@
         id, user_name, nick_name, password, phone_number, email, avatar, sex, status, del_flag, create_by, create_time, update_by, update_time
     </sql>
 
-    <select id="selectUser" parameterType="com.gzl.base.common.model.base.user.UserRequest" resultType="com.gzl.base.common.model.base.user.UserResponse" >
+    <select id="selectUser" parameterType="com.gzl.common.model.base.user.UserRequest" resultType="com.gzl.common.model.base.user.UserResponse" >
         select * from sys_user
         <where>
             <if test="userName !=null and userName !=''">and user_name=#{userName}</if>
@@ -34,7 +34,7 @@
     </select>
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="UserRoleAuthority" type="com.gzl.base.common.model.base.user.UserRoleAuthorityResponse">
+    <resultMap id="UserRoleAuthority" type="com.gzl.common.model.base.user.UserRoleAuthorityResponse">
         <id column="id" property="id" />
         <result column="user_name" property="userName" />
         <result column="nick_name" property="nickName" />
@@ -50,7 +50,7 @@
         </collection>
     </resultMap>
 
-    <select id="selectUserRoleAuthority" parameterType="com.gzl.base.common.model.base.user.UserRoleAuthorityRequest" resultMap="UserRoleAuthority">
+    <select id="selectUserRoleAuthority" parameterType="com.gzl.common.model.base.user.UserRoleAuthorityRequest" resultMap="UserRoleAuthority">
         select a.id, a.user_name, a.nick_name, a.`password`, a.phone_number, a.email, a.avatar, a.sex, a.`status`, a.del_flag
         from sys_user a
         <where>
@@ -74,7 +74,7 @@
     </select>
 
 
-    <select id="selectUserRoleAuthorityPage" parameterType="com.gzl.base.common.model.base.user.UserRoleAuthorityRequest" resultMap="UserRoleAuthority">
+    <select id="selectUserRoleAuthorityPage" parameterType="com.gzl.common.model.base.user.UserRoleAuthorityRequest" resultMap="UserRoleAuthority">
         select a.id, a.user_name, a.nick_name, a.`password`, a.phone_number, a.email, a.avatar, a.sex, a.`status`, a.del_flag
         from sys_user a
         <where>
@@ -97,7 +97,7 @@
         </where>
     </select>
 
-    <select id="selectUserRole" parameterType="com.gzl.base.common.model.base.user.UserRoleAuthorityRequest" resultType="com.gzl.base.common.model.base.user.UserRoleResponse">
+    <select id="selectUserRole" parameterType="com.gzl.common.model.base.user.UserRoleAuthorityRequest" resultType="com.gzl.common.model.base.user.UserRoleResponse">
         select b.id, b.role_name, b.dis_name, b.status, b.del_flag
         from sys_role b
         left join sys_user_role a

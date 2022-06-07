@@ -38,7 +38,7 @@
         id, pid, sid, cn_name, en_name, cas, goods_no, spec, supervision_cond, list_price, off_price, promotion_price, promotion_start_time, promotion_end_time, stock_detail, transport_cond, storage_temperature, delivery, stock_num, dmg_level, mdl, data_source, third_code, create_time, update_time, update_use, stats
     </sql>
 
-    <select id="selectProduct" parameterType="com.gzl.base.common.model.shop.product.ProductRequest" resultType="com.gzl.base.common.model.shop.product.ProductResponse">
+    <select id="selectProduct" parameterType="com.gzl.common.model.shop.product.ProductRequest" resultType="com.gzl.common.model.shop.product.ProductResponse">
         select * from shop_product
         <where>
             <if test="pid!=null and pid!=''">and pid=#{pid}</if>
@@ -55,14 +55,13 @@
                                  off_price,promotion_price,promotion_start_time,promotion_end_time,stock_detail,transport_cond,
                                  storage_temperature,delivery,stock_num,dmg_level,mdl,data_source,third_code,create_time,
                                  update_time,update_use,stats)
-        values(#{id},#{pid},#{sid},#{cnName},#{enName},#{cas},#{goodsNo},#{spec},
+        values(#{pid},#{sid},#{cnName},#{enName},#{cas},#{goodsNo},#{spec},
                #{supervisionCond},#{listPrice},#{offPrice},#{promotionPrice},#{promotionStartTime},
                #{promotionEndTime},#{stockDetail},#{transportCond},#{storageTemperature},#{delivery},
                #{stockNum},#{dmgLevel},#{mdl},#{dataSource},#{thirdCode},#{createTime},#{updateTime},
                #{updateUse},#{stats})
-            ON DUPLICATE KEY UPDATE(
-                 id=VALUES(id),
-                 pid=VALUES(pid),
+            ON DUPLICATE KEY UPDATE
+                pid=VALUES(pid),
                  sid=VALUES(sid),
                  cn_name=VALUES(cn_name),
                  en_name=VALUES(en_name),
@@ -87,7 +86,8 @@
                  create_time=VALUES(create_time),
                  update_time=VALUES(update_time),
                  update_use=VALUES(update_use),
-                 stats=VALUES(stats))
+                 stats=VALUES(stats)
+
     </insert>
 
     <insert id="batchInsertOrUpdateProduct">
@@ -101,7 +101,7 @@
             #{item.stockDetail},#{item.transportCond},#{item.storageTemperature},#{item.delivery},#{item.stockNum},#{item.dmgLevel},
             #{item.mdl},#{item.dataSource},#{item.thirdCode},#{item.createTime},#{item.updateTime},#{item.updateUse},#{item.stats})
         </foreach>
-        ON DUPLICATE KEY UPDATE(
+        ON DUPLICATE KEY UPDATE
             pid=VALUES(pid),
             sid=VALUES(sid),
             cn_name=VALUES(cn_name),
@@ -127,7 +127,7 @@
             create_time=VALUES(create_time),
             update_time=VALUES(update_time),
             update_use=VALUES(update_use),
-            stats=VALUES(stats))
+            stats=VALUES(stats)
     </insert>
 
 

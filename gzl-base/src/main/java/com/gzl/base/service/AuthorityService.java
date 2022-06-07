@@ -1,8 +1,8 @@
 package com.gzl.base.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.gzl.base.common.model.base.authority.AuthorityRequest;
-import com.gzl.base.common.model.base.authority.AuthorityResponse;
+import com.gzl.common.model.base.authority.AuthorityRequest;
+import com.gzl.common.model.base.authority.AuthorityResponse;
 import com.gzl.base.entity.Authority;
 
 import java.util.List;

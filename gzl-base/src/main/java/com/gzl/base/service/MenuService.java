@@ -1,8 +1,8 @@
 package com.gzl.base.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.gzl.base.common.model.base.menu.MenuRequest;
-import com.gzl.base.common.model.base.menu.MenuResponse;
+import com.gzl.common.model.base.menu.MenuRequest;
+import com.gzl.common.model.base.menu.MenuResponse;
 import com.gzl.base.entity.Menu;
 
 import java.util.List;

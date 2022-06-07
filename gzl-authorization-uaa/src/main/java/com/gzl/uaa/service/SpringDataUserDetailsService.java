@@ -3,11 +3,7 @@ package com.gzl.uaa.service;
 import cn.hutool.crypto.digest.BCrypt;
 import com.alibaba.fastjson.JSON;
 
-import com.gzl.base.common.model.user.UseBaseRequest;
-import com.gzl.base.common.model.user.UseBaseResponse;
 import com.gzl.uaa.dao.UserDao;
-import com.gzl.uaa.entity.UseBase;
-import com.gzl.uaa.mapper.UseBaseMapper;
 import com.gzl.uaa.model.UserDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +15,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author Administrator

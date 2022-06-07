@@ -16,7 +16,7 @@
     </sql>
 
 
-    <select id="selectUseInfo" parameterType="com.gzl.base.common.model.user.UseBaseRequest" resultType="com.gzl.base.common.model.user.UseBaseResponse">
+    <select id="selectUseInfo" parameterType="com.gzl.common.model.user.UseBaseRequest" resultType="com.gzl.common.model.user.UseBaseResponse">
         select A.*,B.role_id,C.role_name from use_base as A
         LEFT JOIN use_role as B
         on A.id=B.use_id

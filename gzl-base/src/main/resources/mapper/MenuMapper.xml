@@ -29,7 +29,7 @@
         id, parent_id, menu_name, show_name, path, component, visible, status, menu_type, perms, icon, del_flag, sort, remark, create_by, create_time, update_by, update_time
     </sql>
 
-    <select id="selectMenu" resultType="com.gzl.base.common.model.base.menu.MenuResponse">
+    <select id="selectMenu" resultType="com.gzl.common.model.base.menu.MenuResponse">
         select * from system_menu
         <where>
             <if test="menuName!=null and menuName=''">menu_name=#{menuName}</if>

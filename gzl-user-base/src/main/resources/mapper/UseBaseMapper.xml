@@ -16,7 +16,7 @@
     </sql>
 
 
-    <select id="selectUseInfo" parameterType="com.gzl.base.common.model.user.UseBaseRequest" resultType="com.gzl.base.common.model.user.UseBaseResponse">
+    <select id="selectUseInfo" parameterType="com.gzl.common.model.user.UseBaseRequest" resultType="com.gzl.common.model.user.UseBaseResponse">
         select * from use_base
         <where>
             <if test="accountName!=null and accountName!=''">and account_name=#{accountName}</if>

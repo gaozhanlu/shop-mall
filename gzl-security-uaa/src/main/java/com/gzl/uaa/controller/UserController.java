@@ -1,6 +1,6 @@
 package com.gzl.uaa.controller;
 
-import com.gzl.base.common.result.ViewResult;
+import com.gzl.common.result.ViewResult;
 import com.gzl.uaa.entity.User;
 import com.gzl.uaa.service.UserService;
 import lombok.extern.slf4j.Slf4j;

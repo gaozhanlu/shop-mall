@@ -1,9 +1,8 @@
 package com.gzl.uaa.controller;
 
-import com.gzl.base.common.model.user.UseBaseRequest;
-import com.gzl.base.common.model.user.UseBaseResponse;
-import com.gzl.base.common.result.ViewResult;
-import com.gzl.base.common.util.EntityCopyUtil;
+import com.gzl.common.model.user.UseBaseRequest;
+import com.gzl.common.model.user.UseBaseResponse;
+import com.gzl.common.result.ViewResult;
 
 import com.gzl.uaa.service.UseBaseService;
 import io.swagger.annotations.Api;

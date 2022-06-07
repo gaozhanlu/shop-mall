@@ -1,9 +1,8 @@
 package com.gzl.user.service;
 
 
-import com.baomidou.dynamic.datasource.annotation.DS;
-import com.gzl.base.common.model.user.UseBaseRequest;
-import com.gzl.base.common.model.user.UseBaseResponse;
+import com.gzl.common.model.user.UseBaseRequest;
+import com.gzl.common.model.user.UseBaseResponse;
 import com.gzl.user.entity.UseBase;
 import com.baomidou.mybatisplus.extension.service.IService;
 

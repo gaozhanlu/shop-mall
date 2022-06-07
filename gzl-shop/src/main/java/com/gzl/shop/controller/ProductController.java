@@ -2,9 +2,9 @@ package com.gzl.shop.controller;
 
 
 
-import com.gzl.base.common.model.shop.product.ProductRequest;
-import com.gzl.base.common.model.shop.product.ProductResponse;
-import com.gzl.base.common.result.ViewResult;
+import com.gzl.common.model.shop.product.ProductRequest;
+import com.gzl.common.model.shop.product.ProductResponse;
+import com.gzl.common.result.ViewResult;
 import com.gzl.shop.entity.Product;
 import com.gzl.shop.service.ProductService;
 import io.swagger.annotations.ApiOperation;

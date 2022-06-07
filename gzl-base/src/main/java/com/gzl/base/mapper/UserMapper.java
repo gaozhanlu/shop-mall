@@ -4,8 +4,11 @@ import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.gzl.base.common.model.base.user.*;
 import com.gzl.base.entity.User;
+import com.gzl.common.model.base.user.UserRequest;
+import com.gzl.common.model.base.user.UserResponse;
+import com.gzl.common.model.base.user.UserRoleAuthorityRequest;
+import com.gzl.common.model.base.user.UserRoleAuthorityResponse;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

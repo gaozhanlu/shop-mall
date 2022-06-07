@@ -2,9 +2,9 @@ package com.gzl.user.service.impl;
 
 
 import com.baomidou.dynamic.datasource.annotation.DS;
-import com.gzl.base.common.model.user.UseBaseRequest;
-import com.gzl.base.common.model.user.UseBaseResponse;
-import com.gzl.base.common.util.EntityCopyUtil;
+import com.gzl.common.model.user.UseBaseRequest;
+import com.gzl.common.model.user.UseBaseResponse;
+import com.gzl.common.util.EntityCopyUtil;
 import com.gzl.user.entity.UseBase;
 import com.gzl.user.mapper.UseBaseMapper;
 import com.gzl.user.service.UseBaseService;

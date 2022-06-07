@@ -2,9 +2,9 @@ package com.gzl.base.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
-import com.gzl.base.common.model.base.menu.MenuRequest;
-import com.gzl.base.common.model.base.menu.MenuResponse;
-import com.gzl.base.common.util.EntityCopyUtil;
+import com.gzl.common.model.base.menu.MenuRequest;
+import com.gzl.common.model.base.menu.MenuResponse;
+import com.gzl.common.util.EntityCopyUtil;
 import com.gzl.base.entity.Menu;
 import com.gzl.base.mapper.MenuMapper;
 import com.gzl.base.service.MenuService;

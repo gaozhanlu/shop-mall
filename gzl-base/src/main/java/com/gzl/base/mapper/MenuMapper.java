@@ -1,8 +1,8 @@
 package com.gzl.base.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.gzl.base.common.model.base.menu.MenuRequest;
-import com.gzl.base.common.model.base.menu.MenuResponse;
+import com.gzl.common.model.base.menu.MenuRequest;
+import com.gzl.common.model.base.menu.MenuResponse;
 import com.gzl.base.entity.Menu;
 import org.apache.ibatis.annotations.Mapper;
 

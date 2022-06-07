@@ -1,10 +1,10 @@
 package com.gzl.base.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.gzl.base.common.model.base.role.RoleAuthorityResponse;
-import com.gzl.base.common.model.base.role.RoleRequest;
-import com.gzl.base.common.model.base.role.RoleResponse;
-import com.gzl.base.common.model.base.user.UserRoleAuthorityRequest;
+import com.gzl.common.model.base.role.RoleAuthorityResponse;
+import com.gzl.common.model.base.role.RoleRequest;
+import com.gzl.common.model.base.role.RoleResponse;
+import com.gzl.common.model.base.user.UserRoleAuthorityRequest;
 import com.gzl.base.entity.Role;
 
 import java.util.List;
