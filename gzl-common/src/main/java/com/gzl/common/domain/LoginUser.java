@@ -1,7 +1,8 @@
 package com.gzl.common.domain;
 
-import com.alibaba.fastjson.annotation.JSONField;
 
+
+import com.alibaba.fastjson.annotation.JSONField;
 import com.gzl.common.model.security.UserDetail;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

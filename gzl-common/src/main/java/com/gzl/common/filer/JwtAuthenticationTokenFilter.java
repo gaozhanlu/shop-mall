@@ -1,5 +1,6 @@
 package com.gzl.common.filer;
 
+
 import com.gzl.common.domain.LoginUser;
 import com.gzl.common.util.JwtUtil;
 import com.gzl.common.util.redis.RedisCache;
@@ -42,7 +43,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
         // 解析token
         String id;
         try {
-            Claims claims = JwtUtil.parseJWT(token);
+            Claims claims =JwtUtil.parseJWT(token);
             id = claims.getSubject();
         } catch (Exception e) {
             e.printStackTrace();
