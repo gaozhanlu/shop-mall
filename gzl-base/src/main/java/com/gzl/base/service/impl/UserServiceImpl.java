@@ -3,6 +3,7 @@ package com.gzl.base.service.impl;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.gzl.base.manger.SendEmail;
 import com.gzl.common.domain.LoginUser;
 import com.gzl.common.model.base.user.UserRequest;
 import com.gzl.common.model.base.user.UserResponse;
@@ -67,9 +68,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return userMapper.selectUser(userRequest);
     }
 
+    @Autowired
+    private SendEmail sendEmail;
 
     @Override
     public ViewResult login(User user) {
+        sendEmail.sendBrandUpdate();
         // 认证的时候需要Authentication对象，所以需要一个Authentication的实现类，这里选择了UsernamePasswordAuthenticationToken
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(user.getUserName(),user.getPassword());

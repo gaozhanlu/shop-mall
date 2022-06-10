@@ -93,7 +93,7 @@
         </logger>
 
         <!--不打印某个类下的日志-->
-        <logger name="com.gzl.shop.mapper.ProductMapper.batchInsertOrUpdateProduct" level="OFF"/>
+<!--        <logger name="com.gzl.shop.mapper.ProductMapper.batchInsertOrUpdateProduct" level="OFF"/>-->
     </springProfile>
 
 

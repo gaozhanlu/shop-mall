@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>平台高校品牌折扣修改通知</title>
+    <style>
+        #welcome{
+            width: 900px;
+            margin: 0 auto;
+        }
+        .content{
+            text-indent: 2rem;
+        }
+    </style>
+</head>
+<body>
+<div id="welcome">
+    <p>
+        <span th:text="${updateName}"/> 修改了<span th:text="${cloudName}"/> 上 <span th:text="${schoolName}"/> 的 <span th:text="${brandName}"/>
+        品牌 折扣  修改后的折扣为 <span th:text="${brandOff}"/></p>
+</div>
+</body>
+</html>
