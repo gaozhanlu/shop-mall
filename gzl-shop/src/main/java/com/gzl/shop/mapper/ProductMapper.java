@@ -1,6 +1,8 @@
 package com.gzl.shop.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.gzl.common.model.shop.product.EsProductResponse;
 import com.gzl.common.model.shop.product.ProductRequest;
 import com.gzl.common.model.shop.product.ProductResponse;
 import com.gzl.shop.entity.Product;
@@ -28,4 +30,6 @@ public interface ProductMapper extends BaseMapper<Product> {
     void  insertOrUpdateProduct(ProductRequest productRequest);
 
     void  batchInsertOrUpdateProduct(List<ProductRequest> productRequestList);
+
+    List<EsProductResponse> selectEsProduct(Page<EsProductResponse> pagination);
 }

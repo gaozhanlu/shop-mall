@@ -50,6 +50,12 @@
         </where>
     </select>
 
+    <select id="selectEsProduct" parameterType="com.gzl.common.model.shop.product.EsProductRequest" resultType="com.gzl.common.model.shop.product.EsProductResponse">
+        select pid, sid, cn_name, en_name, cas, goods_no, spec, supervision_cond, list_price, off_price, promotion_price, promotion_start_time, promotion_end_time, stock_num from shop_product
+    </select>
+
+
+
     <insert id="insertOrUpdateProduct">
         INSERT INTO shop_product(pid,sid,cn_name,en_name,cas,goods_no,spec,supervision_cond,list_price,
                                  off_price,promotion_price,promotion_start_time,promotion_end_time,stock_detail,transport_cond,

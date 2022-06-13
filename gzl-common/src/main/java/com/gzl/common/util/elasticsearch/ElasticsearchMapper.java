@@ -7,7 +7,7 @@ public interface ElasticsearchMapper {
 
     List<String> selectIndex(String indexName) throws IOException;
     //创建索引
-    void createIndex(String indexName) throws IOException;
+    boolean createIndex(String indexName) throws IOException;
     //删除索引
     boolean deleteIndex(String indexName) throws IOException;
 }

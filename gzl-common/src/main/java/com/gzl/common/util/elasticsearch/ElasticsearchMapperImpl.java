@@ -34,12 +34,13 @@ public class ElasticsearchMapperImpl implements ElasticsearchMapper{
 
     //创建索引
     @Override
-    public void createIndex(String indexName) throws IOException {
+    public boolean createIndex(String indexName) throws IOException {
         // 1、创建索引请求
         CreateIndexRequest createIndexRequest=new CreateIndexRequest(indexName);
         // 2、客户端执行请求 IndicesClient,请求后获得响应
         CreateIndexResponse createIndexResponse = client.indices().create(createIndexRequest, RequestOptions.DEFAULT);
         log.info(createIndexResponse.toString());
+        return true;
     }
     //删除建索引
     @Override
@@ -48,6 +49,5 @@ public class ElasticsearchMapperImpl implements ElasticsearchMapper{
         AcknowledgedResponse delete = client.indices().delete(request, RequestOptions.DEFAULT);
         return delete.isAcknowledged();
     }
-
     //查找索引
 }
