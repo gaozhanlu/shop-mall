@@ -53,7 +53,7 @@ public class CodeGenerator {
         // 2、数据源配置
         DataSourceConfig dataSourceConfig = new DataSourceConfig();// 创建数据源配置
         dataSourceConfig
-                .setUrl("jdbc:mysql://192.168.42.119:3306/shop_mall?userSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC")
+                .setUrl("jdbc:mysql://192.168.42.118:3306/shop_mall?userSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC")
                 .setDriverName("com.mysql.cj.jdbc.Driver")
                 .setUsername("root")
                 .setPassword("root")
@@ -73,7 +73,7 @@ public class CodeGenerator {
         // 4、策略配置
         StrategyConfig strategyConfig = new StrategyConfig();
         strategyConfig
-                .setTablePrefix("shop_") //生成实体时去掉表前缀,eg:表_one就会变成one
+                .setTablePrefix("order_") //生成实体时去掉表前缀,eg:表_one就会变成one
                 .setCapitalMode(true)// 开启全局大写命名ssss
                 .setInclude(scanner("表名，多个英文逗号分割").split(","))// 设置要映射的表
                 .setNaming(NamingStrategy.underline_to_camel)// 下划线到驼峰的命名方式

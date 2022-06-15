@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gzl.shop.mapper.CartMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.gzl.shop.entity.Cart">
+        <id column="id" property="id" />
+        <result column="cn_name" property="cnName" />
+        <result column="cas" property="cas" />
+        <result column="brand" property="brand" />
+        <result column="goods_no" property="goodsNo" />
+        <result column="spec" property="spec" />
+        <result column="list" property="list" />
+        <result column="create_time" property="createTime" />
+        <result column="supervision_cond" property="supervisionCond" />
+        <result column="pid" property="pid" />
+        <result column="num" property="num" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, cn_name, cas, brand, goods_no, spec, list, create_time, supervision_cond, pid, num
+    </sql>
+
+</mapper>

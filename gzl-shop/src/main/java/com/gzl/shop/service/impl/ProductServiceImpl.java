@@ -7,10 +7,13 @@ import com.gzl.common.util.EntityCopyUtil;
 import com.gzl.shop.entity.Product;
 import com.gzl.shop.mapper.ProductMapper;
 import com.gzl.shop.service.ProductService;
+import io.swagger.models.auth.In;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * <p>
@@ -34,7 +37,31 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
 
     @Override
     public List<ProductResponse> selectProduct(ProductRequest productRequest) {
-        return productMapper.selectProduct(productRequest);
+        List<ProductResponse> productResponseList=new ArrayList<>();
+        List<ProductResponse> productResponses=productMapper.selectProduct(productRequest);
+
+        //page size num
+        Integer num=productResponses.size();
+        Integer size=488;
+        Integer page=1;
+//        if(num>0){
+//            int currIdx = (page > 1 ? (page - 1) * size : 0);
+//            for (int i = 0; i < size && i < productResponses.size() - currIdx; i++) {
+//                ProductResponse data = productResponses.get(currIdx + i);
+//                productResponseList.add(data);
+//            }
+//        }
+
+        productResponseList=productResponses.stream().skip((page-1)*size).limit(size).collect(Collectors.toList());
+
+
+
+
+
+
+
+
+        return productResponseList;
     }
 
     @Override
