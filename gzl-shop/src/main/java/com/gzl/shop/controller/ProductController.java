@@ -9,7 +9,6 @@ import com.gzl.shop.entity.Product;
 import com.gzl.shop.manger.product.ElasticsearchProduct;
 import com.gzl.shop.service.ProductService;
 import io.swagger.annotations.ApiOperation;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -67,11 +66,29 @@ public class ProductController {
         return ViewResult.success(null);
     }
 
+
     @ApiOperation(value = "批量添加或更新产品信息")
     @RequestMapping(value = "/batchInsertOrUpdateProduct", method = RequestMethod.POST)
     public ViewResult batchInsertOrUpdateProduct(@RequestBody List<ProductRequest> productRequestList){
        productService.batchInsertOrUpdateProduct(productRequestList);
+       return ViewResult.success(null);
+    }
+
+
+    @ApiOperation(value = "测试批量添加或更新产品信息")
+    @RequestMapping(value = "/insertOrUpdateBatch", method = RequestMethod.POST)
+    public ViewResult insertOrUpdateBatch(@RequestBody List<Product> productList){
+        productService.insertOrUpdateBatch(productList);
         return ViewResult.success(null);
     }
+
+
+    @ApiOperation(value = "批量更新产品信息")
+    @RequestMapping(value = "/batchUpdateProduct", method = RequestMethod.POST)
+    public ViewResult batchUpdateProduct(@RequestBody List<ProductRequest> productRequestList){
+        productService.batchUpdateProduct(productRequestList);
+        return ViewResult.success(null);
+    }
+
 }
 

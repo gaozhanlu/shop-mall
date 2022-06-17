@@ -1,13 +1,16 @@
 package com.gzl.shop.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gzl.common.model.shop.product.ProductRequest;
 import com.gzl.common.model.shop.product.ProductResponse;
 import com.gzl.common.util.EntityCopyUtil;
+import com.gzl.common.util.mybatisPlus.RootMapper;
 import com.gzl.shop.entity.Product;
 import com.gzl.shop.mapper.ProductMapper;
 import com.gzl.shop.service.ProductService;
 import io.swagger.models.auth.In;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -54,13 +57,6 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
 
         productResponseList=productResponses.stream().skip((page-1)*size).limit(size).collect(Collectors.toList());
 
-
-
-
-
-
-
-
         return productResponseList;
     }
 
@@ -73,4 +69,24 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
     public void batchInsertOrUpdateProduct(List<ProductRequest> productRequestList) {
         productMapper.batchInsertOrUpdateProduct( productRequestList);
     }
+
+
+    @Override
+    public int insertOrUpdateBatch(List<Product> productList) {
+        ProductRequest productRequest=new ProductRequest();
+        List<ProductResponse> productResponses= productMapper.selectProduct(productRequest);
+        List<Product> products= EntityCopyUtil.toList(productResponses,Product.class);
+        return baseMapper.updateBatch(products);
+    }
+
+    @Override
+    public int batchUpdateProduct(List<ProductRequest> productRequestList) {
+        ProductRequest productRequest=new ProductRequest();
+        List<ProductResponse> productResponses= productMapper.selectProduct(productRequest);
+        List<ProductRequest> productRequests= EntityCopyUtil.toList(productResponses,ProductRequest.class);
+        return baseMapper.batchReplaceProduct(productRequests);
+    }
+
+
 }
+

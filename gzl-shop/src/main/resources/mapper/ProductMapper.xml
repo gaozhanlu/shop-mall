@@ -35,7 +35,9 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, pid, sid, cn_name, en_name, cas, goods_no, spec, supervision_cond, list_price, off_price, promotion_price, promotion_start_time, promotion_end_time, stock_detail, transport_cond, storage_temperature, delivery, stock_num, dmg_level, mdl, data_source, third_code, create_time, update_time, update_use, stats
+        id, pid, sid, cn_name, en_name, cas, goods_no, spec, supervision_cond, list_price, off_price, promotion_price,
+promotion_start_time, promotion_end_time, stock_detail, transport_cond, storage_temperature, delivery, stock_num, dmg_level,
+mdl, data_source, third_code, create_time, update_time, update_use, stats
     </sql>
 
     <select id="selectProduct" parameterType="com.gzl.common.model.shop.product.ProductRequest" resultType="com.gzl.common.model.shop.product.ProductResponse">
@@ -47,15 +49,13 @@
             <if test="brand!=null and brand!=''">and brand=#{brand}</if>
             <if test="goodsNo!=null and goodsNo!=''">and goods_no=#{goodsNo}</if>
             <if test="spec!=null and spec!=''">and spec=#{spec}</if>
-           1 limit 0,100;
+           1 limit 0,10;
         </where>
     </select>
 
     <select id="selectEsProduct" parameterType="com.gzl.common.model.shop.product.EsProductRequest" resultType="com.gzl.common.model.shop.product.EsProductResponse">
         select pid, sid, cn_name, en_name, cas, goods_no, spec, supervision_cond, list_price, off_price, promotion_price, promotion_start_time, promotion_end_time, stock_num from shop_product
     </select>
-
-
 
     <insert id="insertOrUpdateProduct">
         INSERT INTO shop_product(pid,sid,cn_name,en_name,cas,goods_no,spec,supervision_cond,list_price,
@@ -137,5 +137,45 @@
             stats=VALUES(stats)
     </insert>
 
+
+    <update id="batchUpdateProduct" parameterType="java.util.List">
+        update shop_product
+        set list_price =
+        <foreach collection="list" item="item" index="index" separator=" " open="case pid" close="end">
+            when #{item.pid} THEN #{item.listPrice}
+        </foreach>
+        ,off_price =
+        <foreach collection="list" item="item" index="index" separator=" " open="case pid" close="end">
+            when #{item.pid} THEN #{item.offPrice}
+        </foreach>
+        ,promotion_price =
+        <foreach collection="list" item="item" index="index" separator=" " open="case pid" close="end">
+            when #{item.pid} THEN #{item.promotionPrice}
+        </foreach>
+        ,stock_detail =
+        <foreach collection="list" item="item" index="index" separator=" " open="case pid" close="end">
+            when #{item.pid} THEN #{item.stockDetail}
+        </foreach>
+        ,stock_num =
+        <foreach collection="list" item="item" index="index" separator=" " open="case pid" close="end">
+            when #{item.pid} THEN #{item.stockNum}
+        </foreach>
+        ,stats =
+        <foreach collection="list" item="item" index="index" separator=" " open="case pid" close="end">
+            when #{item.pid} THEN #{item.stats}
+        </foreach>
+        where pid in
+        <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+            #{item.pid}
+        </foreach>
+    </update>
+
+    <insert id="batchReplaceProduct" parameterType="java.util.List">
+        replace into shop_product
+        (pid,list_price,off_price,promotion_price,stock_detail,stock_num,stats) values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.pid},#{item.listPrice},#{item.offPrice},#{item.promotionPrice},#{item.stockDetail},#{item.stockNum},#{item.stats})
+        </foreach>
+    </insert>
 
 </mapper>
