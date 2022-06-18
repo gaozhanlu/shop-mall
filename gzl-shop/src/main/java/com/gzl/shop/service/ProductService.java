@@ -28,4 +28,7 @@ public interface ProductService extends IService<Product> {
     int insertOrUpdateBatch(List<Product> productList);
 
     int batchUpdateProduct(List<ProductRequest> productRequestList);
+
+
+    int batchInsertProductTemporaryTable(List<ProductRequest> productRequestList);
 }

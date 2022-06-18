@@ -12,6 +12,7 @@ import com.gzl.shop.service.ProductService;
 import io.swagger.models.auth.In;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -85,6 +86,25 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         List<ProductResponse> productResponses= productMapper.selectProduct(productRequest);
         List<ProductRequest> productRequests= EntityCopyUtil.toList(productResponses,ProductRequest.class);
         return baseMapper.batchReplaceProduct(productRequests);
+    }
+
+    @Override
+    @Transactional
+    public int batchInsertProductTemporaryTable(List<ProductRequest> productRequestList) {
+        ProductRequest productRequest=new ProductRequest();
+        List<ProductResponse> productResponses= productMapper.selectProduct(productRequest);
+        List<ProductRequest> productRequests= EntityCopyUtil.toList(productResponses,ProductRequest.class);
+
+        productMapper.createTemporaryTable("temporaryTable");
+        int num=productMapper.batchInsertProductTemporaryTable(productRequests);
+
+        int numUpdate=productMapper.batchUpdateProductByTemporaryTable();
+        try {
+            Thread.sleep(1000000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return num;
     }
 
 

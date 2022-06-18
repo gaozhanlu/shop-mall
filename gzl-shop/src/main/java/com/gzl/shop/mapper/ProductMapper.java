@@ -34,4 +34,13 @@ public interface ProductMapper extends RootMapper<Product> {
     int batchUpdateProduct(List<ProductRequest> productRequestList);
 
     int batchReplaceProduct(List<ProductRequest> productRequestList);
+
+    void createTemporaryTable(String tableName);
+
+    void deleteTemporaryTable(String tableName);
+
+    int batchInsertProductTemporaryTable(List<ProductRequest> productRequestList);
+
+
+    int batchUpdateProductByTemporaryTable();
 }

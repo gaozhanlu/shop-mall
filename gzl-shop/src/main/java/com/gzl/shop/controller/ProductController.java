@@ -78,6 +78,7 @@ public class ProductController {
     @ApiOperation(value = "测试批量添加或更新产品信息")
     @RequestMapping(value = "/insertOrUpdateBatch", method = RequestMethod.POST)
     public ViewResult insertOrUpdateBatch(@RequestBody List<Product> productList){
+
         productService.insertOrUpdateBatch(productList);
         return ViewResult.success(null);
     }
@@ -86,7 +87,8 @@ public class ProductController {
     @ApiOperation(value = "批量更新产品信息")
     @RequestMapping(value = "/batchUpdateProduct", method = RequestMethod.POST)
     public ViewResult batchUpdateProduct(@RequestBody List<ProductRequest> productRequestList){
-        productService.batchUpdateProduct(productRequestList);
+        productService.batchInsertProductTemporaryTable(productRequestList);
+//        productService.batchUpdateProduct(productRequestList);
         return ViewResult.success(null);
     }
 

@@ -178,4 +178,64 @@ mdl, data_source, third_code, create_time, update_time, update_use, stats
         </foreach>
     </insert>
 
+    <!--创建一个临时表，字段完全赋值产品表字段-->
+    <update id="createTemporaryTable" parameterType="java.lang.String">
+        create temporary table ${tableName} (
+        `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增id',
+        `pid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '产品标识唯一',
+        `sid` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '供应商sid',
+        `cn_name` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '中文名',
+        `en_name` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '英文名',
+        `cas` varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'cas号',
+        `brand` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '品牌名字',
+        `goods_no` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '货号',
+        `spec` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '规格',
+        `supervision_cond` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '监管条件',
+        `list_price` decimal(15, 2) NULL DEFAULT NULL COMMENT '目录价',
+        `off_price` decimal(15, 2) NULL DEFAULT NULL COMMENT '折扣价',
+        `promotion_price` decimal(15, 2) NULL DEFAULT NULL COMMENT '促销价',
+        `promotion_start_time` datetime(0) NULL DEFAULT NULL COMMENT '促销开始时间',
+        `promotion_end_time` datetime(0) NULL DEFAULT NULL COMMENT '促销结束时间',
+        `stock_detail` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '库存详情',
+        `transport_cond` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '运输条件',
+        `storage_temperature` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '存储温度',
+        `delivery` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '预计交货期',
+        `stock_num` int(11) NULL DEFAULT NULL COMMENT '库存数量',
+        `dmg_level` char(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '危险品等级',
+        `mdl` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'mdl',
+        `data_source` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '产品来源   接口  导入  添加方式',
+        `third_code` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '第三方编码',
+        `create_time` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+        `update_time` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+        `update_use` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '更新人',
+        `stats` char(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '状态 上下架 等等',
+        PRIMARY KEY (`id`) USING BTREE,
+        UNIQUE INDEX `pid`(`pid`) USING BTREE COMMENT 'pid未一',
+        INDEX `cas`(`cas`) USING BTREE,
+        INDEX `brand`(`brand`) USING BTREE,
+        INDEX `goods_no`(`goods_no`) USING BTREE
+        )  ENGINE = InnoDB  CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+    </update>
+
+
+    <update id="deleteTemporaryTable" parameterType="java.lang.String">
+        drop temporary table if exists #{tableName}
+    </update>
+
+    <insert id="batchInsertProductTemporaryTable" parameterType="java.util.List">
+        INSERT INTO temporaryTable (pid,sid,cn_name,en_name,cas,goods_no,spec,supervision_cond,list_price,off_price,promotion_price,
+        promotion_start_time,promotion_end_time,stock_detail,transport_cond,storage_temperature,delivery,stock_num,dmg_level,mdl,
+        data_source,third_code,create_time,update_time,update_use,stats)
+        values
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.pid},#{item.sid},#{item.cnName},#{item.enName},#{item.cas},#{item.goodsNo},#{item.spec},#{item.supervisionCond},
+            #{item.listPrice},#{item.offPrice},#{item.promotionPrice},#{item.promotionStartTime},#{item.promotionEndTime},
+            #{item.stockDetail},#{item.transportCond},#{item.storageTemperature},#{item.delivery},#{item.stockNum},#{item.dmgLevel},
+            #{item.mdl},#{item.dataSource},#{item.thirdCode},#{item.createTime},#{item.updateTime},#{item.updateUse},#{item.stats})
+        </foreach>
+    </insert>
+
+    <update id="batchUpdateProductByTemporaryTable">
+        UPDATE shop_product A,temporaryTable B  set A.sid=B.sid,A.list_price=B.list_price,A.promotion_price=B.promotion_price where A.pid=B.pid
+    </update>
 </mapper>
