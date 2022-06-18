@@ -1,7 +1,7 @@
 package com.gzl.order.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.gzl.shop.entity.Cart;
+import com.gzl.order.entity.Cart;
 
 /**
  * <p>
@@ -9,7 +9,7 @@ import com.gzl.shop.entity.Cart;
  * </p>
  *
  * @author gzl
- * @since 2022-06-15
+ * @since 2022-06-18
  */
 public interface CartService extends IService<Cart> {
 

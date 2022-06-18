@@ -1,7 +1,7 @@
 package com.gzl.order.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.gzl.shop.entity.PurchaseProduct;
+import com.gzl.order.entity.PurchaseProduct;
 
 /**
  * <p>
@@ -9,7 +9,7 @@ import com.gzl.shop.entity.PurchaseProduct;
  * </p>
  *
  * @author gzl
- * @since 2022-06-15
+ * @since 2022-06-18
  */
 public interface PurchaseProductService extends IService<PurchaseProduct> {
 

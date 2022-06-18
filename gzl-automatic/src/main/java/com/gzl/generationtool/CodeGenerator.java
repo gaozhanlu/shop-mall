@@ -62,7 +62,7 @@ public class CodeGenerator {
         // 3、包配置
         PackageConfig packageConfig = new PackageConfig();
         packageConfig
-                .setParent("com.gzl.shop")
+                .setParent("com.gzl.order")
                 .setEntity("entity")
                 .setController("controller")
                 .setService("service")

@@ -1,9 +1,9 @@
 package com.gzl.order.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.gzl.shop.entity.Purchase;
-import com.gzl.shop.mapper.PurchaseMapper;
-import com.gzl.shop.service.PurchaseService;
+import com.gzl.order.entity.Purchase;
+import com.gzl.order.mapper.PurchaseMapper;
+import com.gzl.order.service.PurchaseService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author gzl
- * @since 2022-06-15
+ * @since 2022-06-18
  */
 @Service
 public class PurchaseServiceImpl extends ServiceImpl<PurchaseMapper, Purchase> implements PurchaseService {
