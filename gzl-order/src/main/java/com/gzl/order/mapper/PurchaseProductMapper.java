@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.gzl.common.model.order.product.PurchaseProductRequest;
 import com.gzl.common.model.order.product.PurchaseProductResponse;
 import com.gzl.order.entity.PurchaseProduct;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ import java.util.List;
  * @author gzl
  * @since 2022-06-18
  */
+@Mapper
 public interface PurchaseProductMapper extends BaseMapper<PurchaseProduct> {
 
     List<PurchaseProductResponse> selectPurchaseProduct(PurchaseProductRequest purchaseProductRequest);

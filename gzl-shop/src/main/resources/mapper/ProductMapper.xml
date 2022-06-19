@@ -238,4 +238,20 @@ mdl, data_source, third_code, create_time, update_time, update_use, stats
     <update id="batchUpdateProductByTemporaryTable">
         UPDATE shop_product A,temporaryTable B  set A.sid=B.sid,A.list_price=B.list_price,A.promotion_price=B.promotion_price where A.pid=B.pid
     </update>
+
+
+
+    <select id="selectProductStorageDetail" parameterType="com.gzl.common.model.shop.product.ProductStorageDetailRequest"
+            resultType="com.gzl.common.model.shop.product.ProductStorageDetailResponse">
+        select * from shop_product
+        <where>
+            <if test="pidList!=null and pidList.size()>0">
+                and pid in
+                <foreach collection="pidList"  index="index" item="item" open="(" separator="," close=")"  >
+                    #{item}
+                </foreach>
+            </if>
+        </where>
+
+    </select>
 </mapper>

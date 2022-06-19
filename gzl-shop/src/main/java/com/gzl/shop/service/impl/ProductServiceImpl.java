@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gzl.common.model.shop.product.ProductRequest;
 import com.gzl.common.model.shop.product.ProductResponse;
+import com.gzl.common.model.shop.product.ProductStorageDetailRequest;
+import com.gzl.common.model.shop.product.ProductStorageDetailResponse;
 import com.gzl.common.util.EntityCopyUtil;
 import com.gzl.common.util.mybatisPlus.RootMapper;
 import com.gzl.shop.entity.Product;
@@ -105,6 +107,11 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
             e.printStackTrace();
         }
         return num;
+    }
+
+    @Override
+    public List<ProductStorageDetailResponse> selectProductStorageDetail(ProductStorageDetailRequest productStorageDetailRequest) {
+        return productMapper.selectProductStorageDetail(productStorageDetailRequest);
     }
 
 

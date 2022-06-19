@@ -1,9 +1,11 @@
 package com.gzl.common.model.order.purchase;
 
+import com.gzl.common.model.order.product.PurchaseProductRequest;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 public class PurchaseRequest {
@@ -35,4 +37,7 @@ public class PurchaseRequest {
 
     @ApiModelProperty(value = "地址")
     private Integer addressId;
+
+    @ApiModelProperty(value = "购买产品的信息")
+    private List<PurchaseProductRequest> purchaseProductRequestList;
 }

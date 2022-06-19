@@ -2,9 +2,7 @@ package com.gzl.shop.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.gzl.common.model.shop.product.EsProductResponse;
-import com.gzl.common.model.shop.product.ProductRequest;
-import com.gzl.common.model.shop.product.ProductResponse;
+import com.gzl.common.model.shop.product.*;
 import com.gzl.common.util.mybatisPlus.RootMapper;
 import com.gzl.shop.entity.Product;
 import org.apache.ibatis.annotations.Mapper;
@@ -43,4 +41,6 @@ public interface ProductMapper extends RootMapper<Product> {
 
 
     int batchUpdateProductByTemporaryTable();
+
+    List<ProductStorageDetailResponse> selectProductStorageDetail(ProductStorageDetailRequest productStorageDetailRequest);
 }

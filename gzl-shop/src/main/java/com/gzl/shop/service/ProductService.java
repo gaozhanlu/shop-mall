@@ -3,6 +3,8 @@ package com.gzl.shop.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.gzl.common.model.shop.product.ProductRequest;
 import com.gzl.common.model.shop.product.ProductResponse;
+import com.gzl.common.model.shop.product.ProductStorageDetailRequest;
+import com.gzl.common.model.shop.product.ProductStorageDetailResponse;
 import com.gzl.shop.entity.Product;
 
 import java.util.List;
@@ -31,4 +33,6 @@ public interface ProductService extends IService<Product> {
 
 
     int batchInsertProductTemporaryTable(List<ProductRequest> productRequestList);
+
+    List<ProductStorageDetailResponse> selectProductStorageDetail(ProductStorageDetailRequest productStorageDetailRequest);
 }

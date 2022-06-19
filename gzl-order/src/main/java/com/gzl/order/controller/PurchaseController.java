@@ -5,6 +5,7 @@ import com.gzl.common.model.order.purchase.PurchaseRequest;
 import com.gzl.common.model.order.purchase.PurchaseResponse;
 import com.gzl.common.result.ViewResult;
 import com.gzl.order.entity.Purchase;
+import com.gzl.order.manger.OrderBusiness;
 import com.gzl.order.service.PurchaseService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +31,14 @@ public class PurchaseController {
     @Autowired
     private PurchaseService purchaseService;
 
+    @Autowired
+    private OrderBusiness orderBusiness;
 
     @ApiOperation(value = "添加订单信息")
     @RequestMapping(value = "/savePurchase", method = RequestMethod.POST)
-    public ViewResult savePurchase(@RequestBody Purchase purchase){
-        PurchaseResponse purchaseResponse=purchaseService.savePurchase(purchase);
-        return ViewResult.success(purchaseResponse);
+    public ViewResult savePurchase(@RequestBody List<PurchaseRequest> purchaseRequestList){
+        orderBusiness.createOrder(purchaseRequestList);
+        return ViewResult.success(true);
     }
 
     @ApiOperation(value = "搜索订单信息")

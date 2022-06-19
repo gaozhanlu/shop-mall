@@ -4,6 +4,8 @@ package com.gzl.shop.controller;
 
 import com.gzl.common.model.shop.product.ProductRequest;
 import com.gzl.common.model.shop.product.ProductResponse;
+import com.gzl.common.model.shop.product.ProductStorageDetailRequest;
+import com.gzl.common.model.shop.product.ProductStorageDetailResponse;
 import com.gzl.common.result.ViewResult;
 import com.gzl.shop.entity.Product;
 import com.gzl.shop.manger.product.ElasticsearchProduct;
@@ -47,6 +49,13 @@ public class ProductController {
         List<ProductResponse> ProductResponses=productService.selectProduct(productRequest);
         return ViewResult.success(ProductResponses);
     }
+    @ApiOperation(value = "获取产品库存信息")
+    @RequestMapping(value = "/selectProductStorageDetail", method = RequestMethod.POST)
+    public ViewResult<List<ProductStorageDetailResponse>> selectProductStorageDetail(@RequestBody ProductStorageDetailRequest productStorageDetailRequest){
+        List<ProductStorageDetailResponse> productStorageDetailResponses=productService.selectProductStorageDetail(productStorageDetailRequest);
+        return ViewResult.success(productStorageDetailResponses);
+    }
+
 
 
     @ApiOperation(value = "添加或更新产品信息")
@@ -78,7 +87,6 @@ public class ProductController {
     @ApiOperation(value = "测试批量添加或更新产品信息")
     @RequestMapping(value = "/insertOrUpdateBatch", method = RequestMethod.POST)
     public ViewResult insertOrUpdateBatch(@RequestBody List<Product> productList){
-
         productService.insertOrUpdateBatch(productList);
         return ViewResult.success(null);
     }
