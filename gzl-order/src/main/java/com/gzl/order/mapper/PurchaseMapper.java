@@ -1,7 +1,11 @@
 package com.gzl.order.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.gzl.common.model.order.purchase.PurchaseRequest;
+import com.gzl.common.model.order.purchase.PurchaseResponse;
 import com.gzl.order.entity.Purchase;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +17,5 @@ import com.gzl.order.entity.Purchase;
  */
 public interface PurchaseMapper extends BaseMapper<Purchase> {
 
+    List<PurchaseResponse> selectPurchase(PurchaseRequest purchaseRequest);
 }

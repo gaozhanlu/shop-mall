@@ -1,7 +1,11 @@
 package com.gzl.order.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.gzl.common.model.order.purchase.PurchaseRequest;
+import com.gzl.common.model.order.purchase.PurchaseResponse;
 import com.gzl.order.entity.Purchase;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +17,7 @@ import com.gzl.order.entity.Purchase;
  */
 public interface PurchaseService extends IService<Purchase> {
 
+    PurchaseResponse savePurchase(Purchase purchase);
+
+    List<PurchaseResponse> selectPurchase(PurchaseRequest purchaseRequest);
 }

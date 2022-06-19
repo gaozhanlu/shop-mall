@@ -23,4 +23,12 @@
         id, order_sn, cn_name, cas, brand, goods_no, spec, list, create_time, supervision_cond, pid, num
     </sql>
 
+
+
+    <select id="selectPurchaseProduct" parameterType="com.gzl.common.model.order.product.PurchaseProductRequest">
+        select * from order_purchase_product
+        <where>
+            <if test="pid!=null and pid!=''">and pid=#{pid}</if>
+        </where>
+    </select>
 </mapper>

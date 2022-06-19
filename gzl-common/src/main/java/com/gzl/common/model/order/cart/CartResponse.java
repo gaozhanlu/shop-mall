@@ -1,34 +1,13 @@
-package com.gzl.order.entity;
+package com.gzl.common.model.order.cart;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-/**
- * <p>
- * 购物车表
- * </p>
- *
- * @author gzl
- * @since 2022-06-18
- */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@TableName("order_cart")
-@ApiModel(value="Cart对象", description="购物车表")
-public class Cart implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    @TableId(value = "id", type = IdType.AUTO)
+public class CartResponse {
     private Integer id;
 
     @ApiModelProperty(value = "产品名")
@@ -66,6 +45,4 @@ public class Cart implements Serializable {
 
     @ApiModelProperty(value = "订单人id")
     private Integer userId;
-
-
 }

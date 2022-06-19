@@ -1,7 +1,11 @@
 package com.gzl.order.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.gzl.common.model.order.cart.CartRequest;
+import com.gzl.common.model.order.cart.CartResponse;
 import com.gzl.order.entity.Cart;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +17,5 @@ import com.gzl.order.entity.Cart;
  */
 public interface CartMapper extends BaseMapper<Cart> {
 
+    List<CartResponse> selectCart(CartRequest cartRequest);
 }

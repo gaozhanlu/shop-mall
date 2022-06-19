@@ -21,5 +21,13 @@
     <sql id="Base_Column_List">
         id, cn_name, cas, brand, goods_no, spec, list, create_time, supervision_cond, pid, num
     </sql>
+    <select id="selectCart" parameterType="com.gzl.common.model.order.cart.CartRequest">
+        select * from order_cart
+        <where>
+            <if test="userId!=null and userId!=''">and user_id=#{userId}</if>
+        </where>
+
+    </select>
+
 
 </mapper>

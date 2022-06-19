@@ -21,4 +21,12 @@
         id, order_type, order_sn, user_id, user_name, supplier_id, supplier_name, creat_time, pay_type, address_id
     </sql>
 
+
+    <select id="selectPurchase" parameterType="com.gzl.common.model.order.purchase.PurchaseRequest">
+        select * from order_purchase
+        <where>
+            <if test="userId!=null and userId!=''">and user_id=#{userId}</if>
+        </where>
+
+    </select>
 </mapper>

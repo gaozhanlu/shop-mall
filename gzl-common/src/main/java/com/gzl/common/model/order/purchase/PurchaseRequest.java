@@ -1,34 +1,12 @@
-package com.gzl.order.entity;
+package com.gzl.common.model.order.purchase;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
-/**
- * <p>
- * 采购订单表
- * </p>
- *
- * @author gzl
- * @since 2022-06-18
- */
 @Data
-@EqualsAndHashCode(callSuper = false)
-@TableName("order_purchase")
-@ApiModel(value="Purchase对象", description="采购订单表")
-public class Purchase implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
-    @ApiModelProperty(value = "自增主键")
-    @TableId(value = "id", type = IdType.AUTO)
+public class PurchaseRequest {
     private Integer id;
 
     @ApiModelProperty(value = "订单类型")
@@ -57,6 +35,4 @@ public class Purchase implements Serializable {
 
     @ApiModelProperty(value = "地址")
     private Integer addressId;
-
-
 }
