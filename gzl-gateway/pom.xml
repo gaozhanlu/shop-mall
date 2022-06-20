@@ -58,10 +58,7 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
         </dependency>
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>gzl-common</artifactId>
