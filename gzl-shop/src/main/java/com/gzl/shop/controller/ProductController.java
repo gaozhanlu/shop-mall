@@ -6,9 +6,11 @@ import com.gzl.common.model.shop.product.ProductRequest;
 import com.gzl.common.model.shop.product.ProductResponse;
 import com.gzl.common.model.shop.product.ProductStorageDetailRequest;
 import com.gzl.common.model.shop.product.ProductStorageDetailResponse;
+import com.gzl.common.model.util.ReflexRequest;
 import com.gzl.common.result.ViewResult;
 import com.gzl.shop.entity.Product;
 import com.gzl.shop.manger.product.ElasticsearchProduct;
+import com.gzl.shop.manger.reflex.ReflexMethod;
 import com.gzl.shop.service.ProductService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,6 +101,17 @@ public class ProductController {
 //        productService.batchUpdateProduct(productRequestList);
         return ViewResult.success(null);
     }
+
+    @Autowired
+    private ReflexMethod reflexMethod;
+
+    @ApiOperation(value = "动态调用方法")
+    @RequestMapping(value = "/dynamicMethod", method = RequestMethod.POST)
+    public ViewResult dynamicMethod(@RequestBody List<ReflexRequest> reflexRequests){
+        reflexMethod.dynamicMethod(reflexRequests);
+        return ViewResult.success(null);
+    }
+
 
 }
 
