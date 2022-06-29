@@ -16,4 +16,5 @@ spring:
         file-extension: yaml
         namespace: ${spring.profiles.active}
         group: DEFAULT_GROUP
+        refresh-enabled: true
 

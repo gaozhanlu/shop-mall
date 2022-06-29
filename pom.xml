@@ -48,9 +48,10 @@
         <sharding-sphere.version>4.0.0-RC1</sharding-sphere.version>
         <security.oauth2.version>2.3.8.RELEASE</security.oauth2.version>
         <druid.version>1.1.20</druid.version>
-        <dynamic.datasource.version>3.3.0</dynamic.datasource.version>
+        <dynamic.datasource.version>3.3.1</dynamic.datasource.version>
         <jjwt.version>0.9.0</jjwt.version>
         <fastjson.version>1.2.83</fastjson.version>
+        <security.jwt.version>1.0.10.RELEASE</security.jwt.version>
     </properties>
 
 
@@ -100,6 +101,9 @@
                 <version>${sharding-sphere.version}</version>
             </dependency>
             <!-- 分库分表 end-->
+
+
+            <!--安全认证-->
             <dependency>
                 <groupId>org.springframework.security.oauth</groupId>
                 <artifactId>spring-security-oauth2</artifactId>
@@ -179,22 +183,24 @@
             <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-jwt</artifactId>
-                <version>1.0.10.RELEASE</version>
+                <version>${security.jwt.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+
     <!--打包配置-->
-<!--    <build>-->
-<!--        <plugins>-->
-<!--            <plugin>-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
-<!--                <configuration>-->
-<!--                    <executable>true</executable>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-<!--        </plugins>-->
-<!--    </build>-->
+  <!--  <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <executable>true</executable>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>-->
 
 
 </project>

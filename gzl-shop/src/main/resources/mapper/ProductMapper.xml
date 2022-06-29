@@ -49,7 +49,6 @@ mdl, data_source, third_code, create_time, update_time, update_use, stats
             <if test="brand!=null and brand!=''">and brand=#{brand}</if>
             <if test="goodsNo!=null and goodsNo!=''">and goods_no=#{goodsNo}</if>
             <if test="spec!=null and spec!=''">and spec=#{spec}</if>
-           1 limit 0,10;
         </where>
     </select>
 

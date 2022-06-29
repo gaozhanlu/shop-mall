@@ -11,6 +11,11 @@
 
     <artifactId>gzl-common</artifactId>
     <dependencies>
+        <!--RabbitMQ-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
 
         <!-- ElasticSearch -->
         <dependency>
@@ -92,8 +97,6 @@
             <groupId>io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>
         </dependency>
-
-
         <!--mysql-plu启动包-->
         <dependency>
             <groupId>com.baomidou</groupId>

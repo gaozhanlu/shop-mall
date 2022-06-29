@@ -22,7 +22,7 @@
     </sql>
 
 
-    <select id="selectPurchase" parameterType="com.gzl.common.model.order.purchase.PurchaseRequest">
+    <select id="selectPurchase" parameterType="com.gzl.common.model.order.purchase.PurchaseRequest" resultType="com.gzl.common.model.order.purchase.PurchaseResponse">
         select * from order_purchase
         <where>
             <if test="userId!=null and userId!=''">and user_id=#{userId}</if>
