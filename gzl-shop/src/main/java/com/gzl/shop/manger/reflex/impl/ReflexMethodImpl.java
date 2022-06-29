@@ -1,5 +1,6 @@
 package com.gzl.shop.manger.reflex.impl;
 
+import com.baomidou.mybatisplus.extension.api.R;
 import com.gzl.common.model.util.ReflexRequest;
 import com.gzl.common.util.DynamicCallMethodUtil;
 import com.gzl.shop.manger.reflex.ReflexMethod;
@@ -15,9 +16,11 @@ public class ReflexMethodImpl implements ReflexMethod {
     @Autowired
     private DynamicCallMethodUtil dynamicCallMethodUtil;
 
-
     @Override
     public void dynamicMethod(List<ReflexRequest> reflexRequests) {
+        ReflexRequest reflex=new ReflexRequest();
+        reflex.setMethodName("saveProduct");
+        reflex.setClassName("com.gzl.shop.service.ProductService");
         for (ReflexRequest reflexRequest:reflexRequests){
             dynamicCallMethodUtil.dynamicCallMethod(reflexRequest);
         }
