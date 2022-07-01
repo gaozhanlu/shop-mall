@@ -21,6 +21,7 @@ public class ReflexMethodImpl implements ReflexMethod {
         ReflexRequest reflex=new ReflexRequest();
         reflex.setMethodName("saveProduct");
         reflex.setClassName("com.gzl.shop.service.ProductService");
+        reflexRequests.add(reflex);
         for (ReflexRequest reflexRequest:reflexRequests){
             dynamicCallMethodUtil.dynamicCallMethod(reflexRequest);
         }
