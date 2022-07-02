@@ -16,6 +16,8 @@ import java.util.List;
 @Component
 @FeignClient(value = "gzl-shop")
 public interface ShopService {
+
+
     @ApiOperation(value = "获取产品库存详情")
     @RequestMapping(value = "/product/selectProductStorageDetail", method = RequestMethod.POST)
     @ResponseBody

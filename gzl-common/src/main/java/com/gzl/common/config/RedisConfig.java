@@ -2,6 +2,8 @@ package com.gzl.common.config;
 
 
 import com.gzl.common.util.redis.FastJsonRedisSerializer;
+import org.redisson.Redisson;
+import org.redisson.config.Config;
 import org.springframework.boot.autoconfigure.cache.CacheProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.annotation.EnableCaching;
@@ -63,5 +65,14 @@ public class RedisConfig {
         }
         return config;
     }
+
+
+//    @Bean
+//    public Redisson redisson(){
+//        Config config=new Config();
+//
+//        return (Redisson) Redisson.create(config);
+//
+//    }
 
 }

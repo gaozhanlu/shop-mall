@@ -53,11 +53,19 @@
         <fastjson.version>1.2.83</fastjson.version>
         <security.jwt.version>1.0.10.RELEASE</security.jwt.version>
         <xxl.job.version>2.3.0</xxl.job.version>
+        <redisson.version>3.17.0</redisson.version>
     </properties>
 
 
     <dependencyManagement>
         <dependencies>
+
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+
             <!-- https://mvnrepository.com/artifact/com.xuxueli/xxl-job-core -->
             <dependency>
                 <groupId>com.xuxueli</groupId>
