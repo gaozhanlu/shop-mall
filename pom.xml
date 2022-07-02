@@ -52,7 +52,7 @@
         <jjwt.version>0.9.0</jjwt.version>
         <fastjson.version>1.2.83</fastjson.version>
         <security.jwt.version>1.0.10.RELEASE</security.jwt.version>
-        <xxl.job.version>2.2.0</xxl.job.version>
+        <xxl.job.version>2.3.0</xxl.job.version>
     </properties>
 
 

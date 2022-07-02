@@ -20,10 +20,10 @@ public class XxlJobConfig {
     @Value("${xxl.job.executor.appname}")
     private String appname;
 
-    @Value("${xxl.job.executor.address}")
+    @Value("${xxl.job.executor.address:}")
     private String address;
 
-    @Value("${xxl.job.executor.ip}")
+    @Value("${xxl.job.executor.ip:}")
     private String ip;
 
     @Value("${xxl.job.executor.port}")
@@ -35,12 +35,10 @@ public class XxlJobConfig {
     @Value("${xxl.job.executor.logretentiondays}")
     private int logRetentionDays;
 
+
     @Bean
     public XxlJobSpringExecutor xxlJobExecutor() {
         log.info(">>>>>>>>>>> xxl-job config init.");
-        // registry jobhandler
-
-        // init executor
         XxlJobSpringExecutor xxlJobSpringExecutor = new XxlJobSpringExecutor();
         xxlJobSpringExecutor.setAdminAddresses(adminAddresses);
         xxlJobSpringExecutor.setAppname(appname);
@@ -50,7 +48,7 @@ public class XxlJobConfig {
         xxlJobSpringExecutor.setAccessToken(accessToken);
         xxlJobSpringExecutor.setLogPath(logPath);
         xxlJobSpringExecutor.setLogRetentionDays(logRetentionDays);
-        return xxlJobSpringExecutor;
 
+        return xxlJobSpringExecutor;
     }
 }
