@@ -51,6 +51,7 @@ public class ProductController {
         List<ProductResponse> ProductResponses=productService.selectProduct(productRequest);
         return ViewResult.success(ProductResponses);
     }
+
     @ApiOperation(value = "获取产品库存信息")
     @RequestMapping(value = "/selectProductStorageDetail", method = RequestMethod.POST)
     public ViewResult<List<ProductStorageDetailResponse>> selectProductStorageDetail(@RequestBody ProductStorageDetailRequest productStorageDetailRequest){
