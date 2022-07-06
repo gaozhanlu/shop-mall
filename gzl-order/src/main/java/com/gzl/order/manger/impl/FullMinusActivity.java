@@ -12,6 +12,7 @@ public class FullMinusActivity implements DiscountActivity {
     @Override
     public long countMoney(ActivityRequest activityRequest , ActivityChain activityChain) {
         log.info("满减活动");
+        activityChain.doActivity(activityRequest);
         return 0;
     }
 }
