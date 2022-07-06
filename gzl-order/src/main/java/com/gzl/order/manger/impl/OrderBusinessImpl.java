@@ -6,6 +6,7 @@ import com.gzl.common.model.shop.product.ProductRequest;
 import com.gzl.common.model.shop.product.ProductStorageDetailRequest;
 import com.gzl.common.model.shop.product.ProductStorageDetailResponse;
 import com.gzl.common.result.ViewResult;
+import com.gzl.common.util.snowflake.Snowflake;
 import com.gzl.order.feign.ShopService;
 import com.gzl.order.manger.OrderBusiness;
 import lombok.extern.slf4j.Slf4j;
