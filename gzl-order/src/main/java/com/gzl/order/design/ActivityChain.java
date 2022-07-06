@@ -11,7 +11,7 @@ public class ActivityChain {
     private List<DiscountActivity> activities=new ArrayList<DiscountActivity>();
 
 
-    private static int index=0;
+    private int index=0;
 
     public ActivityChain addActivity(DiscountActivity discountActivity){
         this.activities.add(discountActivity);
