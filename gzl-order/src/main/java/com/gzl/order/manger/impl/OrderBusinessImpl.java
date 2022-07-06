@@ -24,10 +24,10 @@ import java.util.stream.Collectors;
 public class OrderBusinessImpl implements OrderBusiness {
     @Resource
     private ShopService shopService;
-    @Autowired
+    @Resource
     private Redisson redisson;
 
-    @Autowired
+    @Resource
     private StringRedisTemplate stringRedisTemplate;
 
     @Override

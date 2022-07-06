@@ -2,14 +2,23 @@ package com.gzl.order.controller;
 
 
 import com.gzl.common.model.common.Pattern;
+import com.gzl.common.model.order.activity.ActivityRequest;
+import com.gzl.common.model.order.product.PurchaseProductRequest;
+import com.gzl.common.model.order.product.PurchaseProductResponse;
 import com.gzl.common.model.order.purchase.PurchaseRequest;
 import com.gzl.common.model.order.purchase.PurchaseResponse;
 import com.gzl.common.result.ViewResult;
+import com.gzl.order.design.ActivityChain;
 import com.gzl.order.entity.Purchase;
 import com.gzl.order.manger.OrderBusiness;
+import com.gzl.order.manger.impl.CouponActivity;
+import com.gzl.order.manger.impl.FullMinusActivity;
+import com.gzl.order.manger.impl.MemberActivity;
+import com.gzl.order.manger.impl.PromotionActivity;
 import com.gzl.order.service.PurchaseService;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -61,7 +70,18 @@ public class PurchaseController {
         List<PurchaseResponse> PurchaseResponses=purchaseService.selectPurchase(PurchaseRequest);
         return ViewResult.success(PurchaseResponses);
     }
-    
+
+    @ApiOperation(value = "test")
+    @RequestMapping(value = "/test", method = RequestMethod.POST)
+    public ViewResult test(){
+        ActivityRequest activityRequest=null;
+        ActivityChain activityChain=new ActivityChain();
+        activityChain.addActivity(new CouponActivity()).addActivity(new FullMinusActivity()).addActivity(new MemberActivity())
+        .addActivity(new PromotionActivity());
+        activityChain.doActivity(activityRequest);
+
+        return ViewResult.success(null);
+    }
     
     
 }
