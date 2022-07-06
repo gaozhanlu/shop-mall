@@ -6,6 +6,7 @@ import com.gzl.common.model.shop.product.ProductRequest;
 import com.gzl.common.model.shop.product.ProductStorageDetailRequest;
 import com.gzl.common.model.shop.product.ProductStorageDetailResponse;
 import com.gzl.common.result.ViewResult;
+import com.gzl.common.util.snowflake.Snowflake;
 import com.gzl.order.feign.ShopService;
 import com.gzl.order.manger.OrderBusiness;
 import lombok.extern.slf4j.Slf4j;
@@ -27,16 +28,27 @@ public class OrderBusinessImpl implements OrderBusiness {
     @Autowired
     private Redisson redisson;
 
-    @Autowired
-    private StringRedisTemplate stringRedisTemplate;
+
 
     @Override
     public boolean createOrder(List<PurchaseRequest> purchaseRequestList) {
         for(PurchaseRequest purchaseRequest:purchaseRequestList){
+            purchaseRequest.setOrderSn(Snowflake.getNextId());
+
             List<PurchaseProductRequest> purchaseProductRequestList=purchaseRequest.getPurchaseProductRequestList();
             for (PurchaseProductRequest purchaseProductRequest:purchaseProductRequestList){
                 RLock redissonLock=redisson.getLock(purchaseProductRequest.getPid());
                 try {
+                    // ========= 添加redisson锁并实现锁续命功能 =============
+                    /**
+                     *  主要执行一下几个操作
+                     *
+                     *  1、将localKey设置到Redis服务器上，默认过期时间是30s
+                     *  2、每10s触发一次锁续命功能
+                     */
+                    redissonLock.lock();
+
+
                     //校验库存
                     ProductStorageDetailRequest productStorageDetailRequest=new ProductStorageDetailRequest();
                     productStorageDetailRequest.setPidList(purchaseRequest.getPurchaseProductRequestList().stream().map(PurchaseProductRequest::getPid).collect(Collectors.toList()));
