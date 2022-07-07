@@ -8,8 +8,10 @@ import com.gzl.common.model.order.product.PurchaseProductResponse;
 import com.gzl.common.model.order.purchase.PurchaseRequest;
 import com.gzl.common.model.order.purchase.PurchaseResponse;
 import com.gzl.common.result.ViewResult;
+import com.gzl.order.design.ActivityBuilder;
 import com.gzl.order.design.ActivityChain;
 import com.gzl.order.entity.Purchase;
+import com.gzl.order.manger.DiscountActivity;
 import com.gzl.order.manger.OrderBusiness;
 import com.gzl.order.manger.impl.CouponActivity;
 import com.gzl.order.manger.impl.FullMinusActivity;
@@ -28,6 +30,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -71,13 +74,35 @@ public class PurchaseController {
         return ViewResult.success(PurchaseResponses);
     }
 
+
+
+
+
     @ApiOperation(value = "test")
     @RequestMapping(value = "/test", method = RequestMethod.POST)
     public ViewResult test(){
         ActivityRequest activityRequest=null;
         ActivityChain activityChain=new ActivityChain();
-        activityChain.addActivity(new CouponActivity()).addActivity(new FullMinusActivity()).addActivity(new MemberActivity())
-        .addActivity(new PromotionActivity());
+
+
+        List<String> classNames=new ArrayList<>();
+        classNames.add("com.gzl.order.manger.impl.CouponActivity");
+        classNames.add("com.gzl.order.manger.impl.MemberActivity");
+        classNames.add("com.gzl.order.manger.impl.PromotionActivity");
+        classNames.add("com.gzl.order.manger.impl.CouponActivity");
+
+
+        for (String className:classNames){
+            activityChain.addActivity((DiscountActivity)ActivityBuilder.createInstance(className));
+        }
+
+//        activityChain
+//                .addActivity(new CouponActivity())
+//                .addActivity(new FullMinusActivity())
+//                .addActivity(new MemberActivity())
+//                .addActivity(new PromotionActivity());
+
+
         activityChain.doActivity(activityRequest);
 
         return ViewResult.success(null);
