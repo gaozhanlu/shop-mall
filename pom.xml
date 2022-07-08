@@ -54,12 +54,17 @@
         <security.jwt.version>1.0.10.RELEASE</security.jwt.version>
         <xxl.job.version>2.3.0</xxl.job.version>
         <redisson.version>3.17.0</redisson.version>
+        <captcha.version>1.0.1</captcha.version>
     </properties>
 
 
     <dependencyManagement>
         <dependencies>
-
+            <dependency>
+                <groupId>com.ramostear</groupId>
+                <artifactId>Happy-Captcha</artifactId>
+                <version>${captcha.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson-spring-boot-starter</artifactId>
