@@ -1,8 +1,7 @@
 package com.gzl.common.util.list;
 
-
-import com.baomidou.mybatisplus.extension.exceptions.ApiException;
 import com.google.common.collect.Maps;
+import com.gzl.common.error.ApiException;
 import org.apache.commons.beanutils.BeanUtils;
 
 import java.lang.reflect.InvocationTargetException;
