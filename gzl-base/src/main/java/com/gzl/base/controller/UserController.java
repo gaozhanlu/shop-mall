@@ -1,6 +1,7 @@
 package com.gzl.base.controller;
 
 
+import com.gzl.common.error.ApiException;
 import com.gzl.common.model.base.user.UserRequest;
 import com.gzl.common.model.base.user.UserResponse;
 import com.gzl.common.model.base.user.UserRoleAuthorityRequest;
@@ -11,13 +12,19 @@ import com.gzl.common.result.ViewResult;
 
 import com.gzl.base.entity.User;
 import com.gzl.base.service.UserService;
+import com.ramostear.captcha.HappyCaptcha;
+import com.ramostear.captcha.support.CaptchaType;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+
+import static com.ramostear.captcha.HappyCaptcha.SESSION_KEY;
 
 /**
  * <p>
@@ -69,6 +76,41 @@ public class UserController {
     public ViewResult selectUserRoleAuthorityPage(@RequestBody PageRequest<UserRoleAuthorityRequest> pageRequest){
         PageResult pageResult= userService.selectUserRoleAuthorityPage(pageRequest);
         return ViewResult.success(pageResult);
+    }
+
+
+
+    @ApiOperation(value = "生成验证码")
+    @RequestMapping(value = "/happyCaptcha", method = RequestMethod.POST)
+    @ResponseBody
+    public void happyCaptcha(HttpServletRequest request, HttpServletResponse response){
+        System.out.println("======生成一次验证码======");
+        HappyCaptcha.require(request,response)
+                .type(CaptchaType.WORD_NUMBER_UPPER)
+                .length(4)
+                .width(120)
+                .height(47)
+                .build().finish();
+        String captcha = (String)request.getSession().getAttribute(SESSION_KEY);
+        log.info(captcha);
+
+
+    }
+
+    @ApiOperation(value = "校验证码")
+    @RequestMapping(value = "/verify", method = RequestMethod.POST)
+    @ResponseBody
+    public String verify(String code,HttpServletRequest request){
+        //Verification Captcha
+        boolean flag = HappyCaptcha.verification(request,code,true);
+        if(flag){
+            // 校验通过
+            HappyCaptcha.remove(request);
+        }else {
+            HappyCaptcha.remove(request);
+            throw new ApiException("验证码错误");
+        }
+        return code;
     }
 }
 

@@ -20,6 +20,11 @@
 <!--            <groupId>com.alibaba</groupId>-->
 <!--            <artifactId>druid-spring-boot-starter</artifactId>-->
 <!--        </dependency>-->
+
+        <dependency>
+            <groupId>com.ramostear</groupId>
+            <artifactId>Happy-Captcha</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
