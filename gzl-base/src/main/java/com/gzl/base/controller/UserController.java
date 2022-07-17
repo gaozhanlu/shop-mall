@@ -92,8 +92,6 @@ public class UserController {
                 .height(47)
                 .build().finish();
         String captcha = (String)request.getSession().getAttribute(SESSION_KEY);
-        log.info(captcha);
-
 
     }
 
