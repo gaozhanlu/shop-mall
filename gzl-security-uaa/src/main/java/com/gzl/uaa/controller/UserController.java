@@ -29,6 +29,7 @@ public class UserController {
         log.error("测试本接口");
         return ViewResult.success("调用成功");
     }
+
     @PostMapping("logout")
     public ViewResult logout() {
         return userService.logout();
