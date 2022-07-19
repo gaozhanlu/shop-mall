@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.concurrent.TimeUnit;
 
 @Component
@@ -21,7 +22,7 @@ public class CheckLogin {
     //限制时间
     private static final int LIMIT_ADDRESS_RESTRICTIONS = 1000 * 60;
 
-    public String checkIp(ServerHttpRequest request) {
+    public String checkIp(HttpServletRequest request) {
         // 校验IP登录次数
         String address = ClientIpUtil.getClientIP(request);
         if(!identifyingAddress(address)){

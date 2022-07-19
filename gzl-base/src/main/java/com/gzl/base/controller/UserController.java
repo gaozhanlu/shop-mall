@@ -45,7 +45,7 @@ public class UserController {
 
     @ApiOperation(value = "登录接口")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ViewResult login(@RequestBody User user,ServerHttpRequest request){
+    public ViewResult login(@RequestBody User user,HttpServletRequest request){
         return userService.login(user,request);
     }
 

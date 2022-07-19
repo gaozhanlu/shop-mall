@@ -31,6 +31,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -79,7 +80,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     private CheckLogin checkLogin;
 
     @Override
-    public ViewResult login(User user,ServerHttpRequest request) {
+    public ViewResult login(User user, HttpServletRequest request) {
                // 认证的时候需要Authentication对象，所以需要一个Authentication的实现类，这里选择了UsernamePasswordAuthenticationToken
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(user.getUserName(),user.getPassword());
@@ -90,8 +91,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         // 如果认证通过，authenticate里将包含principal属性，该属性的值就是LoginUser，
         // 如果认证没通过，给出对应的提示
         if (Objects.isNull(authenticate)) {
-            checkLogin.checkIp(request);
+
             throw new RuntimeException("登录失败");
+        }else {
+            checkLogin.checkIp(request);
         }
 
         // 如果认证通过了，使用userid生成一个jwt jwt存入ResponseResult返回
