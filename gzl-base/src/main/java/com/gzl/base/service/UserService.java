@@ -9,6 +9,7 @@ import com.gzl.common.packagemodel.PageRequest;
 import com.gzl.common.packagemodel.PageResult;
 import com.gzl.common.result.ViewResult;
 import com.gzl.base.entity.User;
+import org.springframework.http.server.ServerHttpRequest;
 
 import java.util.List;
 
@@ -26,7 +27,7 @@ public interface UserService extends IService<User> {
 
     List<UserResponse> selectUser(UserRequest userRequest);
 
-    ViewResult login(User user);
+    ViewResult login(User user, ServerHttpRequest request);
 
     List<UserRoleAuthorityResponse> selectUserRoleAuthority(UserRoleAuthorityRequest userRoleAuthorityRequest);
 

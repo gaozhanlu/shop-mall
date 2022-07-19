@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gzl.base.manger.SendEmail;
+import com.gzl.base.manger.login.CheckLogin;
 import com.gzl.common.domain.LoginUser;
 import com.gzl.common.model.base.user.UserRequest;
 import com.gzl.common.model.base.user.UserResponse;
@@ -15,11 +16,14 @@ import com.gzl.common.result.ViewResult;
 import com.gzl.common.util.EntityCopyUtil;
 import com.gzl.common.util.JwtUtil;
 import com.gzl.common.util.PageChangeUtil;
+import com.gzl.common.util.gitip.ClientIpUtil;
 import com.gzl.common.util.redis.RedisCache;
 import com.gzl.base.entity.User;
 import com.gzl.base.mapper.UserMapper;
 import com.gzl.base.service.UserService;
+import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -71,8 +75,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Autowired
     private SendEmail sendEmail;
 
+    @Autowired
+    private CheckLogin checkLogin;
+
     @Override
-    public ViewResult login(User user) {
+    public ViewResult login(User user,ServerHttpRequest request) {
                // 认证的时候需要Authentication对象，所以需要一个Authentication的实现类，这里选择了UsernamePasswordAuthenticationToken
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(user.getUserName(),user.getPassword());
@@ -83,6 +90,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         // 如果认证通过，authenticate里将包含principal属性，该属性的值就是LoginUser，
         // 如果认证没通过，给出对应的提示
         if (Objects.isNull(authenticate)) {
+            checkLogin.checkIp(request);
             throw new RuntimeException("登录失败");
         }
 

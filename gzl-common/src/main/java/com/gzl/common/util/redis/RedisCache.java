@@ -68,6 +68,18 @@ public class RedisCache
     }
 
     /**
+     * 获取剩余过期时间
+     * @param key
+     * @return
+     */
+    public Long getExpire(final String key){
+        return redisTemplate.getExpire(key);
+    }
+
+
+
+
+    /**
      * 获得缓存的基本对象。
      *
      * @param key 缓存键值

@@ -17,6 +17,7 @@ import com.ramostear.captcha.support.CaptchaType;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,8 +45,8 @@ public class UserController {
 
     @ApiOperation(value = "登录接口")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ViewResult login(@RequestBody User user){
-        return userService.login(user);
+    public ViewResult login(@RequestBody User user,ServerHttpRequest request){
+        return userService.login(user,request);
     }
 
 
@@ -110,5 +111,8 @@ public class UserController {
         }
         return code;
     }
+
+
+
 }
 
