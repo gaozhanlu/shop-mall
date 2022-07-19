@@ -22,7 +22,7 @@ import java.time.LocalDateTime;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("sys_duty")
-@ApiModel(value="Duty对象", description="")
+@ApiModel(value="Duty", description="")
 public class Duty implements Serializable {
 
     private static final long serialVersionUID = 1L;

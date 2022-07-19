@@ -22,7 +22,7 @@ import java.time.LocalDateTime;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("sys_organization_user")
-@ApiModel(value="OrganizationUser对象", description="组织人员表")
+@ApiModel(value="OrganizationUser", description="组织人员表")
 public class OrganizationUser implements Serializable {
 
     private static final long serialVersionUID = 1L;

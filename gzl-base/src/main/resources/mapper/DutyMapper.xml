@@ -21,4 +21,14 @@
         id, duty_id, duty_name, duty_type, status, remark, create_by, create_time, update_by, update_time
     </sql>
 
+    <select id="selectAllDuty" resultType="com.gzl.common.model.base.duty.CheckDutyResponse">
+        SELECT * FROM SYSTEM_Duty
+        <where>
+            <if test="dutyId!=null and dutyId!=''">and duty_id=#{dutyId}</if>
+            <if test="dutyName!=null and dutyName!=''">and duty_name=#{dutyName}</if>
+            <if test="dutyType!=null and dutyType!=''">and duty_type=#{dutyType}</if>
+            <if test="status!=null ">and status=#{status}</if>
+            <if test="platName!=null and platName!=''">and plat_name=#{platName}</if>
+        </where>
+    </select>
 </mapper>
