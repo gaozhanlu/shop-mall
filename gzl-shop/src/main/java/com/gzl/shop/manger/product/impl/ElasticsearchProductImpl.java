@@ -3,7 +3,7 @@ package com.gzl.shop.manger.product.impl;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.gzl.common.model.shop.product.EsProductRequest;
 import com.gzl.common.model.shop.product.EsProductResponse;
-import com.gzl.common.util.EntityCopyUtil;
+import com.gzl.common.util.entityUtil.EntityCopyUtil;
 import com.gzl.shop.manger.elasticsearch.Elasticsearch;
 import com.gzl.shop.manger.product.ElasticsearchProduct;
 import com.gzl.shop.mapper.ProductMapper;

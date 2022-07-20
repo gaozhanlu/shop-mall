@@ -3,8 +3,11 @@ package com.gzl.base.controller;
 
 import com.gzl.base.entity.Duty;
 import com.gzl.base.service.DutyService;
+import com.gzl.base.service.OrganizationUserService;
 import com.gzl.common.model.base.duty.CheckDutyRequest;
 import com.gzl.common.model.base.duty.CheckDutyResponse;
+import com.gzl.common.model.base.organization.OrganizationUserRequest;
+import com.gzl.common.model.base.organization.OrganizationUserResponse;
 import com.gzl.common.result.ViewResult;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,32 +27,39 @@ import java.util.List;
 @RequestMapping("/organization-user")
 public class OrganizationUserController {
     @Autowired
-    private DutyService dutyService;
+    public OrganizationUserService organizationUserService;
 
-
-    @ApiOperation(value = "添加项目中职务信息")
-    @RequestMapping(value = "/insertDuty", method = RequestMethod.POST)
+    @ApiOperation(value = "添加组织结构关系表")
+    @RequestMapping(value = "/insertOrganizationUser", method = RequestMethod.POST)
     @ResponseBody
-    public ViewResult insertDuty(@RequestBody Duty Duty){
-        dutyService.insertDuty(Duty);
+    public ViewResult insertOrganizationUser(@RequestBody OrganizationUserRequest organizationUserRequest){
+        organizationUserService.insertOrganizationUser(organizationUserRequest);
         return ViewResult.success("");
     }
 
-    @ApiOperation(value = "修改项目中职务信息")
-    @RequestMapping(value = "/updateDuty", method = RequestMethod.POST)
+    @ApiOperation(value = "修改组织结构关系关系表")
+    @RequestMapping(value = "/updateOrganizationUser", method = RequestMethod.POST)
     @ResponseBody
-    public ViewResult updateDuty(@RequestBody Duty Duty){
-        dutyService.updateDuty(Duty);
+    public ViewResult updateOrganizationUser(@RequestBody OrganizationUserRequest organizationUserRequest){
+        organizationUserService.updateOrganizationUser(organizationUserRequest);
         return ViewResult.success("");
     }
 
-
-    @ApiOperation(value = "查询某个项目中职务信息")
-    @RequestMapping(value = "/selectAllDuty", method = RequestMethod.POST)
+    @ApiOperation(value = "查询组织结构关系表")
+    @RequestMapping(value = "/selectOrganizationUser", method = RequestMethod.POST)
     @ResponseBody
-    public ViewResult<List<CheckDutyResponse>> selectAllDuty(@RequestBody CheckDutyRequest checkDutyRequest){
-        List<CheckDutyResponse> checkDutyResponseList=dutyService.selectAllDuty(checkDutyRequest);
-        return ViewResult.success(checkDutyResponseList);
+    public ViewResult<List<OrganizationUserResponse>> selectOrganizationUser(@RequestBody OrganizationUserRequest organizationUserRequest){
+        List<OrganizationUserResponse> OrganizationUsers=organizationUserService.selectOrganizationUser(organizationUserRequest);
+        return ViewResult.success(OrganizationUsers);
+    }
+
+    @ApiOperation(value = "查询组织所有人")
+    @RequestMapping(value = "/selectOneOrganizationUser", method = RequestMethod.POST)
+    @ResponseBody
+    public ViewResult<List<OrganizationUserResponse>> selectOneOrganizationUser(@RequestBody OrganizationUserRequest organizationUserRequest){
+        List<OrganizationUserResponse> userList=organizationUserService.selectOneOrganizationUser(organizationUserRequest);
+        return ViewResult.success(userList);
+
     }
 }
 

@@ -3,7 +3,7 @@ package com.gzl.order.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gzl.common.model.order.purchase.PurchaseRequest;
 import com.gzl.common.model.order.purchase.PurchaseResponse;
-import com.gzl.common.util.EntityCopyUtil;
+import com.gzl.common.util.entityUtil.EntityCopyUtil;
 import com.gzl.order.entity.Purchase;
 import com.gzl.order.mapper.PurchaseMapper;
 import com.gzl.order.service.PurchaseService;

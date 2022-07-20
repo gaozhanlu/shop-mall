@@ -3,12 +3,11 @@ package com.gzl.order.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gzl.common.model.order.cart.CartRequest;
 import com.gzl.common.model.order.cart.CartResponse;
-import com.gzl.common.util.EntityCopyUtil;
+import com.gzl.common.util.entityUtil.EntityCopyUtil;
 import com.gzl.order.entity.Cart;
 import com.gzl.order.mapper.CartMapper;
 import com.gzl.order.service.CartService;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.annotation.Resource;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.gzl.common.util;
+package com.gzl.common.util.dynamicMethod;
 
 
 import com.gzl.common.model.util.ReflexRequest;

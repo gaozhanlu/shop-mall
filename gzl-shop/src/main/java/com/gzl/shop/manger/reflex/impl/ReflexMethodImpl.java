@@ -1,8 +1,7 @@
 package com.gzl.shop.manger.reflex.impl;
 
-import com.baomidou.mybatisplus.extension.api.R;
 import com.gzl.common.model.util.ReflexRequest;
-import com.gzl.common.util.DynamicCallMethodUtil;
+import com.gzl.common.util.dynamicMethod.DynamicCallMethodUtil;
 import com.gzl.shop.manger.reflex.ReflexMethod;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

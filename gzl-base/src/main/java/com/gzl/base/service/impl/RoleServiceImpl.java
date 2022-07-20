@@ -5,7 +5,7 @@ import com.gzl.common.model.base.role.RoleAuthorityResponse;
 import com.gzl.common.model.base.role.RoleRequest;
 import com.gzl.common.model.base.role.RoleResponse;
 import com.gzl.common.model.base.user.UserRoleAuthorityRequest;
-import com.gzl.common.util.EntityCopyUtil;
+import com.gzl.common.util.entityUtil.EntityCopyUtil;
 import com.gzl.base.entity.Role;
 import com.gzl.base.mapper.RoleMapper;
 import com.gzl.base.service.RoleService;

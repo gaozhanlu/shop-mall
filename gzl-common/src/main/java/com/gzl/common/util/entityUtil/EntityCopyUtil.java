@@ -1,4 +1,4 @@
-package com.gzl.common.util;
+package com.gzl.common.util.entityUtil;
 
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Component;

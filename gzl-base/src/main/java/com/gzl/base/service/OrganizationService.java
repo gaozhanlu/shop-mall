@@ -2,6 +2,9 @@ package com.gzl.base.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.gzl.base.entity.Organization;
+import com.gzl.common.model.base.organization.OrganizationRequest;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,9 @@ import com.gzl.base.entity.Organization;
  */
 public interface OrganizationService extends IService<Organization> {
 
+    void insertOrganization(OrganizationRequest organizationRequest);
+
+    void updateOrganization(OrganizationRequest organizationRequest);
+
+    List<Organization> selectOrganization(OrganizationRequest organizationRequest);
 }

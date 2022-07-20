@@ -1,4 +1,4 @@
-package com.gzl.common.util;
+package com.gzl.common.util.securityUtil;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;

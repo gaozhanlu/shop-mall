@@ -22,7 +22,7 @@
     </sql>
 
     <select id="selectAllDuty" resultType="com.gzl.common.model.base.duty.CheckDutyResponse">
-        SELECT * FROM SYSTEM_Duty
+        SELECT * FROM sys_duty
         <where>
             <if test="dutyId!=null and dutyId!=''">and duty_id=#{dutyId}</if>
             <if test="dutyName!=null and dutyName!=''">and duty_name=#{dutyName}</if>
@@ -31,4 +31,19 @@
             <if test="platName!=null and platName!=''">and plat_name=#{platName}</if>
         </where>
     </select>
+
+
+    <update id="updateDuty" parameterType="com.gzl.common.model.base.duty.CheckDutyRequest">
+        UPDATE sys_duty
+        <set>
+            <if test="dutyName!=null">duty_name=#{dutyName},</if>
+            <if test="dutyType!=null">duty_type=#{dutyType},</if>
+            <if test="status!=null">status=#{status},</if>
+            <if test="platName!=null">plat_name=#{platName}</if>
+        </set>
+        <where>
+            <if test="dutyId!=null and dutyId!=''">and duty_id=#{dutyId}</if>
+            <if test="id!=null and id!=''">and id=#{id}</if>
+        </where>
+    </update>
 </mapper>

@@ -26,5 +26,39 @@
     <sql id="Base_Column_List">
         id, organization_id, organization_name, parent_id, organization_type, show_type, third_code, status, short_name, level, organization_default, remark, create_by, create_time, update_by, update_time
     </sql>
+    <update id="updateOrganization" parameterType="com.gzl.common.model.base.organization.OrganizationRequest">
+        UPDATE sys_organization
+        <set>
+            <if test="organizationName!=null">organization_name=#{organizationName},</if>
+            <if test="parentId!=null ">parent_id=#{parentId},</if>
+            <if test="organizationType!=null">organization_type=#{organizationType},</if>
+            <if test="showType!=null ">show_type=#{showType},</if>
+            <if test="thirdCode!=null ">third_code=#{thirdCode},</if>
+            <if test="status!=null ">status=#{status},</if>
+            <if test="shortName!=null ">short_name=#{shortName},</if>
+            <if test="level!=null ">level=#{level},</if>
+        </set>
+        <where>
+            <if test="id!=null and id!=''">and id=#{id}</if>
+            <if test="organizationId!=null and organizationId!=''">and organization_id=#{organizationId}</if>
+        </where>
+    </update>
 
+    <select id="selectOrganization" parameterType="com.gzl.common.model.base.organization.OrganizationRequest"
+            resultType="com.gzl.common.model.base.organization.OrganizationResponse">
+        SELECT * FROM sys_organization
+        <where>
+            <if test="organizationId!=null and organizationId!=''">and organization_id=#{organizationId}</if>
+            <if test="organizationName!=null and organizationName!=''">and organization_name=#{organizationName}</if>
+            <if test="parentId!=null and parentId!=''">and parent_id=#{parentId}</if>
+            <if test="organizationType!=null ">and organization_type=#{organizationType}</if>
+            <if test="showType!=null ">and show_type=#{showType}</if>
+            <if test="thirdCode!=null and thirdCode!=''">and third_code=#{thirdCode}</if>
+            <if test="status!=null ">and status=#{status}</if>
+            <if test="shortName!=null and shortName!=''">and short_name=#{shortName}</if>
+            <if test="level!=null">and level=#{level}</if>
+            <if test="organizationDefault!=null ">and organization_default=#{organizationDefault}</if>
+        </where>
+
+    </select>
 </mapper>

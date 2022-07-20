@@ -2,6 +2,10 @@ package com.gzl.base.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.gzl.base.entity.OrganizationUser;
+import com.gzl.common.model.base.organization.OrganizationUserRequest;
+import com.gzl.common.model.base.organization.OrganizationUserResponse;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +17,7 @@ import com.gzl.base.entity.OrganizationUser;
  */
 public interface OrganizationUserMapper extends BaseMapper<OrganizationUser> {
 
+    void updateOrganizationUser(OrganizationUserRequest organizationUserRequest);
+
+    List<OrganizationUserResponse> selectOrganizationUser(OrganizationUserRequest organizationUserRequest);
 }

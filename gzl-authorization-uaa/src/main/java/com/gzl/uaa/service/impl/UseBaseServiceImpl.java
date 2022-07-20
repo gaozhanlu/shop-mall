@@ -4,7 +4,7 @@ package com.gzl.uaa.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gzl.common.model.user.UseBaseRequest;
 import com.gzl.common.model.user.UseBaseResponse;
-import com.gzl.common.util.EntityCopyUtil;
+import com.gzl.common.util.entityUtil.EntityCopyUtil;
 import com.gzl.uaa.entity.UseBase;
 import com.gzl.uaa.mapper.UseBaseMapper;
 import com.gzl.uaa.service.UseBaseService;

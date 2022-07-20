@@ -21,5 +21,39 @@
     <sql id="Base_Column_List">
         id, organization_id, user_id, duty_id, status, organization_default, remark, create_by, create_time, update_by, update_time
     </sql>
+    <update id="updateOrganizationUser" parameterType="com.gzl.common.model.base.organization.OrganizationUserRequest">
+        UPDATE sys_organization_user
+        <set>
+            <if test="organizationId!=null and organizationId!=''">organization_id=#{organizationId},</if>
+            <if test="userId!=null and userId!=''">user_id=#{userId},</if>
+            <if test="dutyId!=null and dutyId!=''">duty_id=#{dutyId},</if>
+            <if test="status!=null">status=#{status},</if>
+            <if test="organizationDefault!=null and organizationDefault!=''">organization_default=#{organizationDefault},</if>
+        </set>
+        <where>
+            <if test="id!=null and id!=''">and id=#{id}</if>
+        </where>
 
+    </update>
+
+    <select id="selectOrganizationUser" parameterType="com.gzl.common.model.base.organization.OrganizationUserRequest"
+            resultType="com.gzl.common.model.base.organization.OrganizationUserResponse">
+        SELECT A.user_id,A.status,A.organization_default,A.duty_id,A.is_funds,A.organization_id,B.organization_name,B.parent_id,B.organization_type,B.show_type,B.third_code,
+        B.short_name,B.level,C.duty_name,D.user_account as user_name
+        FROM sys_organization_user AS A
+        INNER JOIN sys_organization AS B
+        ON A.organization_id=B.organization_id
+        LEFT JOIN sys_duty AS C
+        ON A.duty_id=C.duty_id
+        LEFT JOIN sys_user AS D
+        ON A.user_id=D.id
+        <where>
+            <if test="organizationId!=null and organizationId!=''">and A.organization_id=#{organizationId}</if>
+            <if test="dutyId!=null and dutyId!=''">and A.duty_id=#{dutyId}</if>
+            <if test="userId!=null and userId!=''">and A.user_id=#{userId}</if>
+            <if test="organizationType!=null">and B.organization_type=#{organizationType}</if>
+            <if test="status!=null">and A.status=#{status}</if>
+        </where>
+
+    </select>
 </mapper>

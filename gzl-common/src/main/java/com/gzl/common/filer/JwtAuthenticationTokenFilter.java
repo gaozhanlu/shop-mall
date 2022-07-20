@@ -2,7 +2,7 @@ package com.gzl.common.filer;
 
 
 import com.gzl.common.domain.LoginUser;
-import com.gzl.common.util.JwtUtil;
+import com.gzl.common.util.securityUtil.JwtUtil;
 import com.gzl.common.util.redis.RedisCache;
 
 

@@ -6,7 +6,7 @@ import com.gzl.common.model.base.role.RoleAuthorityResponse;
 import com.gzl.common.model.base.user.UserRoleAuthorityRequest;
 import com.gzl.common.model.base.user.UserRoleAuthorityResponse;
 import com.gzl.common.model.security.UserDetail;
-import com.gzl.common.util.EntityCopyUtil;
+import com.gzl.common.util.entityUtil.EntityCopyUtil;
 import com.gzl.base.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

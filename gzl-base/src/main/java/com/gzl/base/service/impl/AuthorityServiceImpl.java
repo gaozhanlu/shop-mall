@@ -3,7 +3,7 @@ package com.gzl.base.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.gzl.common.model.base.authority.AuthorityRequest;
 import com.gzl.common.model.base.authority.AuthorityResponse;
-import com.gzl.common.util.EntityCopyUtil;
+import com.gzl.common.util.entityUtil.EntityCopyUtil;
 import com.gzl.base.entity.Authority;
 import com.gzl.base.mapper.AuthorityMapper;
 import com.gzl.base.service.AuthorityService;
