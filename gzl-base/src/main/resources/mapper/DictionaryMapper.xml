@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gzl.base.mapper.DictionaryMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.gzl.base.entity.Dictionary">
+        <id column="id" property="id" />
+        <result column="func_key" property="funcKey" />
+        <result column="parent_key" property="parentKey" />
+        <result column="en_name" property="enName" />
+        <result column="cn_name" property="cnName" />
+        <result column="func_value" property="funcValue" />
+        <result column="func_describe" property="funcDescribe" />
+        <result column="func_type" property="funcType" />
+        <result column="remark" property="remark" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, func_key, parent_key, en_name, cn_name, func_value, func_describe, func_type, remark
+    </sql>
+
+</mapper>
