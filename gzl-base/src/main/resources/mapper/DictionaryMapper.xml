@@ -20,4 +20,55 @@
         id, func_key, parent_key, en_name, cn_name, func_value, func_describe, func_type, remark
     </sql>
 
+
+    <insert id="insertBatchDictionary" parameterType="java.util.List">
+        INSERT INTO sys_dictionary (id, func_key, parent_key, en_name, cn_name, func_value,func_describe,func_type,plat_name) values
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.id}, #{item.funcKey}, #{item.parentKey}, #{item.enName}, #{item.cnName}, #{item.funcValue}, #{item.funcDescribe}, #{item.funcType}, #{item.platName})
+        </foreach>
+    </insert>
+
+    <delete id="deleteDictionary" parameterType="java.util.List">
+        DELETE FROM sys_dictionary
+        <where>
+            <if test="dictionaryRequest != null and dictionaryRequest !=''">
+                and id in
+                <foreach collection="dictionaryRequest" item="item" separator="," open="(" close=")">
+                    #{item.id}
+                </foreach>
+            </if>
+        </where>
+    </delete>
+
+    <update id="updateDictionary" parameterType="com.gzl.common.model.base.dictionary.DictionaryRequest">
+        update sys_dictionary
+        <set>
+            <if test="parentKey!=null">parent_key=#{parentKey},</if>
+            <if test="enName!=null">en_name=#{enName},</if>
+            <if test="cnName!=null">cn_name=#{cnName},</if>
+            <if test="funcValue!=null">func_value=#{funcValue},</if>
+            <if test="funcDescribe!=null">func_describe=#{funcDescribe},</if>
+            <if test="platName!=null">plat_name=#{platName}</if>
+        </set>
+        <where>
+            <if test="id!=null and id!=''">and id=#{id}</if>
+            <if test="funcKey!=null and funcKey!=''">and func_key=#{funcKey}</if>
+            <if test="funcType!=null and funcType!=''">and func_type=#{funcType}</if>
+        </where>
+    </update>
+
+
+    <select id="selectDictionaryCondition" resultType="com.gzl.common.model.base.dictionary.DictionaryResponse">
+        SELECT *
+        FROM sys_dictionary
+        <where>
+            <if test="parentKey!=null and parentKey!=''">and parent_key=#{parentKey}</if>
+            <if test="enName!=null and enName!=''">and en_name=#{enName}</if>
+            <if test="cnName!=null and cnName!=''">and cn_name=#{cnName}</if>
+            <if test="funcKey!=null and funcKey!=''">and func_key=#{funcKey}</if>
+            <if test="funcType!=null and funcType!=''">and func_type=#{funcType}</if>
+
+        </where>
+    </select>
+
 </mapper>
