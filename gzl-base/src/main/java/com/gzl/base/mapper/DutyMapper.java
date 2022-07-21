@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.gzl.base.entity.Duty;
 import com.gzl.common.model.base.duty.CheckDutyRequest;
 import com.gzl.common.model.base.duty.CheckDutyResponse;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ import java.util.List;
  * @author gzl
  * @since 2022-07-19
  */
+@Mapper
 public interface DutyMapper extends BaseMapper<Duty> {
 
     List<CheckDutyResponse> selectAllDuty(CheckDutyRequest checkDutyRequest);

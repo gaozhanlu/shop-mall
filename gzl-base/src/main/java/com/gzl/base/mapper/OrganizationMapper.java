@@ -3,6 +3,7 @@ package com.gzl.base.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.gzl.base.entity.Organization;
 import com.gzl.common.model.base.organization.OrganizationRequest;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
@@ -14,6 +15,8 @@ import java.util.List;
  * @author gzl
  * @since 2022-07-19
  */
+
+@Mapper
 public interface OrganizationMapper extends BaseMapper<Organization> {
 
     void updateOrganization(OrganizationRequest organizationRequest);

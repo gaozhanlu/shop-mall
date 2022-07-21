@@ -5,7 +5,9 @@ import com.gzl.base.entity.Dictionary;
 import com.gzl.common.model.base.dictionary.DictionaryRequest;
 import com.gzl.common.model.base.dictionary.DictionaryResponse;
 import com.gzl.common.model.base.dictionary.SearchDictionaryRequest;
+import org.apache.ibatis.annotations.Mapper;
 
+import javax.mail.MailSessionDefinition;
 import java.util.List;
 
 /**
@@ -16,6 +18,8 @@ import java.util.List;
  * @author gzl
  * @since 2022-07-20
  */
+
+@Mapper
 public interface DictionaryMapper extends BaseMapper<Dictionary> {
 
     List<DictionaryResponse> selectDictionaryCondition(SearchDictionaryRequest searchDictionaryRequest);
