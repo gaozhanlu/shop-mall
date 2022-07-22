@@ -28,7 +28,6 @@ import java.util.List;
 @DS("master")
 public class UseBaseServiceImpl extends ServiceImpl<UseBaseMapper, UseBase> implements UseBaseService {
 
-
     @Resource
     private UseBaseMapper useBaseMapper;
     @Override
