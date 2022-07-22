@@ -1,6 +1,7 @@
 package com.gzl.base.design.adapter;
 
 public class Adapter {
+
     public void specificRequest() {
         System.out.println("被适配类具有 特殊功能...");
     }
