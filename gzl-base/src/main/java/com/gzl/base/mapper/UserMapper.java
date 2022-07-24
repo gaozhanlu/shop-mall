@@ -23,7 +23,7 @@ import java.util.List;
  * @since 2022-05-29
  */
 @Mapper
-@DS("slave")
+@DS("rds")
 public interface UserMapper extends BaseMapper<User> {
 
     List<UserResponse> selectUser(UserRequest userRequest);

@@ -1,4 +1,4 @@
-package com.gzl.base.design.flyweight;
+package com.gzl.base.design.flyweight.newFlyweight;
 
 public class Client {
 

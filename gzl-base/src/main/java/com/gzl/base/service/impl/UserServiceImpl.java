@@ -1,5 +1,6 @@
 package com.gzl.base.service.impl;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -20,6 +21,7 @@ import com.gzl.common.util.redis.RedisCache;
 import com.gzl.base.entity.User;
 import com.gzl.base.mapper.UserMapper;
 import com.gzl.base.service.UserService;
+import io.swagger.annotations.BasicAuthDefinition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

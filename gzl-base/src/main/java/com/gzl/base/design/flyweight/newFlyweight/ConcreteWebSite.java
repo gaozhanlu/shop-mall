@@ -1,4 +1,4 @@
-package com.gzl.base.design.flyweight;
+package com.gzl.base.design.flyweight.newFlyweight;
 
 //具体网站
 public class ConcreteWebSite extends WebSite {

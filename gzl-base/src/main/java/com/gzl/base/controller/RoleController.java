@@ -47,7 +47,6 @@ public class RoleController {
         return ViewResult.success(RoleResponses);
     }
 
-
     @ApiOperation(value = "查找角色权限信息")
     @RequestMapping(value = "/selectRoleAuthorityMap", method = RequestMethod.POST)
     public ViewResult<List<RoleAuthorityResponse>> selectRoleAuthorityMap(@RequestBody UserRoleAuthorityRequest userRoleAuthorityRequest){
